@@ -34,7 +34,7 @@ test("complete journey: map → scenario → move → compare → priorities →
   });
 
   // 1. Homepage
-  await page.goto("/");
+  await page.goto("./");
   await expect(page).toHaveTitle(/KanalAtlas/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Mahalleni keşfet");
   await page.screenshot({ path: `${shotDir}/${p}-01-landing.png` });
@@ -153,7 +153,7 @@ test("complete journey: map → scenario → move → compare → priorities →
 });
 
 test("category switch and data scope change the numbers (not hard-coded)", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
   const core = (await headline(page).innerText()).trim();
   await page.getByLabel("Veri kapsamı").selectOption("all");
   await expect(headline(page)).not.toHaveText(core);
@@ -165,7 +165,7 @@ test("category switch and data scope change the numbers (not hard-coded)", async
 });
 
 test("canal corridor → linear park scenario (parks)", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
   await page.getByText("Park / yeşil alan", { exact: true }).click();
   const before = (await headline(page).innerText()).trim();
   await page.getByRole("button", { name: "Kanal hattını doğrusal parka dönüştür" }).click();

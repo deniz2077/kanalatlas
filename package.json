@@ -12,7 +12,9 @@
     "typecheck": "tsc --noEmit",
     "e2e": "playwright test",
     "proof": "tsx scripts/proof.ts",
-    "demo:record": "node scripts/record-demo.mjs"
+    "demo:record": "node scripts/record-demo.mjs",
+    "build:static": "STATIC_EXPORT=1 PAGES_BASE_PATH=/kanalatlas next build",
+    "e2e:static": "E2E_STATIC=1 playwright test"
   },
   "dependencies": {
     "leaflet": "^1.9.4",
