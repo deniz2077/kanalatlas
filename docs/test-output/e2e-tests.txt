@@ -1,0 +1,9 @@
+
+Running 4 tests using 2 workers
+
+  ✓  2 [desktop] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (4.4s)
+  ✓  3 [desktop] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (480ms)
+  ✓  1 [mobile] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (10.1s)
+  ✓  4 [mobile] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (414ms)
+
+  4 passed (11.6s)

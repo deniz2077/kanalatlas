@@ -4,7 +4,7 @@
  */
 import { haversineMeters } from "./geo";
 import { activeFacilities, type ScenarioResult } from "./scenario";
-import type { Category, DataScope, EvaluationPoint, Facility, HypotheticalFacility } from "./types";
+import type { Category, DataScope, EvaluationPoint, Facility, HypotheticalFacility, NeighbourhoodLabel } from "./types";
 
 export const CATEGORY_LABEL: Record<Category, string> = {
   swimming: "Yüzme tesisi",
@@ -67,6 +67,7 @@ export function explainHypotheticals(
   hypotheticals: HypotheticalFacility[],
   facilities: Facility[],
   points: EvaluationPoint[],
+  neighbourhoods: NeighbourhoodLabel[] = [],
 ): HypotheticalExplanation[] {
   const existing = activeFacilities(facilities, result.category, result.scope);
   return hypotheticals
@@ -78,13 +79,15 @@ export function explainHypotheticals(
         const d = haversineMeters(h, f);
         if (!nearestExisting || d < nearestExisting.distanceM) nearestExisting = { name: f.name, distanceM: d };
       }
+      // Label = nearest neighbourhood centroid (same rule as the evaluation grid);
+      // falls back to the nearest sample point's label.
       let nearLabel: string | null = null;
       let best = Infinity;
-      for (const p of points) {
-        const d = haversineMeters(h, p);
+      for (const l of neighbourhoods.length ? neighbourhoods : points.map((p) => ({ ...p, name: p.nearLabel }))) {
+        const d = haversineMeters(h, l);
         if (d < best) {
           best = d;
-          nearLabel = p.nearLabel;
+          nearLabel = l.name;
         }
       }
       return {

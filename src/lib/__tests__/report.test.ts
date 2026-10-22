@@ -62,7 +62,7 @@ function inputFor(h: HypotheticalFacility[], priorities = EMPTY_PRIORITIES): Rep
     points: evaluationPoints,
     result,
     hypotheticals: h,
-    explanations: explainHypotheticals(result, h, dataset.facilities, evaluationPoints),
+    explanations: explainHypotheticals(result, h, dataset.facilities, evaluationPoints, dataset.neighbourhoods),
     saved: [],
     priorities,
   };

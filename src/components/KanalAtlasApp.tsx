@@ -85,7 +85,7 @@ export default function KanalAtlasApp() {
   );
   const resultsById = useMemo(() => new Map(result.points.map((r) => [r.pointId, r])), [result]);
   const explanations = useMemo(
-    () => explainHypotheticals(result, visibleHyps, facilities, evaluationPoints),
+    () => explainHypotheticals(result, visibleHyps, facilities, evaluationPoints, dataset.neighbourhoods),
     [result, visibleHyps, facilities],
   );
   const suggestions = useMemo(
