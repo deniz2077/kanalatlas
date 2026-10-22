@@ -1,0 +1,8 @@
+[out:json][timeout:90];
+(
+  way["waterway"="canal"](36.94,35.20,37.10,35.45);
+  nwr["leisure"="swimming_pool"](36.94,35.20,37.10,35.45);
+  nwr["sport"="swimming"](36.94,35.20,37.10,35.45);
+  nwr["leisure"="sports_centre"]["sport"~"swimming"](36.94,35.20,37.10,35.45);
+);
+out tags center qt;

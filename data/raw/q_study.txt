@@ -1,0 +1,10 @@
+[out:json][timeout:120];
+(
+  way["waterway"="canal"](36.990,35.260,37.040,35.345);
+  nwr["leisure"="park"](36.990,35.260,37.040,35.345);
+  nwr["leisure"="swimming_pool"](36.990,35.260,37.040,35.345);
+  nwr["sport"="swimming"](36.990,35.260,37.040,35.345);
+  nwr["leisure"="sports_centre"](36.990,35.260,37.040,35.345);
+  node["place"~"neighbourhood|suburb|quarter"](36.990,35.260,37.040,35.345);
+);
+out tags geom qt;

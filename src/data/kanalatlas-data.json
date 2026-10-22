@@ -1,0 +1,5837 @@
+{
+ "generatedAt": "2026-10-22T20:43:27.864Z",
+ "extractedAt": "2026-10-22T20:38:43Z",
+ "source": {
+  "provider": "OpenStreetMap katkıcıları (Overpass API ile tek seferlik çekim)",
+  "license": "ODbL 1.0 — © OpenStreetMap contributors",
+  "url": "https://www.openstreetmap.org/copyright",
+  "query": "[out:json][timeout:120];\n(\n  way[\"waterway\"=\"canal\"](36.990,35.260,37.040,35.345);\n  nwr[\"leisure\"=\"park\"](36.990,35.260,37.040,35.345);\n  nwr[\"leisure\"=\"swimming_pool\"](36.990,35.260,37.040,35.345);\n  nwr[\"sport\"=\"swimming\"](36.990,35.260,37.040,35.345);\n  nwr[\"leisure\"=\"sports_centre\"](36.990,35.260,37.040,35.345);\n  node[\"place\"~\"neighbourhood|suburb|quarter\"](36.990,35.260,37.040,35.345);\n);\nout tags geom qt;\n"
+ },
+ "studyArea": {
+  "id": "seyhan-merkez-kanal",
+  "name": "Seyhan Merkez Kanal Koridoru",
+  "district": "Seyhan, Adana",
+  "bbox": {
+   "south": 36.999,
+   "west": 35.268,
+   "north": 37.022,
+   "east": 35.33
+  },
+  "facilitySearchBBox": {
+   "south": 36.99,
+   "west": 35.26,
+   "north": 37.04,
+   "east": 35.345
+  },
+  "description": "Seyhan ilçesinde, OpenStreetMap'te açık sulama kanalı olarak haritalanmış doğu–batı koridoru ve çevresindeki yerleşim alanı."
+ },
+ "canals": [
+  {
+   "id": "canal-w1298040034",
+   "name": "Sulama Kanalı",
+   "covered": true,
+   "coords": [
+    {
+     "lat": 37.0301481,
+     "lon": 35.3146489
+    },
+    {
+     "lat": 37.0299561,
+     "lon": 35.3143073
+    },
+    {
+     "lat": 37.0297363,
+     "lon": 35.3138682
+    },
+    {
+     "lat": 37.0295497,
+     "lon": 35.313461
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 1298040034
+   }
+  },
+  {
+   "id": "canal-w1315834428",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0097157,
+     "lon": 35.2652961
+    },
+    {
+     "lat": 37.0097157,
+     "lon": 35.2641116
+    },
+    {
+     "lat": 37.0092839,
+     "lon": 35.2625237
+    },
+    {
+     "lat": 37.0066967,
+     "lon": 35.2558305
+    },
+    {
+     "lat": 37.0035675,
+     "lon": 35.2477351
+    },
+    {
+     "lat": 37.0032522,
+     "lon": 35.2464133
+    },
+    {
+     "lat": 37.0025298,
+     "lon": 35.2430165
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 1315834428
+   }
+  },
+  {
+   "id": "canal-w1316241883",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0094223,
+     "lon": 35.3203339
+    },
+    {
+     "lat": 37.0094416,
+     "lon": 35.3199874
+    },
+    {
+     "lat": 37.0116415,
+     "lon": 35.3065283
+    },
+    {
+     "lat": 37.0116846,
+     "lon": 35.3057478
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 1316241883
+   }
+  },
+  {
+   "id": "canal-w1316241884",
+   "name": null,
+   "covered": true,
+   "coords": [
+    {
+     "lat": 37.0094008,
+     "lon": 35.3208547
+    },
+    {
+     "lat": 37.0094223,
+     "lon": 35.3203339
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 1316241884
+   }
+  },
+  {
+   "id": "canal-w22971512",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0172066,
+     "lon": 35.3279954
+    },
+    {
+     "lat": 37.0179193,
+     "lon": 35.3293086
+    },
+    {
+     "lat": 37.0180975,
+     "lon": 35.3298236
+    },
+    {
+     "lat": 37.0180975,
+     "lon": 35.3305102
+    },
+    {
+     "lat": 37.0178714,
+     "lon": 35.3310252
+    },
+    {
+     "lat": 37.0154522,
+     "lon": 35.333686
+    },
+    {
+     "lat": 37.0148902,
+     "lon": 35.3345443
+    },
+    {
+     "lat": 37.0145612,
+     "lon": 35.3354626
+    },
+    {
+     "lat": 37.0127793,
+     "lon": 35.3487836
+    },
+    {
+     "lat": 37.0123887,
+     "lon": 35.3499595
+    },
+    {
+     "lat": 37.0116747,
+     "lon": 35.3512127
+    },
+    {
+     "lat": 37.0109399,
+     "lon": 35.3519483
+    },
+    {
+     "lat": 37.0052606,
+     "lon": 35.3552638
+    },
+    {
+     "lat": 37.0042667,
+     "lon": 35.3553668
+    },
+    {
+     "lat": 37.0028136,
+     "lon": 35.3547917
+    },
+    {
+     "lat": 37.0018334,
+     "lon": 35.3545342
+    },
+    {
+     "lat": 37.0010108,
+     "lon": 35.3548175
+    },
+    {
+     "lat": 36.9913988,
+     "lon": 35.3621014
+    },
+    {
+     "lat": 36.9899946,
+     "lon": 35.3629886
+    },
+    {
+     "lat": 36.9886029,
+     "lon": 35.3647738
+    },
+    {
+     "lat": 36.9879516,
+     "lon": 35.3660355
+    },
+    {
+     "lat": 36.987074,
+     "lon": 35.3669368
+    },
+    {
+     "lat": 36.9862033,
+     "lon": 35.3671943
+    },
+    {
+     "lat": 36.9846744,
+     "lon": 35.3669196
+    },
+    {
+     "lat": 36.9835774,
+     "lon": 35.366808
+    },
+    {
+     "lat": 36.9826381,
+     "lon": 35.3671513
+    },
+    {
+     "lat": 36.9816439,
+     "lon": 35.3680697
+    },
+    {
+     "lat": 36.9804588,
+     "lon": 35.3693065
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 22971512
+   }
+  },
+  {
+   "id": "canal-w22972237",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0170595,
+     "lon": 35.3270897
+    },
+    {
+     "lat": 37.0160553,
+     "lon": 35.326768
+    },
+    {
+     "lat": 37.0152329,
+     "lon": 35.3263818
+    },
+    {
+     "lat": 37.0149587,
+     "lon": 35.3263217
+    },
+    {
+     "lat": 37.0142871,
+     "lon": 35.3264418
+    },
+    {
+     "lat": 37.0108603,
+     "lon": 35.3278409
+    },
+    {
+     "lat": 37.0103531,
+     "lon": 35.3279267
+    },
+    {
+     "lat": 37.0098528,
+     "lon": 35.3277121
+    },
+    {
+     "lat": 37.0094621,
+     "lon": 35.327386
+    },
+    {
+     "lat": 37.0092154,
+     "lon": 35.3268967
+    },
+    {
+     "lat": 37.0091331,
+     "lon": 35.3264075
+    },
+    {
+     "lat": 37.0094008,
+     "lon": 35.3208547
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 22972237
+   }
+  },
+  {
+   "id": "canal-w280831002",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0115333,
+     "lon": 35.304359
+    },
+    {
+     "lat": 37.0113948,
+     "lon": 35.3037672
+    },
+    {
+     "lat": 37.0108903,
+     "lon": 35.3020356
+    },
+    {
+     "lat": 37.0106892,
+     "lon": 35.3010725
+    },
+    {
+     "lat": 37.0106333,
+     "lon": 35.2995834
+    },
+    {
+     "lat": 37.0111208,
+     "lon": 35.2942977
+    },
+    {
+     "lat": 37.0110763,
+     "lon": 35.2932616
+    },
+    {
+     "lat": 37.0105686,
+     "lon": 35.2895873
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 280831002
+   }
+  },
+  {
+   "id": "canal-w280831003",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0116233,
+     "lon": 35.3048676
+    },
+    {
+     "lat": 37.0115333,
+     "lon": 35.304359
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 280831003
+   }
+  },
+  {
+   "id": "canal-w280831004",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.011668,
+     "lon": 35.3053928
+    },
+    {
+     "lat": 37.0116233,
+     "lon": 35.3048676
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 280831004
+   }
+  },
+  {
+   "id": "canal-w280831006",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0116846,
+     "lon": 35.3057478
+    },
+    {
+     "lat": 37.011668,
+     "lon": 35.3053928
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 280831006
+   }
+  },
+  {
+   "id": "canal-w399647053",
+   "name": "Sulama Kanalı",
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0332081,
+     "lon": 35.3187486
+    },
+    {
+     "lat": 37.0329403,
+     "lon": 35.3185134
+    },
+    {
+     "lat": 37.0327907,
+     "lon": 35.3183565
+    },
+    {
+     "lat": 37.0325925,
+     "lon": 35.3180995
+    },
+    {
+     "lat": 37.0311553,
+     "lon": 35.316064
+    },
+    {
+     "lat": 37.0308143,
+     "lon": 35.3155845
+    },
+    {
+     "lat": 37.0304514,
+     "lon": 35.3150741
+    },
+    {
+     "lat": 37.0301481,
+     "lon": 35.3146489
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 399647053
+   }
+  },
+  {
+   "id": "canal-w831636441",
+   "name": null,
+   "covered": false,
+   "coords": [
+    {
+     "lat": 37.0104969,
+     "lon": 35.2890681
+    },
+    {
+     "lat": 37.0103959,
+     "lon": 35.288337
+    },
+    {
+     "lat": 37.0104116,
+     "lon": 35.287464
+    },
+    {
+     "lat": 37.0105382,
+     "lon": 35.2867881
+    },
+    {
+     "lat": 37.0117924,
+     "lon": 35.2822905
+    },
+    {
+     "lat": 37.0118436,
+     "lon": 35.2815924
+    },
+    {
+     "lat": 37.0117513,
+     "lon": 35.2772609
+    },
+    {
+     "lat": 37.0111756,
+     "lon": 35.2753383
+    },
+    {
+     "lat": 37.0092359,
+     "lon": 35.2711068
+    },
+    {
+     "lat": 37.0089961,
+     "lon": 35.2699481
+    },
+    {
+     "lat": 37.0090646,
+     "lon": 35.2687035
+    },
+    {
+     "lat": 37.0097157,
+     "lon": 35.2652961
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 831636441
+   }
+  },
+  {
+   "id": "canal-w831636442",
+   "name": null,
+   "covered": true,
+   "coords": [
+    {
+     "lat": 37.0105686,
+     "lon": 35.2895873
+    },
+    {
+     "lat": 37.0104969,
+     "lon": 35.2890681
+    }
+   ],
+   "source": {
+    "osmType": "way",
+    "osmId": 831636442
+   }
+  }
+ ],
+ "facilities": [
+  {
+   "id": "park-n10125752192",
+   "category": "park",
+   "name": "Yusuf Park",
+   "lat": 36.9988397,
+   "lon": 35.3445418,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 10125752192
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Yüreğir",
+    "addr:housenumber": "1",
+    "addr:neighbourhood": "Yavuzlar Mahallesi",
+    "addr:postcode": "01220",
+    "addr:street": "1",
+    "leisure": "park",
+    "name": "Yusuf Park",
+    "operator": "Yüreğir"
+   }
+  },
+  {
+   "id": "park-n10128114234",
+   "category": "park",
+   "name": "Eren Park",
+   "lat": 37.0176925,
+   "lon": 35.3141531,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 10128114234
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Seyhan",
+    "addr:housenumber": "1",
+    "addr:neighbourhood": "Seyhan",
+    "addr:postcode": "01160",
+    "addr:street": "1",
+    "leisure": "park",
+    "name": "Eren Park",
+    "operator": "Eren"
+   }
+  },
+  {
+   "id": "park-n10229163301",
+   "category": "park",
+   "name": null,
+   "lat": 36.9987734,
+   "lon": 35.3297937,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 10229163301
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-n10703769045",
+   "category": "park",
+   "name": null,
+   "lat": 37.0210036,
+   "lon": 35.3142256,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 10703769045
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1064334188",
+   "category": "park",
+   "name": "Cengiz Aydoğdu Çocuk ve Dinlnme Parkı",
+   "lat": 37.030324916155244,
+   "lon": 35.28186629445839,
+   "areaM2": 3367,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064334188
+    }
+   ],
+   "tags": {
+    "addr:neighbourhood": "Huzurevleri Mahallesi",
+    "leisure": "park",
+    "name": "Cengiz Aydoğdu Çocuk ve Dinlnme Parkı",
+    "operator": "Çukurova Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064335191",
+   "category": "park",
+   "name": "Engelsiz Park",
+   "lat": 37.02911793159883,
+   "lon": 35.2793012517095,
+   "areaM2": 3371,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064335191
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Engelsiz Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064335530",
+   "category": "park",
+   "name": "Engelsiz Park",
+   "lat": 37.02824211903828,
+   "lon": 35.277925745031936,
+   "areaM2": 3577,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064335530
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Engelsiz Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064338186",
+   "category": "park",
+   "name": "Sergi Parkı",
+   "lat": 36.99231735713396,
+   "lon": 35.32588522479971,
+   "areaM2": 2274,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064338186
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Sergi Parkı",
+    "operator": "Adana Büyükşehir Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064340040",
+   "category": "park",
+   "name": "Eski Baraj Parkı",
+   "lat": 37.02699156147244,
+   "lon": 35.33378665349982,
+   "areaM2": 377581,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064340040
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Eski Baraj Parkı",
+    "operator": "Adana Büyükşehir Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064345343",
+   "category": "park",
+   "name": "Tellidere Park",
+   "lat": 37.02039128092692,
+   "lon": 35.2990845646633,
+   "areaM2": 1920,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064345343
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Tellidere Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064345486",
+   "category": "park",
+   "name": "Tellidere Park 2",
+   "lat": 37.023131827257735,
+   "lon": 35.29948031403407,
+   "areaM2": 1336,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064345486
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Tellidere Park 2",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064345917",
+   "category": "park",
+   "name": "Fatih Park",
+   "lat": 37.01317579732979,
+   "lon": 35.29890630627683,
+   "areaM2": 1681,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064345917
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Fatih Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064346107",
+   "category": "park",
+   "name": "Durak Park",
+   "lat": 37.01256480474395,
+   "lon": 35.30472961779507,
+   "areaM2": 3502,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064346107
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Durak Park",
+    "operator": "Adana Büyükşehir Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064346266",
+   "category": "park",
+   "name": "Çocuk Parkı 2",
+   "lat": 37.01203911947773,
+   "lon": 35.30636423370207,
+   "areaM2": 1012,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064346266
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Çocuk Parkı 2",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064350999",
+   "category": "park",
+   "name": "Adana Park3",
+   "lat": 37.021857694731466,
+   "lon": 35.3058579146101,
+   "areaM2": 1207,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064350999
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Adana Park3",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064351194",
+   "category": "park",
+   "name": "Emekliler Parkı",
+   "lat": 37.01952580055357,
+   "lon": 35.309156548381544,
+   "areaM2": 1861,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064351194
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Emekliler Parkı",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064356693",
+   "category": "park",
+   "name": "Dinlenme Parkı",
+   "lat": 37.028297470751035,
+   "lon": 35.27607911494134,
+   "areaM2": 4419,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064356693
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1064358757",
+   "category": "park",
+   "name": "Şehit Serhat Sığnak Parkı",
+   "lat": 37.02607116867506,
+   "lon": 35.274281910778825,
+   "areaM2": 10447,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064358757
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit Serhat Sığnak Parkı",
+    "operator": "Adana Büyükşehir Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064360108",
+   "category": "park",
+   "name": "Bulvar Park",
+   "lat": 37.02877117784917,
+   "lon": 35.288584836066526,
+   "areaM2": 3047,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064360108
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Bulvar Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064360313",
+   "category": "park",
+   "name": "Fatih Park",
+   "lat": 37.01411557883696,
+   "lon": 35.28796176677313,
+   "areaM2": 1726,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064360313
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Fatih Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064360515",
+   "category": "park",
+   "name": "Fatih Park",
+   "lat": 37.01423339741871,
+   "lon": 35.289173791426705,
+   "areaM2": 2475,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064360515
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Fatih Park",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064360767",
+   "category": "park",
+   "name": "Fatih Sultan Mehmet Parkı 2",
+   "lat": 37.01998378577545,
+   "lon": 35.29487124065137,
+   "areaM2": 2335,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064360767
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Fatih Sultan Mehmet Parkı 2",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1064361504",
+   "category": "park",
+   "name": "Şehitler Parkı",
+   "lat": 37.031187620673286,
+   "lon": 35.29359758973532,
+   "areaM2": 7175,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064361504
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehitler Parkı",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1068184384",
+   "category": "park",
+   "name": null,
+   "lat": 37.03122859196977,
+   "lon": 35.27725425425783,
+   "areaM2": 1398,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1068184384
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1071011799",
+   "category": "park",
+   "name": "Devran Baba Parkı",
+   "lat": 37.03146078632224,
+   "lon": 35.2747331650126,
+   "areaM2": 1201,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1071011799
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Devran Baba Parkı"
+   }
+  },
+  {
+   "id": "park-w1073622226",
+   "category": "park",
+   "name": "Belediye Evleri Mahallesi Yeşil Alan ve Çocuk Parkı",
+   "lat": 37.03128857996616,
+   "lon": 35.271438253117275,
+   "areaM2": 6758,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1073622226
+    }
+   ],
+   "tags": {
+    "addr:neighbourhood": "Belediye Evleri Mahallesi",
+    "leisure": "park",
+    "name": "Belediye Evleri Mahallesi Yeşil Alan ve Çocuk Parkı",
+    "operator": "Çukurova Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1083032587",
+   "category": "park",
+   "name": "Doğa Yaşam Parkı 1",
+   "lat": 37.02233614023051,
+   "lon": 35.28329765199761,
+   "areaM2": 1531,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1083032587
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Doğa Yaşam Parkı 1"
+   }
+  },
+  {
+   "id": "park-w1083032588",
+   "category": "park",
+   "name": null,
+   "lat": 37.02160594801108,
+   "lon": 35.28319440273361,
+   "areaM2": 1685,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1083032588
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1083032589",
+   "category": "park",
+   "name": null,
+   "lat": 37.022682628118964,
+   "lon": 35.28046084284738,
+   "areaM2": 1169,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1083032589
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1106534466",
+   "category": "park",
+   "name": "Park Pınar",
+   "lat": 37.02633740902042,
+   "lon": 35.27828678385322,
+   "areaM2": 3261,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106534466
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Seyhan",
+    "addr:housenumber": "1",
+    "addr:neighbourhood": "Pınar Mahallesi",
+    "addr:postcode": "01160",
+    "addr:street": "1",
+    "leisure": "park",
+    "name": "Park Pınar",
+    "operator": "Seyhan Belediyesi"
+   }
+  },
+  {
+   "id": "park-w1106549615",
+   "category": "park",
+   "name": "75. Yıl Parkı",
+   "lat": 37.028583426612784,
+   "lon": 35.322497461949496,
+   "areaM2": 8072,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106549615
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "75. Yıl Parkı"
+   }
+  },
+  {
+   "id": "park-w1106549617",
+   "category": "park",
+   "name": "75. Yıl Parkı",
+   "lat": 37.02955096429712,
+   "lon": 35.322666092951046,
+   "areaM2": 6800,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106549617
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "75. Yıl Parkı"
+   }
+  },
+  {
+   "id": "park-w1106549619",
+   "category": "park",
+   "name": "75. Yıl Parkı",
+   "lat": 37.03039884902012,
+   "lon": 35.32266873606295,
+   "areaM2": 6875,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı. (2 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106549618
+    },
+    {
+     "osmType": "way",
+     "osmId": 1106549619
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "75. Yıl Parkı"
+   }
+  },
+  {
+   "id": "park-w1106595098",
+   "category": "park",
+   "name": "Kanal Park",
+   "lat": 37.01266854873628,
+   "lon": 35.30383200138933,
+   "areaM2": 1241,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106595098
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Kanal Park"
+   }
+  },
+  {
+   "id": "park-w1106595375",
+   "category": "park",
+   "name": "Kenar Park",
+   "lat": 37.01323007797522,
+   "lon": 35.30348724153088,
+   "areaM2": 381,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı. (2 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106595276
+    },
+    {
+     "osmType": "way",
+     "osmId": 1106595375
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Kenar Park"
+   }
+  },
+  {
+   "id": "park-w1106843084",
+   "category": "park",
+   "name": "Yüreğir Merkez Park",
+   "lat": 36.99585092403339,
+   "lon": 35.33944154038,
+   "areaM2": 28072,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106843084
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yüreğir Merkez Park"
+   }
+  },
+  {
+   "id": "park-w1106843555",
+   "category": "park",
+   "name": "Merkez Park",
+   "lat": 36.99752111100745,
+   "lon": 35.34017107883606,
+   "areaM2": 16446,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1106843555
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Merkez Park"
+   }
+  },
+  {
+   "id": "park-w1110480185",
+   "category": "park",
+   "name": "Velihocaoğlu Parkı",
+   "lat": 37.01928357462725,
+   "lon": 35.30175503111812,
+   "areaM2": 9816,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1110480185
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Seyhan",
+    "addr:housenumber": "1",
+    "addr:neighbourhood": "Tellidere Mahallesi",
+    "addr:postcode": "01160",
+    "addr:street": "Alparslan Türkeş Bulvarı",
+    "leisure": "park",
+    "name": "Velihocaoğlu Parkı"
+   }
+  },
+  {
+   "id": "park-w1185644065",
+   "category": "park",
+   "name": null,
+   "lat": 37.016385385007645,
+   "lon": 35.290094023437554,
+   "areaM2": 3394,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1185644065
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1206788990",
+   "category": "park",
+   "name": "Mahalle Arası Dinlenme Parkı",
+   "lat": 37.02217671352642,
+   "lon": 35.28250762640007,
+   "areaM2": 970,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1206788990
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Mahalle Arası Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1214360092",
+   "category": "park",
+   "name": null,
+   "lat": 37.034013740593515,
+   "lon": 35.27382271558649,
+   "areaM2": 1450,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1214360092
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1217131052",
+   "category": "park",
+   "name": null,
+   "lat": 37.03763987035968,
+   "lon": 35.300429016896885,
+   "areaM2": 577,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1217131052
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1217131071",
+   "category": "park",
+   "name": null,
+   "lat": 37.03722675699396,
+   "lon": 35.30089355792587,
+   "areaM2": 1426,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1217131071
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1223207137",
+   "category": "park",
+   "name": null,
+   "lat": 37.03351625762142,
+   "lon": 35.28973490889413,
+   "areaM2": 1818,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1223207137
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1225254289",
+   "category": "park",
+   "name": null,
+   "lat": 37.02027179774006,
+   "lon": 35.26148860348741,
+   "areaM2": 2239,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1225254289
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1225254290",
+   "category": "park",
+   "name": null,
+   "lat": 37.02025147854075,
+   "lon": 35.262768660641676,
+   "areaM2": 1568,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1225254290
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1240351193",
+   "category": "park",
+   "name": "Sepici Park",
+   "lat": 37.021195155429275,
+   "lon": 35.33165803735675,
+   "areaM2": 2378,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1240351193
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Sepici Park",
+    "operator": "belediye",
+    "operator:type": "government"
+   }
+  },
+  {
+   "id": "park-w1243756415",
+   "category": "park",
+   "name": null,
+   "lat": 37.03478283333333,
+   "lon": 35.297832766666666,
+   "areaM2": 1254,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1243756415
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1244101665",
+   "category": "park",
+   "name": "Hasan Balıkçı Parkı",
+   "lat": 37.033959024637205,
+   "lon": 35.29219286062052,
+   "areaM2": 4729,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1244101665
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Hasan Balıkçı Parkı"
+   }
+  },
+  {
+   "id": "park-w1265618368",
+   "category": "park",
+   "name": "5 Nolu Çocuk ve Dinlenme Parkı ve Basketbol Sahası",
+   "lat": 37.02599196384221,
+   "lon": 35.285978470196575,
+   "areaM2": 2368,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1265618368
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "5 Nolu Çocuk ve Dinlenme Parkı ve Basketbol Sahası"
+   }
+  },
+  {
+   "id": "park-w1265618373",
+   "category": "park",
+   "name": "9 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.027769366785094,
+   "lon": 35.28787119040435,
+   "areaM2": 1820,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1265618373
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "9 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1267701408",
+   "category": "park",
+   "name": null,
+   "lat": 37.025863005752555,
+   "lon": 35.27908413068195,
+   "areaM2": 1811,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1267701408
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1267701412",
+   "category": "park",
+   "name": null,
+   "lat": 37.02522650962576,
+   "lon": 35.2798791998118,
+   "areaM2": 3292,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1267701412
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1267701414",
+   "category": "park",
+   "name": null,
+   "lat": 37.02436594990148,
+   "lon": 35.28140997870028,
+   "areaM2": 4216,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1267701414
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1272205426",
+   "category": "park",
+   "name": null,
+   "lat": 37.01931425789887,
+   "lon": 35.28371899713225,
+   "areaM2": 1723,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1272205426
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1272205428",
+   "category": "park",
+   "name": "Füze Selami Spor Tesisleri",
+   "lat": 37.02018213603048,
+   "lon": 35.28323447415264,
+   "areaM2": 4948,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1272205428
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Füze Selami Spor Tesisleri"
+   }
+  },
+  {
+   "id": "park-w1272205431",
+   "category": "park",
+   "name": null,
+   "lat": 37.01870060106735,
+   "lon": 35.2872904349505,
+   "areaM2": 2140,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1272205431
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1272205432",
+   "category": "park",
+   "name": null,
+   "lat": 37.020144284825,
+   "lon": 35.287264477912196,
+   "areaM2": 741,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1272205432
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1272205442",
+   "category": "park",
+   "name": null,
+   "lat": 37.02176824987262,
+   "lon": 35.2893984688307,
+   "areaM2": 2307,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1272205442
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1297596584",
+   "category": "park",
+   "name": null,
+   "lat": 37.03000351413756,
+   "lon": 35.291535537915344,
+   "areaM2": 1456,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1297596584
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1298276343",
+   "category": "park",
+   "name": "Beyazevler Çamlık Parkı",
+   "lat": 37.028943169259655,
+   "lon": 35.32402964210399,
+   "areaM2": 38765,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1298276343
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Beyazevler Çamlık Parkı"
+   }
+  },
+  {
+   "id": "park-w1303360127",
+   "category": "park",
+   "name": "Yeşilyurt 5 Nolu Çocuk Ve Dinlenme Parkı",
+   "lat": 37.01978045157678,
+   "lon": 35.30743150037363,
+   "areaM2": 1274,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303360127
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt 5 Nolu Çocuk Ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303360129",
+   "category": "park",
+   "name": "Yeşilyurt 3 NoluÇocuk ve Dinlenme Parkı",
+   "lat": 37.021009768467955,
+   "lon": 35.31276436714824,
+   "areaM2": 1627,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303360129
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt 3 NoluÇocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303360130",
+   "category": "park",
+   "name": "Yeşilyurt 2 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.021851491982545,
+   "lon": 35.30799602366149,
+   "areaM2": 418,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303360130
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt 2 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361469",
+   "category": "park",
+   "name": "Yeşilyurt Mahallesi 4 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.02279681371348,
+   "lon": 35.31065939518398,
+   "areaM2": 567,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361469
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt Mahallesi 4 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361474",
+   "category": "park",
+   "name": "Yenibaraj 2 Nolu Çocuk Ve Dinlenme Parkı",
+   "lat": 37.024911,
+   "lon": 35.3153525,
+   "areaM2": 291,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361474
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yenibaraj 2 Nolu Çocuk Ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361476",
+   "category": "park",
+   "name": "Yenibaraj Mahallesi 4 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.02498231260045,
+   "lon": 35.31778389350691,
+   "areaM2": 924,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361476
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yenibaraj Mahallesi 4 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361477",
+   "category": "park",
+   "name": "Yeşilyurt 1 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.025688,
+   "lon": 35.3111035,
+   "areaM2": 617,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361477
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt 1 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361478",
+   "category": "park",
+   "name": "Yeşilyurt 2 Nolu Dinlenme Parkı",
+   "lat": 37.025399256337494,
+   "lon": 35.30950355131517,
+   "areaM2": 502,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361478
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt 2 Nolu Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361479",
+   "category": "park",
+   "name": "Yeşilyurt 3 Nolu Dinlenme Parkı",
+   "lat": 37.02594725757199,
+   "lon": 35.30871995545858,
+   "areaM2": 556,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361479
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt 3 Nolu Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361483",
+   "category": "park",
+   "name": "Şehit Jan.Kdm.Çvş. Zafer Sabancı Park",
+   "lat": 37.02695849185105,
+   "lon": 35.3068511148835,
+   "areaM2": 527,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361483
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit Jan.Kdm.Çvş. Zafer Sabancı Park"
+   }
+  },
+  {
+   "id": "park-w1303361484",
+   "category": "park",
+   "name": "Şehit Jan.Kdm.Çvş. Zafer Sabancı Park",
+   "lat": 37.02749990989412,
+   "lon": 35.30704204507512,
+   "areaM2": 693,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361484
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit Jan.Kdm.Çvş. Zafer Sabancı Park"
+   }
+  },
+  {
+   "id": "park-w1303361485",
+   "category": "park",
+   "name": null,
+   "lat": 37.02834771956498,
+   "lon": 35.30344553764984,
+   "areaM2": 2115,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361485
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303361486",
+   "category": "park",
+   "name": "Yeşilyurt Mahallesi 10 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.02694359389987,
+   "lon": 35.301962570103136,
+   "areaM2": 2625,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361486
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeşilyurt Mahallesi 10 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361494",
+   "category": "park",
+   "name": "Gürselpaşa 2 Nolu Dinlenme ve Çocuk Parkı",
+   "lat": 37.02126932060415,
+   "lon": 35.28100442789114,
+   "areaM2": 7184,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361494
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Gürselpaşa 2 Nolu Dinlenme ve Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361495",
+   "category": "park",
+   "name": "Sevgi Çocuk Parkı",
+   "lat": 37.03233368439636,
+   "lon": 35.28343200752221,
+   "areaM2": 2408,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361495
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Sevgi Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361497",
+   "category": "park",
+   "name": "Şehit J. Uzm. Çvş. Hüseyin Temel Parkı",
+   "lat": 37.03436455610031,
+   "lon": 35.2851836552272,
+   "areaM2": 922,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361497
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit J. Uzm. Çvş. Hüseyin Temel Parkı"
+   }
+  },
+  {
+   "id": "park-w1303361508",
+   "category": "park",
+   "name": "Belediye Evleri Mahallesi 4 Nolu Zeki Özer Çocuk ve Dnlenme Parkı",
+   "lat": 37.037664419615965,
+   "lon": 35.26249720701492,
+   "areaM2": 3174,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303361508
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Belediye Evleri Mahallesi 4 Nolu Zeki Özer Çocuk ve Dnlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366296",
+   "category": "park",
+   "name": "2000 Evler Mahallesi 4 Nolu Çocuk Parkı",
+   "lat": 37.02780671164245,
+   "lon": 35.27369953413672,
+   "areaM2": 2276,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366296
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "2000 Evler Mahallesi 4 Nolu Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366297",
+   "category": "park",
+   "name": "Gürselpaşa Mahallesi 5 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.02439482011533,
+   "lon": 35.268678718959855,
+   "areaM2": 1065,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366297
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Gürselpaşa Mahallesi 5 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366298",
+   "category": "park",
+   "name": null,
+   "lat": 37.02231734698147,
+   "lon": 35.268969908841484,
+   "areaM2": 2971,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366298
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366299",
+   "category": "park",
+   "name": null,
+   "lat": 37.02200141952074,
+   "lon": 35.26684484360121,
+   "areaM2": 950,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366299
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366302",
+   "category": "park",
+   "name": null,
+   "lat": 37.02215143340512,
+   "lon": 35.27188204350516,
+   "areaM2": 1366,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366302
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366303",
+   "category": "park",
+   "name": null,
+   "lat": 37.02039979630398,
+   "lon": 35.27697529804382,
+   "areaM2": 5066,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366303
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366308",
+   "category": "park",
+   "name": null,
+   "lat": 37.01568207506774,
+   "lon": 35.27399951139454,
+   "areaM2": 1648,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366308
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366309",
+   "category": "park",
+   "name": "Gürselpaşa Mahallesi 2 Nolu Çocuk Ve Dinlenme Parkı",
+   "lat": 37.017722293778924,
+   "lon": 35.2734386177094,
+   "areaM2": 2578,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366309
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Gürselpaşa Mahallesi 2 Nolu Çocuk Ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366310",
+   "category": "park",
+   "name": null,
+   "lat": 37.01895434866725,
+   "lon": 35.27903588771925,
+   "areaM2": 1380,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366310
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366311",
+   "category": "park",
+   "name": null,
+   "lat": 37.01954570119103,
+   "lon": 35.276308757422434,
+   "areaM2": 780,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366311
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366319",
+   "category": "park",
+   "name": null,
+   "lat": 37.0110816248848,
+   "lon": 35.286993222715715,
+   "areaM2": 8920,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366319
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366321",
+   "category": "park",
+   "name": null,
+   "lat": 37.01149548275685,
+   "lon": 35.289755841701506,
+   "areaM2": 2064,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366321
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366322",
+   "category": "park",
+   "name": null,
+   "lat": 37.01106665104296,
+   "lon": 35.28973616524417,
+   "areaM2": 1441,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366322
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366323",
+   "category": "park",
+   "name": null,
+   "lat": 37.01135316445324,
+   "lon": 35.29198046574836,
+   "areaM2": 8814,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366323
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366324",
+   "category": "park",
+   "name": null,
+   "lat": 37.01150511186517,
+   "lon": 35.295123710768756,
+   "areaM2": 5016,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366324
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366325",
+   "category": "park",
+   "name": null,
+   "lat": 37.013161545686835,
+   "lon": 35.29511104508605,
+   "areaM2": 1573,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366325
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366329",
+   "category": "park",
+   "name": null,
+   "lat": 37.0103537264986,
+   "lon": 35.29200508594929,
+   "areaM2": 12958,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366329
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366330",
+   "category": "park",
+   "name": "İsmet Atlı Çocuk Ve Dinlenme Parkı",
+   "lat": 37.006392471450205,
+   "lon": 35.29926503870401,
+   "areaM2": 7289,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366330
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "İsmet Atlı Çocuk Ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366331",
+   "category": "park",
+   "name": null,
+   "lat": 37.00694970861277,
+   "lon": 35.3001301805881,
+   "areaM2": 307,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366331
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366339",
+   "category": "park",
+   "name": "Seyhan 3 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 36.9972709107091,
+   "lon": 35.31198087042387,
+   "areaM2": 2431,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366339
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Seyhan 3 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366340",
+   "category": "park",
+   "name": "Döşeme Mahallesi Çocuk Parkı",
+   "lat": 36.99618956483126,
+   "lon": 35.31297961733524,
+   "areaM2": 1354,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366340
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Döşeme Mahallesi Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1303366342",
+   "category": "park",
+   "name": null,
+   "lat": 36.99111871932856,
+   "lon": 35.302419653713066,
+   "areaM2": 634,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366342
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303366362",
+   "category": "park",
+   "name": "Gazipaşa Parkı",
+   "lat": 37.001650810668664,
+   "lon": 35.32611603057724,
+   "areaM2": 1845,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303366362
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Gazipaşa Parkı"
+   }
+  },
+  {
+   "id": "park-w1303367952",
+   "category": "park",
+   "name": null,
+   "lat": 37.040706872564286,
+   "lon": 35.31856814094405,
+   "areaM2": 8712,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303367952
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303367954",
+   "category": "park",
+   "name": "Selçuklu Çocuk ve Dinlenme Parkı",
+   "lat": 37.03632363198823,
+   "lon": 35.315918718476,
+   "areaM2": 2793,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303367954
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Selçuklu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303367957",
+   "category": "park",
+   "name": "Güzelyalı Mahallesi 7 Nolu Dinlenme Parkı",
+   "lat": 37.034821969255376,
+   "lon": 35.31741130936892,
+   "areaM2": 975,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303367957
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Güzelyalı Mahallesi 7 Nolu Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303367958",
+   "category": "park",
+   "name": "Güzelyalı Mahallesi 6 Nolu Dinlenme Parkı",
+   "lat": 37.03390319875933,
+   "lon": 35.31655042795422,
+   "areaM2": 428,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303367958
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Güzelyalı Mahallesi 6 Nolu Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370487",
+   "category": "park",
+   "name": "Kezban Hanım Dinlenme Parkı",
+   "lat": 37.03071511107588,
+   "lon": 35.31941422174749,
+   "areaM2": 617,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370487
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Kezban Hanım Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370488",
+   "category": "park",
+   "name": "Şehit P. Er Tugay Elve Çocuk Parkı",
+   "lat": 37.03094397198975,
+   "lon": 35.32060716374092,
+   "areaM2": 2051,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370488
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit P. Er Tugay Elve Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370489",
+   "category": "park",
+   "name": "Beyazevler Mahallesi 2 Nolu Çocuk Parkı",
+   "lat": 37.031219661628676,
+   "lon": 35.31897387793953,
+   "areaM2": 883,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370489
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Beyazevler Mahallesi 2 Nolu Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370493",
+   "category": "park",
+   "name": "Yeni Baraj Mahallesi 3 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.01646011609991,
+   "lon": 35.323322567687775,
+   "areaM2": 2609,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370493
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yeni Baraj Mahallesi 3 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370494",
+   "category": "park",
+   "name": "Şehit Ordonat Er Adnan Kunt Parkı",
+   "lat": 37.01784605410916,
+   "lon": 35.31903946354492,
+   "areaM2": 944,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370494
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit Ordonat Er Adnan Kunt Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370495",
+   "category": "park",
+   "name": "Şehit Atğm. Mehmet Ali Ünal Parkı",
+   "lat": 37.01482113913347,
+   "lon": 35.320299532223956,
+   "areaM2": 1048,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370495
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit Atğm. Mehmet Ali Ünal Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370496",
+   "category": "park",
+   "name": null,
+   "lat": 37.014083218791725,
+   "lon": 35.324361467882106,
+   "areaM2": 1426,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370496
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303370497",
+   "category": "park",
+   "name": null,
+   "lat": 37.01382497231687,
+   "lon": 35.32621285071042,
+   "areaM2": 447,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370497
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303370498",
+   "category": "park",
+   "name": null,
+   "lat": 37.013432283410054,
+   "lon": 35.327323694857434,
+   "areaM2": 1143,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370498
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303370500",
+   "category": "park",
+   "name": null,
+   "lat": 37.01141774260219,
+   "lon": 35.32391527090919,
+   "areaM2": 947,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370500
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303370510",
+   "category": "park",
+   "name": "İsmet İnönü Parkı",
+   "lat": 36.99075201419582,
+   "lon": 35.326515981677915,
+   "areaM2": 6816,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370510
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Seyhan",
+    "addr:neighbourhood": "Kayalıbağ Mahallesi",
+    "addr:postcode": "01010",
+    "addr:street": "26001 Sokak",
+    "leisure": "park",
+    "name": "İsmet İnönü Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370564",
+   "category": "park",
+   "name": "Şehit Onb. Sevet Gökdeniz Parkı",
+   "lat": 36.99168795651039,
+   "lon": 35.28653567763664,
+   "areaM2": 1163,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370564
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şehit Onb. Sevet Gökdeniz Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370565",
+   "category": "park",
+   "name": "Şakirpaşa 1 Nolu Çocuk Ve Dinlenme Parkı",
+   "lat": 36.99233987714569,
+   "lon": 35.28779498204172,
+   "areaM2": 1428,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370565
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Şakirpaşa 1 Nolu Çocuk Ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370566",
+   "category": "park",
+   "name": "Barış Mahallesi 3 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.00053067895,
+   "lon": 35.27552476188987,
+   "areaM2": 1710,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370566
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Barış Mahallesi 3 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370567",
+   "category": "park",
+   "name": "Barış 1 Nolu Çocuk ve Dinlenme Parkı",
+   "lat": 37.00124206086081,
+   "lon": 35.27760136006252,
+   "areaM2": 1840,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370567
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Barış 1 Nolu Çocuk ve Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1303370569",
+   "category": "park",
+   "name": null,
+   "lat": 37.00257835550118,
+   "lon": 35.271727102784965,
+   "areaM2": 793,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370569
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303370570",
+   "category": "park",
+   "name": null,
+   "lat": 37.002964467415,
+   "lon": 35.271267391407996,
+   "areaM2": 199,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303370570
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303372983",
+   "category": "park",
+   "name": null,
+   "lat": 37.017411136694,
+   "lon": 35.33323586057598,
+   "areaM2": 3019,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303372983
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303372987",
+   "category": "park",
+   "name": "Yüreğir Belediyesi Çocuk Trafik Eğitim Parkı",
+   "lat": 37.00627308023234,
+   "lon": 35.33985673494522,
+   "areaM2": 7436,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303372987
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Yüreğir Belediyesi Çocuk Trafik Eğitim Parkı"
+   }
+  },
+  {
+   "id": "park-w1303372989",
+   "category": "park",
+   "name": null,
+   "lat": 36.999221053771485,
+   "lon": 35.34545261777846,
+   "areaM2": 4913,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303372989
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1303372990",
+   "category": "park",
+   "name": null,
+   "lat": 36.99714802896168,
+   "lon": 35.34464474624814,
+   "areaM2": 3090,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1303372990
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1306231800",
+   "category": "park",
+   "name": "Zübeyde Hanım Parkı",
+   "lat": 36.98889574227901,
+   "lon": 35.33313302730093,
+   "areaM2": 48929,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1306231800
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Zübeyde Hanım Parkı"
+   }
+  },
+  {
+   "id": "park-w1306305081",
+   "category": "park",
+   "name": "Çınarlı Parkı",
+   "lat": 37.03405635750758,
+   "lon": 35.3061076186809,
+   "areaM2": 1547,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1306305081
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Çınarlı Parkı"
+   }
+  },
+  {
+   "id": "park-w1306309519",
+   "category": "park",
+   "name": null,
+   "lat": 37.03805710248049,
+   "lon": 35.307370335909155,
+   "areaM2": 1252,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1306309519
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1472080287",
+   "category": "park",
+   "name": null,
+   "lat": 37.03623061820003,
+   "lon": 35.27918713243323,
+   "areaM2": 1477,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1472080287
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w1510399526",
+   "category": "park",
+   "name": "Ulusoğlu Dokuz Park",
+   "lat": 37.021222572659404,
+   "lon": 35.289682567996365,
+   "areaM2": 642,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1510399526
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Ulusoğlu Dokuz Park"
+   }
+  },
+  {
+   "id": "park-w1559095807",
+   "category": "park",
+   "name": "5 Ocak Lions Çocuk Parkı",
+   "lat": 37.03266990706416,
+   "lon": 35.30938150009425,
+   "areaM2": 1286,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1559095807
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Çukurova",
+    "addr:street": "79060. Sokak",
+    "leisure": "park",
+    "name": "5 Ocak Lions Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w1559095808",
+   "category": "park",
+   "name": "6 No'lu Dinlenme Parkı",
+   "lat": 37.03253417395664,
+   "lon": 35.31287230968985,
+   "areaM2": 498,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1559095808
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "6 No'lu Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w1565153738",
+   "category": "park",
+   "name": null,
+   "lat": 37.002806922073404,
+   "lon": 35.32180161838729,
+   "areaM2": 679,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1565153738
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w174082441",
+   "category": "park",
+   "name": null,
+   "lat": 37.02864768518546,
+   "lon": 35.31805826674061,
+   "areaM2": 37751,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 174082441
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w190472762",
+   "category": "park",
+   "name": null,
+   "lat": 37.0375245432688,
+   "lon": 35.29495131077888,
+   "areaM2": 50589,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 190472762
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "source": "bing"
+   }
+  },
+  {
+   "id": "park-w193139138",
+   "category": "park",
+   "name": null,
+   "lat": 37.02391381163277,
+   "lon": 35.28694695430074,
+   "areaM2": 2443,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 193139138
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w193260940",
+   "category": "park",
+   "name": null,
+   "lat": 37.028297296520016,
+   "lon": 35.301105592688295,
+   "areaM2": 2189,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 193260940
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "surface": "grass_paver"
+   }
+  },
+  {
+   "id": "park-w193260941",
+   "category": "park",
+   "name": null,
+   "lat": 37.027110687502855,
+   "lon": 35.29936777088635,
+   "areaM2": 3631,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 193260941
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w194266910",
+   "category": "park",
+   "name": null,
+   "lat": 37.01466610252474,
+   "lon": 35.27808939826995,
+   "areaM2": 1881,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 194266910
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w228775122",
+   "category": "park",
+   "name": "Fatih Sultan Mehmet Parkı",
+   "lat": 37.020566888548586,
+   "lon": 35.29419514521483,
+   "areaM2": 7287,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 228775122
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "addr:district": "Seyhan",
+    "addr:housenumber": "2",
+    "addr:neighbourhood": "Fatih Mahallesi",
+    "addr:postcode": "01160",
+    "addr:street": "73160. Sk",
+    "leisure": "park",
+    "name": "Fatih Sultan Mehmet Parkı"
+   }
+  },
+  {
+   "id": "park-w25787237",
+   "category": "park",
+   "name": null,
+   "lat": 36.99588921274342,
+   "lon": 35.3346973612397,
+   "areaM2": 415834,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 25787237
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "id": "park-w327697340",
+   "category": "park",
+   "name": "Orman İşleri Fidanlığı",
+   "lat": 37.005491881888794,
+   "lon": 35.338805844196166,
+   "areaM2": 144681,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 327697340
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Orman İşleri Fidanlığı"
+   }
+  },
+  {
+   "id": "park-w329376177",
+   "category": "park",
+   "name": "Köprülü Şehit Jandarma Er Rasim Şevik Çocuk Parkı",
+   "lat": 37.01700073519111,
+   "lon": 35.32994432800852,
+   "areaM2": 32708,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 329376177
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Köprülü Şehit Jandarma Er Rasim Şevik Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w329377606",
+   "category": "park",
+   "name": "Köprülü Parkı",
+   "lat": 37.01263275215588,
+   "lon": 35.33368280717324,
+   "areaM2": 2396,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 329377606
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Köprülü Parkı"
+   }
+  },
+  {
+   "id": "park-w329377731",
+   "category": "park",
+   "name": "Çocuk Parkı",
+   "lat": 37.010877666666666,
+   "lon": 35.336922566666665,
+   "areaM2": 528,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 329377731
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Çocuk Parkı"
+   }
+  },
+  {
+   "id": "park-w329382949",
+   "category": "park",
+   "name": "Kışla Şehit Jandarma Er Mikail Avluk Parkı",
+   "lat": 37.02038955677588,
+   "lon": 35.33322856652494,
+   "areaM2": 2212,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 329382949
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Kışla Şehit Jandarma Er Mikail Avluk Parkı"
+   }
+  },
+  {
+   "id": "park-w329382965",
+   "category": "park",
+   "name": "Kışla Şehit Jandarma Er Gönül Küçük Parkı",
+   "lat": 37.017277679753775,
+   "lon": 35.33721512448398,
+   "areaM2": 706,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 329382965
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Kışla Şehit Jandarma Er Gönül Küçük Parkı"
+   }
+  },
+  {
+   "id": "park-w352697118",
+   "category": "park",
+   "name": null,
+   "lat": 37.0396585,
+   "lon": 35.3079466,
+   "areaM2": 1240,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 352697118
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w352697119",
+   "category": "park",
+   "name": null,
+   "lat": 37.03962072959805,
+   "lon": 35.30901520565545,
+   "areaM2": 1883,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 352697119
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w368912968",
+   "category": "park",
+   "name": null,
+   "lat": 37.03362878043628,
+   "lon": 35.26195190646851,
+   "areaM2": 6206,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 368912968
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w432583342",
+   "category": "park",
+   "name": "2. Seyhan Koruluğu",
+   "lat": 37.03994503756053,
+   "lon": 35.270848267227805,
+   "areaM2": 91474,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 432583342
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "2. Seyhan Koruluğu"
+   }
+  },
+  {
+   "id": "park-w461204096",
+   "category": "park",
+   "name": "Atatürk PARKI",
+   "lat": 36.99683489843772,
+   "lon": 35.32297779517649,
+   "areaM2": 58796,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 461204096
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Atatürk PARKI",
+    "wheelchair": "yes",
+    "wikidata": "Q125152283",
+    "wikipedia": "tr:Atatürk Parkı (Adana)"
+   }
+  },
+  {
+   "id": "park-w462434625",
+   "category": "park",
+   "name": null,
+   "lat": 36.99667744901468,
+   "lon": 35.32086626057347,
+   "areaM2": 8327,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 462434625
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w510928318",
+   "category": "park",
+   "name": "Kuva-i Milliye Parkı",
+   "lat": 36.99150896812189,
+   "lon": 35.33813157523662,
+   "areaM2": 28053,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 510928318
+    }
+   ],
+   "tags": {
+    "addr:city": "Adana",
+    "leisure": "park",
+    "name": "Kuva-i Milliye Parkı"
+   }
+  },
+  {
+   "id": "park-w510928320",
+   "category": "park",
+   "name": null,
+   "lat": 36.99889338792237,
+   "lon": 35.33892008305157,
+   "areaM2": 28332,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 510928320
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w510931377",
+   "category": "park",
+   "name": null,
+   "lat": 37.02733809537538,
+   "lon": 35.276783004959846,
+   "areaM2": 6626,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 510931377
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w521527194",
+   "category": "park",
+   "name": null,
+   "lat": 37.03067359792882,
+   "lon": 35.29566391037305,
+   "areaM2": 4365,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 521527194
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w521527195",
+   "category": "park",
+   "name": null,
+   "lat": 37.02985674129377,
+   "lon": 35.29746792728003,
+   "areaM2": 4406,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 521527195
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w521527196",
+   "category": "park",
+   "name": null,
+   "lat": 37.02930490094105,
+   "lon": 35.29876208818606,
+   "areaM2": 1098,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 521527196
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w521527198",
+   "category": "park",
+   "name": null,
+   "lat": 37.01958682193663,
+   "lon": 35.2679161166976,
+   "areaM2": 4708,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 521527198
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w558229191",
+   "category": "park",
+   "name": null,
+   "lat": 37.009050525224914,
+   "lon": 35.33283742060503,
+   "areaM2": 11904,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 558229191
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603959074",
+   "category": "park",
+   "name": null,
+   "lat": 37.031570935104035,
+   "lon": 35.27985652720061,
+   "areaM2": 1771,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603959074
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603959121",
+   "category": "park",
+   "name": null,
+   "lat": 37.032415467315225,
+   "lon": 35.279812611275425,
+   "areaM2": 1139,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603959121
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603959139",
+   "category": "park",
+   "name": null,
+   "lat": 37.03305340446557,
+   "lon": 35.279819375414,
+   "areaM2": 1269,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603959139
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603959321",
+   "category": "park",
+   "name": null,
+   "lat": 37.03381667571162,
+   "lon": 35.27968937403199,
+   "areaM2": 1899,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603959321
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603959575",
+   "category": "park",
+   "name": null,
+   "lat": 37.0346842986684,
+   "lon": 35.279483908821796,
+   "areaM2": 2301,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603959575
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603961539",
+   "category": "park",
+   "name": null,
+   "lat": 37.03686659051352,
+   "lon": 35.28479571765373,
+   "areaM2": 1825,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603961539
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603963958",
+   "category": "park",
+   "name": null,
+   "lat": 37.03805586666667,
+   "lon": 35.27921466666667,
+   "areaM2": 566,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603963958
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603964784",
+   "category": "park",
+   "name": null,
+   "lat": 37.03919248304312,
+   "lon": 35.278924681833395,
+   "areaM2": 1660,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603964784
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603966876",
+   "category": "park",
+   "name": "Masal Park",
+   "lat": 37.040234122104636,
+   "lon": 35.29184627779798,
+   "areaM2": 19522,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603966876
+    }
+   ],
+   "tags": {
+    "addr:neighbourhood": "Yurt Mahallesi",
+    "addr:postcode": "01170",
+    "addr:street": "71365. Sokak",
+    "leisure": "park",
+    "name": "Masal Park"
+   }
+  },
+  {
+   "id": "park-w603978626",
+   "category": "park",
+   "name": null,
+   "lat": 37.038162657531785,
+   "lon": 35.28139617918218,
+   "areaM2": 472,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603978626
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w603984745",
+   "category": "park",
+   "name": null,
+   "lat": 37.03869942270023,
+   "lon": 35.284774487985004,
+   "areaM2": 3993,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603984745
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w604007521",
+   "category": "park",
+   "name": null,
+   "lat": 37.03862257082144,
+   "lon": 35.28257705302084,
+   "areaM2": 1026,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 604007521
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w604007522",
+   "category": "park",
+   "name": null,
+   "lat": 37.03846412825012,
+   "lon": 35.28299438323165,
+   "areaM2": 1429,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır. (2 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 5731760644
+    },
+    {
+     "osmType": "way",
+     "osmId": 604007522
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w604007523",
+   "category": "park",
+   "name": null,
+   "lat": 37.038848536188986,
+   "lon": 35.283039368536244,
+   "areaM2": 1132,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 604007523
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w604011615",
+   "category": "park",
+   "name": null,
+   "lat": 37.03957674952847,
+   "lon": 35.28279829154466,
+   "areaM2": 1022,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır. (4 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 604011613
+    },
+    {
+     "osmType": "way",
+     "osmId": 604011614
+    },
+    {
+     "osmType": "way",
+     "osmId": 604011615
+    },
+    {
+     "osmType": "way",
+     "osmId": 604011616
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w604011617",
+   "category": "park",
+   "name": null,
+   "lat": 37.03972950590759,
+   "lon": 35.28222432041973,
+   "areaM2": 1254,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 604011617
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w609578031",
+   "category": "park",
+   "name": null,
+   "lat": 37.03700344405709,
+   "lon": 35.28311551084941,
+   "areaM2": 1126,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 609578031
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w635012647",
+   "category": "park",
+   "name": null,
+   "lat": 37.03506867186516,
+   "lon": 35.28137057164933,
+   "areaM2": 1968,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 635012647
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w636506046",
+   "category": "park",
+   "name": null,
+   "lat": 37.03977018631907,
+   "lon": 35.27896395678827,
+   "areaM2": 415,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 636506046
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w676457342",
+   "category": "park",
+   "name": null,
+   "lat": 37.02837849510609,
+   "lon": 35.26685781973157,
+   "areaM2": 2578,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 676457342
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w676457346",
+   "category": "park",
+   "name": null,
+   "lat": 37.037715787350315,
+   "lon": 35.25993265826289,
+   "areaM2": 9567,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 676457346
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w680773867",
+   "category": "park",
+   "name": null,
+   "lat": 37.034927307087024,
+   "lon": 35.309526955184225,
+   "areaM2": 1613,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 680773867
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w681362398",
+   "category": "park",
+   "name": null,
+   "lat": 37.00737681723321,
+   "lon": 35.290835908016085,
+   "areaM2": 6638,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 681362398
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w698014686",
+   "category": "park",
+   "name": "Abidin Dino Parkı",
+   "lat": 36.99359467692782,
+   "lon": 35.32578710976164,
+   "areaM2": 2299,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 698014686
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Abidin Dino Parkı",
+    "wheelchair": "yes"
+   }
+  },
+  {
+   "id": "park-w729440060",
+   "category": "park",
+   "name": null,
+   "lat": 37.02248559584257,
+   "lon": 35.29116722301015,
+   "areaM2": 1092,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 729440060
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w729440201",
+   "category": "park",
+   "name": null,
+   "lat": 37.02411974669992,
+   "lon": 35.285351764425634,
+   "areaM2": 1675,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 729440201
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w743827688",
+   "category": "park",
+   "name": "Adana Belediyesi Dinlenme Parkı",
+   "lat": 36.99271501249569,
+   "lon": 35.32600390394597,
+   "areaM2": 3286,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 743827688
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Adana Belediyesi Dinlenme Parkı"
+   }
+  },
+  {
+   "id": "park-w743827772",
+   "category": "park",
+   "name": "Reşatbey Parkı",
+   "lat": 36.99778659688663,
+   "lon": 35.32736514666385,
+   "areaM2": 2649,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 743827772
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Reşatbey Parkı"
+   }
+  },
+  {
+   "id": "park-w745119062",
+   "category": "park",
+   "name": "Baraj park",
+   "lat": 37.023060208185726,
+   "lon": 35.32672137559611,
+   "areaM2": 18071,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 745119062
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Baraj park",
+    "operator": "belediye"
+   }
+  },
+  {
+   "id": "park-w755365545",
+   "category": "park",
+   "name": null,
+   "lat": 37.021175962201596,
+   "lon": 35.28645358459102,
+   "areaM2": 2240,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 755365545
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w790549220",
+   "category": "park",
+   "name": "Huzurevleri Çocuk Parkı Yeşil Alan",
+   "lat": 37.032352963557216,
+   "lon": 35.27463106707578,
+   "areaM2": 3100,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 790549220
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Huzurevleri Çocuk Parkı Yeşil Alan",
+    "opening_hours": "24/7",
+    "operator": "Çukurova Belediyesi"
+   }
+  },
+  {
+   "id": "park-w790555341",
+   "category": "park",
+   "name": "Çukurova Atletizm Pisti",
+   "lat": 37.033187064808544,
+   "lon": 35.26704234038585,
+   "areaM2": 7939,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 790555341
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Çukurova Atletizm Pisti",
+    "outdoor_seating": "no"
+   }
+  },
+  {
+   "id": "park-w790556116",
+   "category": "park",
+   "name": "Osman Yeşeren Spor Tesisleri Antrenman Sahası",
+   "lat": 37.032625852088294,
+   "lon": 35.26166838890815,
+   "areaM2": 7825,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 790556116
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Osman Yeşeren Spor Tesisleri Antrenman Sahası",
+    "operator": "Çukurova Belediyesi"
+   }
+  },
+  {
+   "id": "park-w791741999",
+   "category": "park",
+   "name": null,
+   "lat": 37.01988461381228,
+   "lon": 35.27038290906566,
+   "areaM2": 2908,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "Küçük ve isimsiz yeşil alan; site bahçesi olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 791741999
+    }
+   ],
+   "tags": {
+    "leisure": "park"
+   }
+  },
+  {
+   "id": "park-w815723495",
+   "category": "park",
+   "name": "Evant Tekno Park",
+   "lat": 37.00924441102508,
+   "lon": 35.272617170062425,
+   "areaM2": 4470,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 815723495
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Evant Tekno Park"
+   }
+  },
+  {
+   "id": "park-w831636437",
+   "category": "park",
+   "name": "Dilberler Parkı",
+   "lat": 37.02241790197814,
+   "lon": 35.32163033458598,
+   "areaM2": 17052,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı olan veya 5.000 m² üzeri haritalanmış park. Gölge, bakım ve kullanılabilirlik doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 831636437
+    }
+   ],
+   "tags": {
+    "leisure": "park",
+    "name": "Dilberler Parkı"
+   }
+  },
+  {
+   "id": "swimming-n1889485016",
+   "category": "swimming",
+   "name": "Hayal Park",
+   "lat": 37.0365822,
+   "lon": 35.2951573,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı veya yüzme etiketi olan haritalanmış tesis. Halka açıklığı ve çalışma durumu doğrulanmadı. (2 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 1889485016
+    },
+    {
+     "osmType": "way",
+     "osmId": 603961111
+    }
+   ],
+   "tags": {
+    "covered": "yes",
+    "leisure": "swimming_pool",
+    "name": "Hayal Park ",
+    "operator": "Hayal Park",
+    "sport": "swimming"
+   }
+  },
+  {
+   "id": "swimming-n4591785672",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.0188729,
+   "lon": 35.3326245,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "excluded",
+   "tierReason": "2 OSM kaydı aynı yeri gösteriyor ve en az biri erişimi kısıtlı olarak işaretliyor; analize dahil edilmez.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 4591785672
+    },
+    {
+     "osmType": "way",
+     "osmId": 1240351192
+    }
+   ],
+   "tags": {
+    "amenity": "restaurant",
+    "leisure": "swimming_pool",
+    "level": "0",
+    "sport": "swimming",
+    "access": "private"
+   }
+  },
+  {
+   "id": "swimming-n4591785673",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.0197751,
+   "lon": 35.3317718,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "excluded",
+   "tierReason": "2 OSM kaydı aynı yeri gösteriyor ve en az biri erişimi kısıtlı olarak işaretliyor; analize dahil edilmez.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 4591785673
+    },
+    {
+     "osmType": "way",
+     "osmId": 1240351191
+    }
+   ],
+   "tags": {
+    "amenity": "restaurant",
+    "leisure": "swimming_pool",
+    "level": "0",
+    "sport": "swimming",
+    "access": "private"
+   }
+  },
+  {
+   "id": "swimming-n6820853340",
+   "category": "swimming",
+   "name": "Adana Büyükşehir Belediyesi Kapalı Yüzme Havuzu",
+   "lat": 37.0357493,
+   "lon": 35.2661842,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı veya yüzme etiketi olan haritalanmış tesis. Halka açıklığı ve çalışma durumu doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 6820853340
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "name": "Adana Büyükşehir Belediyesi Kapalı Yüzme Havuzu"
+   }
+  },
+  {
+   "id": "swimming-w1064356997",
+   "category": "swimming",
+   "name": "Yüzme Havuzu",
+   "lat": 37.028524486048184,
+   "lon": 35.27644498642061,
+   "areaM2": 1318,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı veya yüzme etiketi olan haritalanmış tesis. Halka açıklığı ve çalışma durumu doğrulanmadı.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1064356997
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "name": "Yüzme Havuzu"
+   }
+  },
+  {
+   "id": "swimming-w1082753126",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.00166756972875,
+   "lon": 35.33925328684777,
+   "areaM2": 71,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1082753126
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1082753127",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.00118426018945,
+   "lon": 35.33949772578966,
+   "areaM2": 94,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1082753127
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1099797938",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02791775,
+   "lon": 35.3423055,
+   "areaM2": 365,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1099797938
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1240351190",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.0198432070976,
+   "lon": 35.33261206555165,
+   "areaM2": 328,
+   "status": "MAPPED",
+   "tier": "excluded",
+   "tierReason": "OSM'de erişim kısıtlı olarak işaretli (access=private); analize dahil edilmez.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1240351190
+    }
+   ],
+   "tags": {
+    "access": "private",
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1272205437",
+   "category": "swimming",
+   "name": "Pınar Yüzme Havuzu",
+   "lat": 37.01903881613723,
+   "lon": 35.28550920281638,
+   "areaM2": 1514,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı veya yüzme etiketi olan haritalanmış tesis. Halka açıklığı ve çalışma durumu doğrulanmadı. (2 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1272205437
+    },
+    {
+     "osmType": "way",
+     "osmId": 1272205438
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "name": "Pınar Yüzme Havuzu",
+    "sport": "swimming"
+   }
+  },
+  {
+   "id": "swimming-w1285867756",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.019913142235815,
+   "lon": 35.2884416348731,
+   "areaM2": 353,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285867756
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285867846",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.020480015580084,
+   "lon": 35.287273845859936,
+   "areaM2": 53,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285867846
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285868326",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02266182284668,
+   "lon": 35.289287313058246,
+   "areaM2": 450,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285868326
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285868327",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02181368777077,
+   "lon": 35.2842312833473,
+   "areaM2": 765,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285868327
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285868328",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02231723834686,
+   "lon": 35.28190744474431,
+   "areaM2": 617,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285868328
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285868329",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.022804341799805,
+   "lon": 35.284852602403916,
+   "areaM2": 711,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285868329
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285868330",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.023450008475116,
+   "lon": 35.285507061932286,
+   "areaM2": 629,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285868330
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1285868331",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02119339301559,
+   "lon": 35.29031591595809,
+   "areaM2": 369,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1285868331
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w1426351471",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.03100596475976,
+   "lon": 35.32729813251224,
+   "areaM2": 536,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 1426351471
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w375046866",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02394582131546,
+   "lon": 35.280388419746615,
+   "areaM2": 182,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 375046866
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w461633415",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.012438174734456,
+   "lon": 35.32212449702575,
+   "areaM2": 237,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 461633415
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w462416835",
+   "category": "swimming",
+   "name": null,
+   "lat": 36.996171201429256,
+   "lon": 35.3208818188896,
+   "areaM2": 1143,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 462416835
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w462416836",
+   "category": "swimming",
+   "name": null,
+   "lat": 36.9957953525454,
+   "lon": 35.32105437004411,
+   "areaM2": 1278,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 462416836
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w510928319",
+   "category": "swimming",
+   "name": null,
+   "lat": 36.9979755,
+   "lon": 35.3406418,
+   "areaM2": 253,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 510928319
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w603960871",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.03795240287843,
+   "lon": 35.29536765998642,
+   "areaM2": 1466,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 603960871
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w618580649",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02665042628168,
+   "lon": 35.29911330564658,
+   "areaM2": 340,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 618580649
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w739041056",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.021282200186754,
+   "lon": 35.291422615182505,
+   "areaM2": 420,
+   "status": "MAPPED",
+   "tier": "core",
+   "tierReason": "Adı veya yüzme etiketi olan haritalanmış tesis. Halka açıklığı ve çalışma durumu doğrulanmadı. (2 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "node",
+     "osmId": 6833710832
+    },
+    {
+     "osmType": "way",
+     "osmId": 739041056
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming",
+    "access": "yes"
+   }
+  },
+  {
+   "id": "swimming-w928681143",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.02558943792179,
+   "lon": 35.323246674015415,
+   "areaM2": 173,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 928681143
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405724",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.017929235449174,
+   "lon": 35.26352433187007,
+   "areaM2": 113,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405724
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405736",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01890602677748,
+   "lon": 35.26159550660527,
+   "areaM2": 494,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405736
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405739",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01870922424432,
+   "lon": 35.2625729491128,
+   "areaM2": 546,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405739
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405746",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01801881808581,
+   "lon": 35.2656952739456,
+   "areaM2": 193,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405746
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405752",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.0163968,
+   "lon": 35.26438415,
+   "areaM2": 124,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405752
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405758",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.016933718224244,
+   "lon": 35.265413701318174,
+   "areaM2": 199,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405758
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405760",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01759546831128,
+   "lon": 35.267177602357975,
+   "areaM2": 234,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405760
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987405768",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01432037957146,
+   "lon": 35.265934318008654,
+   "areaM2": 933,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987405768
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987451355",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01437200304326,
+   "lon": 35.260859475069395,
+   "areaM2": 94,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987451355
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987451356",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.014387674690106,
+   "lon": 35.26132607177984,
+   "areaM2": 96,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987451356
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987451357",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01472335,
+   "lon": 35.26093,
+   "areaM2": 76,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır. (4 çakışan OSM kaydı birleştirildi.)",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987451357
+    },
+    {
+     "osmType": "way",
+     "osmId": 987451358
+    },
+    {
+     "osmType": "way",
+     "osmId": 987451360
+    },
+    {
+     "osmType": "way",
+     "osmId": 987451361
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987451364",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01446084782492,
+   "lon": 35.262132481641466,
+   "areaM2": 214,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987451364
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987451383",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.017091515297786,
+   "lon": 35.26468766321983,
+   "areaM2": 150,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987451383
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  },
+  {
+   "id": "swimming-w987451391",
+   "category": "swimming",
+   "name": null,
+   "lat": 37.01869863966595,
+   "lon": 35.267882225288034,
+   "areaM2": 209,
+   "status": "REQUIRES_CONFIRMATION",
+   "tier": "extended",
+   "tierReason": "İsimsiz havuz; site, otel veya özel havuz olabilir. Yalnızca 'tüm haritalanmış' kapsamında sayılır.",
+   "sources": [
+    {
+     "osmType": "way",
+     "osmId": 987451391
+    }
+   ],
+   "tags": {
+    "leisure": "swimming_pool"
+   }
+  }
+ ],
+ "neighbourhoods": [
+  {
+   "name": "2000 Evler",
+   "lat": 37.0289578,
+   "lon": 35.2656922,
+   "osmId": 7890091333
+  },
+  {
+   "name": "Ahmet Remzi Yüreğir",
+   "lat": 36.9971717,
+   "lon": 35.30375,
+   "osmId": 10270066197
+  },
+  {
+   "name": "Aydınlar",
+   "lat": 37.0049518,
+   "lon": 35.2646541,
+   "osmId": 10270111614
+  },
+  {
+   "name": "Bahçelievler",
+   "lat": 37.0006334,
+   "lon": 35.2897167,
+   "osmId": 10270066202
+  },
+  {
+   "name": "Barış",
+   "lat": 37.0039236,
+   "lon": 35.2758979,
+   "osmId": 10270111613
+  },
+  {
+   "name": "Beyazevler",
+   "lat": 37.0308167,
+   "lon": 35.3178467,
+   "osmId": 6589354745
+  },
+  {
+   "name": "Cemalpaşa",
+   "lat": 37.0031011,
+   "lon": 35.3295421,
+   "osmId": 10270066194
+  },
+  {
+   "name": "Çınarlı",
+   "lat": 36.9922017,
+   "lon": 35.3228044,
+   "osmId": 10270066133
+  },
+  {
+   "name": "Demetevler",
+   "lat": 36.9982,
+   "lon": 35.2847385,
+   "osmId": 10270066204
+  },
+  {
+   "name": "Denizli",
+   "lat": 37.0034095,
+   "lon": 35.2989864,
+   "osmId": 10270066198
+  },
+  {
+   "name": "Döşeme",
+   "lat": 36.9950124,
+   "lon": 35.3137064,
+   "osmId": 10270066196
+  },
+  {
+   "name": "Emek",
+   "lat": 36.9902136,
+   "lon": 35.3013038,
+   "osmId": 10270111620
+  },
+  {
+   "name": "Fatih",
+   "lat": 37.0146843,
+   "lon": 35.2952956,
+   "osmId": 10270066181
+  },
+  {
+   "name": "Fevzipaşa",
+   "lat": 36.9989198,
+   "lon": 35.2690314,
+   "osmId": 10270111615
+  },
+  {
+   "name": "Gazipaşa",
+   "lat": 37.0064597,
+   "lon": 35.3218174,
+   "osmId": 10270066191
+  },
+  {
+   "name": "Gürselpaşa",
+   "lat": 37.0207458,
+   "lon": 35.2722954,
+   "osmId": 7890091316
+  },
+  {
+   "name": "Huzurevleri",
+   "lat": 37.0381461,
+   "lon": 35.2789157,
+   "osmId": 6589548756
+  },
+  {
+   "name": "İsmetpaşa",
+   "lat": 37.007762,
+   "lon": 35.287528,
+   "osmId": 10270066200
+  },
+  {
+   "name": "İstiklal",
+   "lat": 36.9900079,
+   "lon": 35.3105735,
+   "osmId": 10270066205
+  },
+  {
+   "name": "Kışla",
+   "lat": 37.0218115,
+   "lon": 35.3376102,
+   "osmId": 10270066189
+  },
+  {
+   "name": "Köprülü",
+   "lat": 37.0122855,
+   "lon": 35.3376102,
+   "osmId": 10270066188
+  },
+  {
+   "name": "Kurtuluş",
+   "lat": 37.0004278,
+   "lon": 35.3199291,
+   "osmId": 10270066195
+  },
+  {
+   "name": "Mahfesığmaz",
+   "lat": 37.0393845,
+   "lon": 35.3095437,
+   "osmId": 6589354746
+  },
+  {
+   "name": "Mithatpaşa",
+   "lat": 37.0088586,
+   "lon": 35.301218,
+   "osmId": 10270066199
+  },
+  {
+   "name": "Namık Kemal",
+   "lat": 37.0072822,
+   "lon": 35.3122043,
+   "osmId": 10270066193
+  },
+  {
+   "name": "Narlıca",
+   "lat": 36.9995367,
+   "lon": 35.2949094,
+   "osmId": 10270066201
+  },
+  {
+   "name": "Onur",
+   "lat": 36.9915162,
+   "lon": 35.2670573,
+   "osmId": 10270111617
+  },
+  {
+   "name": "Pınar",
+   "lat": 37.0222226,
+   "lon": 35.2861976,
+   "osmId": 10270066180
+  },
+  {
+   "name": "Reşatbey",
+   "lat": 36.9951837,
+   "lon": 35.332117,
+   "osmId": 10270066132
+  },
+  {
+   "name": "Sakarya",
+   "lat": 36.9949439,
+   "lon": 35.3004455,
+   "osmId": 10270066192
+  },
+  {
+   "name": "Sinanpaşa",
+   "lat": 36.9923388,
+   "lon": 35.3408717,
+   "osmId": 10270066187
+  },
+  {
+   "name": "Sümer",
+   "lat": 37.0134506,
+   "lon": 35.3183841,
+   "osmId": 10270066184
+  },
+  {
+   "name": "Şakirpaşa",
+   "lat": 36.9915847,
+   "lon": 35.2821635,
+   "osmId": 10270111616
+  },
+  {
+   "name": "Tellidere",
+   "lat": 37.0223597,
+   "lon": 35.2968406,
+   "osmId": 10270066182
+  },
+  {
+   "name": "Toros",
+   "lat": 37.0395088,
+   "lon": 35.2991442,
+   "osmId": 6589551746
+  },
+  {
+   "name": "Yenibaraj",
+   "lat": 37.0223561,
+   "lon": 35.3194396,
+   "osmId": 6256088280
+  },
+  {
+   "name": "Yeşilevler",
+   "lat": 37.0035123,
+   "lon": 35.2841806,
+   "osmId": 10270066203
+  },
+  {
+   "name": "Yeşilyurt",
+   "lat": 37.0191389,
+   "lon": 35.3086852,
+   "osmId": 10270066183
+  },
+  {
+   "name": "Ziyapaşa",
+   "lat": 37.0098524,
+   "lon": 35.3291988,
+   "osmId": 10270066190
+  }
+ ],
+ "stats": {
+  "rawElements": 313,
+  "mergedDuplicates": 14
+ }
+}

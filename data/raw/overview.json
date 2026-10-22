@@ -1,0 +1,1257 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-22T20:36:41Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 6833710832,
+  "lat": 37.0213107,
+  "lon": 35.2914412,
+  "tags": {
+    "leisure": "swimming_pool",
+    "sport": "swimming"
+  }
+},
+{
+  "type": "node",
+  "id": 4591785672,
+  "lat": 37.0188729,
+  "lon": 35.3326245,
+  "tags": {
+    "amenity": "restaurant",
+    "leisure": "swimming_pool",
+    "level": "0",
+    "sport": "swimming"
+  }
+},
+{
+  "type": "node",
+  "id": 4591785673,
+  "lat": 37.0197751,
+  "lon": 35.3317718,
+  "tags": {
+    "amenity": "restaurant",
+    "leisure": "swimming_pool",
+    "level": "0",
+    "sport": "swimming"
+  }
+},
+{
+  "type": "node",
+  "id": 6820853340,
+  "lat": 37.0357493,
+  "lon": 35.2661842,
+  "tags": {
+    "leisure": "swimming_pool",
+    "name": "Adana Büyükşehir Belediyesi Kapalı Yüzme Havuzu"
+  }
+},
+{
+  "type": "node",
+  "id": 1889485016,
+  "lat": 37.0365822,
+  "lon": 35.2951573,
+  "tags": {
+    "covered": "yes",
+    "leisure": "swimming_pool",
+    "name": "Hayal Park ",
+    "operator": "Hayal Park",
+    "sport": "swimming"
+  }
+},
+{
+  "type": "way",
+  "id": 22972256,
+  "center": {
+    "lat": 37.0017955,
+    "lon": 35.2208028
+  },
+  "tags": {
+    "irrigation": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 113993338,
+  "center": {
+    "lat": 37.0235799,
+    "lon": 35.2059694
+  },
+  "tags": {
+    "layer": "-1",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 371302041,
+  "center": {
+    "lat": 37.0434738,
+    "lon": 35.2304357
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 462630222,
+  "center": {
+    "lat": 36.9663810,
+    "lon": 35.3274266
+  },
+  "tags": {
+    "access": "customers",
+    "leisure": "swimming_pool",
+    "name": "Barbaros Havuz"
+  }
+},
+{
+  "type": "way",
+  "id": 831636441,
+  "center": {
+    "lat": 37.0104198,
+    "lon": 35.2771821
+  },
+  "tags": {
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1315834428,
+  "center": {
+    "lat": 37.0061227,
+    "lon": 35.2541563
+  },
+  "tags": {
+    "irrigation": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1315834429,
+  "center": {
+    "lat": 37.0024994,
+    "lon": 35.2428684
+  },
+  "tags": {
+    "irrigation": "yes",
+    "layer": "-1",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1315834430,
+  "center": {
+    "lat": 37.0024451,
+    "lon": 35.2426132
+  },
+  "tags": {
+    "irrigation": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1315834431,
+  "center": {
+    "lat": 37.0023866,
+    "lon": 35.2423348
+  },
+  "tags": {
+    "irrigation": "yes",
+    "layer": "-1",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1087458512,
+  "center": {
+    "lat": 37.0058625,
+    "lon": 35.2575887
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987365342,
+  "center": {
+    "lat": 37.0173029,
+    "lon": 35.2534352
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987365349,
+  "center": {
+    "lat": 37.0177644,
+    "lon": 35.2545881
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987365348,
+  "center": {
+    "lat": 37.0182023,
+    "lon": 35.2530953
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987365353,
+  "center": {
+    "lat": 37.0196047,
+    "lon": 35.2536566
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405702,
+  "center": {
+    "lat": 37.0193259,
+    "lon": 35.2549710
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987416129,
+  "center": {
+    "lat": 37.0203658,
+    "lon": 35.2559384
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405746,
+  "center": {
+    "lat": 37.0180153,
+    "lon": 35.2656926
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405712,
+  "center": {
+    "lat": 37.0177656,
+    "lon": 35.2598021
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405724,
+  "center": {
+    "lat": 37.0179292,
+    "lon": 35.2635243
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405752,
+  "center": {
+    "lat": 37.0163968,
+    "lon": 35.2643841
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451355,
+  "center": {
+    "lat": 37.0143720,
+    "lon": 35.2608595
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451356,
+  "center": {
+    "lat": 37.0143877,
+    "lon": 35.2613261
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451357,
+  "center": {
+    "lat": 37.0147234,
+    "lon": 35.2609300
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451358,
+  "center": {
+    "lat": 37.0148275,
+    "lon": 35.2609381
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451360,
+  "center": {
+    "lat": 37.0147359,
+    "lon": 35.2612403
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451361,
+  "center": {
+    "lat": 37.0148248,
+    "lon": 35.2612393
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451364,
+  "center": {
+    "lat": 37.0144457,
+    "lon": 35.2621159
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451383,
+  "center": {
+    "lat": 37.0170944,
+    "lon": 35.2646836
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405758,
+  "center": {
+    "lat": 37.0169211,
+    "lon": 35.2654107
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405760,
+  "center": {
+    "lat": 37.0175955,
+    "lon": 35.2671775
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405768,
+  "center": {
+    "lat": 37.0143009,
+    "lon": 35.2659343
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405736,
+  "center": {
+    "lat": 37.0189060,
+    "lon": 35.2615956
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987405739,
+  "center": {
+    "lat": 37.0187085,
+    "lon": 35.2625731
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 987451391,
+  "center": {
+    "lat": 37.0186987,
+    "lon": 35.2678822
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 375046866,
+  "center": {
+    "lat": 37.0239458,
+    "lon": 35.2803884
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285868327,
+  "center": {
+    "lat": 37.0218184,
+    "lon": 35.2842439
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285868328,
+  "center": {
+    "lat": 37.0223107,
+    "lon": 35.2819229
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1064356997,
+  "center": {
+    "lat": 37.0285252,
+    "lon": 35.2764454
+  },
+  "tags": {
+    "leisure": "swimming_pool",
+    "name": "Yüzme Havuzu"
+  }
+},
+{
+  "type": "way",
+  "id": 22971512,
+  "center": {
+    "lat": 36.9992782,
+    "lon": 35.3486509
+  },
+  "tags": {
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 462416835,
+  "center": {
+    "lat": 36.9961712,
+    "lon": 35.3208818
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 462416836,
+  "center": {
+    "lat": 36.9957954,
+    "lon": 35.3210543
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 831636442,
+  "center": {
+    "lat": 37.0105327,
+    "lon": 35.2893277
+  },
+  "tags": {
+    "layer": "-1",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 280831002,
+  "center": {
+    "lat": 37.0110509,
+    "lon": 35.2969731
+  },
+  "tags": {
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1316241883,
+  "center": {
+    "lat": 37.0105535,
+    "lon": 35.3130409
+  },
+  "tags": {
+    "intermittent": "yes",
+    "layer": "-1",
+    "waterway": "canal",
+    "width": "5"
+  }
+},
+{
+  "type": "way",
+  "id": 280831003,
+  "center": {
+    "lat": 37.0115783,
+    "lon": 35.3046133
+  },
+  "tags": {
+    "layer": "-1",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 280831004,
+  "center": {
+    "lat": 37.0116456,
+    "lon": 35.3051302
+  },
+  "tags": {
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 280831006,
+  "center": {
+    "lat": 37.0116763,
+    "lon": 35.3055703
+  },
+  "tags": {
+    "layer": "-1",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1272205437,
+  "center": {
+    "lat": 37.0190354,
+    "lon": 35.2855151
+  },
+  "tags": {
+    "leisure": "sports_centre",
+    "name": "Pınar Yüzme Havuzu",
+    "sport": "swimming"
+  }
+},
+{
+  "type": "way",
+  "id": 1272205438,
+  "center": {
+    "lat": 37.0190443,
+    "lon": 35.2854227
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285867756,
+  "center": {
+    "lat": 37.0199172,
+    "lon": 35.2884423
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285867846,
+  "center": {
+    "lat": 37.0204805,
+    "lon": 35.2872759
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285868326,
+  "center": {
+    "lat": 37.0226642,
+    "lon": 35.2892913
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285868329,
+  "center": {
+    "lat": 37.0228094,
+    "lon": 35.2848501
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285868330,
+  "center": {
+    "lat": 37.0234582,
+    "lon": 35.2854848
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1285868331,
+  "center": {
+    "lat": 37.0211890,
+    "lon": 35.2903121
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 739041056,
+  "center": {
+    "lat": 37.0212825,
+    "lon": 35.2914251
+  },
+  "tags": {
+    "access": "yes",
+    "leisure": "swimming_pool",
+    "sport": "swimming"
+  }
+},
+{
+  "type": "way",
+  "id": 618580649,
+  "center": {
+    "lat": 37.0266504,
+    "lon": 35.2991133
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1316241884,
+  "center": {
+    "lat": 37.0094116,
+    "lon": 35.3205943
+  },
+  "tags": {
+    "intermittent": "yes",
+    "layer": "-1",
+    "tunnel": "culvert",
+    "waterway": "canal",
+    "width": "5"
+  }
+},
+{
+  "type": "way",
+  "id": 22972237,
+  "center": {
+    "lat": 37.0130963,
+    "lon": 35.3243907
+  },
+  "tags": {
+    "intermittent": "yes",
+    "layer": "-1",
+    "waterway": "canal",
+    "width": "5"
+  }
+},
+{
+  "type": "way",
+  "id": 461633415,
+  "center": {
+    "lat": 37.0124440,
+    "lon": 35.3221257
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 399647053,
+  "center": {
+    "lat": 37.0316781,
+    "lon": 35.3166988
+  },
+  "tags": {
+    "intermittent": "yes",
+    "lock": "no",
+    "name": "Sulama Kanalı",
+    "tidal": "no",
+    "waterway": "canal",
+    "width": "20"
+  }
+},
+{
+  "type": "way",
+  "id": 1298040034,
+  "center": {
+    "lat": 37.0298489,
+    "lon": 35.3140549
+  },
+  "tags": {
+    "intermittent": "yes",
+    "layer": "-1",
+    "lock": "no",
+    "name": "Sulama Kanalı",
+    "tunnel": "culvert",
+    "waterway": "canal",
+    "width": "20"
+  }
+},
+{
+  "type": "way",
+  "id": 928681143,
+  "center": {
+    "lat": 37.0255894,
+    "lon": 35.3232467
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1240351190,
+  "center": {
+    "lat": 37.0198432,
+    "lon": 35.3326120
+  },
+  "tags": {
+    "access": "private",
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1240351191,
+  "center": {
+    "lat": 37.0197608,
+    "lon": 35.3317423
+  },
+  "tags": {
+    "access": "private",
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1240351192,
+  "center": {
+    "lat": 37.0189106,
+    "lon": 35.3326012
+  },
+  "tags": {
+    "access": "private",
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1426351471,
+  "center": {
+    "lat": 37.0310055,
+    "lon": 35.3273073
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1316573745,
+  "center": {
+    "lat": 36.9631300,
+    "lon": 35.3905051
+  },
+  "tags": {
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1338249852,
+  "center": {
+    "lat": 36.9771224,
+    "lon": 35.3650988
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 720556563,
+  "center": {
+    "lat": 36.9900692,
+    "lon": 35.3556064
+  },
+  "tags": {
+    "leisure": "swimming_pool",
+    "name": "Özgür Yüzme Havuzu"
+  }
+},
+{
+  "type": "way",
+  "id": 510928319,
+  "center": {
+    "lat": 36.9979755,
+    "lon": 35.3406418
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1082753126,
+  "center": {
+    "lat": 37.0016676,
+    "lon": 35.3392533
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1082753127,
+  "center": {
+    "lat": 37.0011842,
+    "lon": 35.3394977
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1316573746,
+  "center": {
+    "lat": 36.9801555,
+    "lon": 35.3696230
+  },
+  "tags": {
+    "layer": "-1",
+    "tunnel": "culvert",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 1099797938,
+  "center": {
+    "lat": 37.0279178,
+    "lon": 35.3423055
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 114706487,
+  "center": {
+    "lat": 37.0149810,
+    "lon": 35.3831169
+  },
+  "tags": {
+    "layer": "-1",
+    "tunnel": "yes",
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 619407671,
+  "center": {
+    "lat": 37.0016187,
+    "lon": 35.4400531
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 624800656,
+  "center": {
+    "lat": 37.0014722,
+    "lon": 35.4402632
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 390787730,
+  "center": {
+    "lat": 37.0235066,
+    "lon": 35.4022581
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 371302043,
+  "center": {
+    "lat": 37.0386102,
+    "lon": 35.2485524
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1210315281,
+  "center": {
+    "lat": 37.0447212,
+    "lon": 35.2750487
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 603961111,
+  "center": {
+    "lat": 37.0366724,
+    "lon": 35.2953181
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 603960871,
+  "center": {
+    "lat": 37.0379519,
+    "lon": 35.2953703
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 693757921,
+  "center": {
+    "lat": 37.0433769,
+    "lon": 35.3059401
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 366921473,
+  "center": {
+    "lat": 37.0405748,
+    "lon": 35.3209619
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 366921474,
+  "center": {
+    "lat": 37.0409216,
+    "lon": 35.3201925
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796199,
+  "center": {
+    "lat": 37.0804319,
+    "lon": 35.3274338
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796518,
+  "center": {
+    "lat": 37.0798813,
+    "lon": 35.3286461
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796519,
+  "center": {
+    "lat": 37.0799029,
+    "lon": 35.3285091
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796520,
+  "center": {
+    "lat": 37.0798947,
+    "lon": 35.3282673
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796521,
+  "center": {
+    "lat": 37.0798999,
+    "lon": 35.3280095
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796522,
+  "center": {
+    "lat": 37.0797989,
+    "lon": 35.3269639
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239796523,
+  "center": {
+    "lat": 37.0797619,
+    "lon": 35.3267424
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1239808416,
+  "center": {
+    "lat": 37.0805164,
+    "lon": 35.3332106
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 114706485,
+  "center": {
+    "lat": 37.0331798,
+    "lon": 35.3452241
+  },
+  "tags": {
+    "waterway": "canal"
+  }
+},
+{
+  "type": "way",
+  "id": 49437968,
+  "center": {
+    "lat": 37.0544039,
+    "lon": 35.3566050
+  },
+  "tags": {
+    "building": "yes",
+    "leisure": "swimming_pool",
+    "name": "Özdemir Sabancı Kapalı Yüzme Havuzu",
+    "name:en": "Özdemir Sabancı swimming pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1055200133,
+  "center": {
+    "lat": 37.0693763,
+    "lon": 35.3793539
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1099797935,
+  "center": {
+    "lat": 37.0656635,
+    "lon": 35.3791446
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1099797936,
+  "center": {
+    "lat": 37.0662213,
+    "lon": 35.3775658
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 390787745,
+  "center": {
+    "lat": 37.0370281,
+    "lon": 35.4264142
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 390787733,
+  "center": {
+    "lat": 37.0424941,
+    "lon": 35.4270511
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 1240358954,
+  "center": {
+    "lat": 37.0590393,
+    "lon": 35.4022030
+  },
+  "tags": {
+    "access": "private",
+    "leisure": "swimming_pool"
+  }
+},
+{
+  "type": "way",
+  "id": 400707636,
+  "center": {
+    "lat": 36.9628281,
+    "lon": 35.4464090
+  },
+  "tags": {
+    "leisure": "swimming_pool"
+  }
+}
+
+  ]
+}
