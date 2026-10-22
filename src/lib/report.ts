@@ -217,25 +217,30 @@ export function buildReportDoc(input: ReportInput): TDocumentDefinitions {
 
     h2("6. Önce / sonra karşılaştırması"),
     {
-      style: "table",
-      table: {
-        headerRows: 1,
-        widths: ["*", 110, 110],
-        body: [["Ölçüt (tüm örnek noktalar)", "Başlangıç", "Senaryo"], ...summaryRows(result.before, result.after, result.thresholdM, hasScenario)],
-      },
-      layout: "lightHorizontalLines",
-    },
-    {
-      style: "table",
-      table: {
-        headerRows: 1,
-        widths: ["*", 110, 110],
-        body: [
-          [`Kanal kuşağı (kanala ≤ ${CANAL_BELT_M} m noktalar)`, "Başlangıç", "Senaryo"],
-          ...summaryRows(result.canalBelt.before, result.canalBelt.after, result.thresholdM, hasScenario).slice(0, 3),
-        ],
-      },
-      layout: "lightHorizontalLines",
+      unbreakable: true,
+      stack: [
+        {
+          style: "table",
+          table: {
+            headerRows: 1,
+            widths: ["*", 110, 110],
+            body: [["Ölçüt (tüm örnek noktalar)", "Başlangıç", "Senaryo"], ...summaryRows(result.before, result.after, result.thresholdM, hasScenario)],
+          },
+          layout: "lightHorizontalLines",
+        },
+        {
+          style: "table",
+          table: {
+            headerRows: 1,
+            widths: ["*", 110, 110],
+            body: [
+              [`Kanal kuşağı (kanala ≤ ${CANAL_BELT_M} m noktalar)`, "Başlangıç", "Senaryo"],
+              ...summaryRows(result.canalBelt.before, result.canalBelt.after, result.thresholdM, hasScenario).slice(0, 3),
+            ],
+          },
+          layout: "lightHorizontalLines",
+        },
+      ],
     },
     { text: interpretResult(result), margin: [0, 4, 0, 0] },
     ...(result.notes.length ? [{ ul: result.notes, style: "note" } as Content] : []),

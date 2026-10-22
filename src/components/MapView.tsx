@@ -243,7 +243,7 @@ export default function MapView(props: MapViewProps) {
       {props.suggestions.map((s, i) => (
         <Marker key={`sug-${s.candidateId}`} position={[s.lat, s.lon]} icon={icons.suggest[i]} zIndexOffset={500}>
           <Tooltip>
-            Öneri {i + 1}: nokta {s.candidateId} — +{s.withinGained} nokta eşik içine girer
+            Öneri {i + 1}{s.nearLabel ? ` (${s.nearLabel} yakını)` : ""}: +{s.withinGained} örnek nokta eşik içine girer
           </Tooltip>
         </Marker>
       ))}

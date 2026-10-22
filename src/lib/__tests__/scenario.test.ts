@@ -252,6 +252,16 @@ describe("suggestSites", () => {
     // Suggestions are at least one threshold apart.
     for (let i = 1; i < s.length; i++) expect(haversineMeters(s[0], s[i])).toBeGreaterThanOrEqual(600);
   });
+  it("screens a separate candidate grid when given one", () => {
+    const line = [0, 500, 1000, 1500, 2000, 2500].map((e, i) => pt(`P${i}`, e));
+    // Candidate at 2100 m reaches P3 (600), P4 (100), P5 (400) → +3, but cuts less total distance than P3/P4.
+    const cands = [pt("C1", 2100), pt("C2", 100)];
+    const s = suggestSites(line, [F], "swimming", "core", 600, 3, cands);
+    expect(s[0].candidateId).toBe("C1");
+    expect(s[0].withinGained).toBe(3);
+    // C2 sits next to the existing pool: it gains nothing within range.
+    expect(s.find((x) => x.candidateId === "C2")?.withinGained ?? 0).toBe(0);
+  });
   it("returns nothing when no site can improve anything", () => {
     const one = [pt("P0", 0)];
     expect(suggestSites(one, [F], "swimming", "core", 600)).toEqual([]);

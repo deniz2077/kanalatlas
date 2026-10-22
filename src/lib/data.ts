@@ -16,3 +16,12 @@ export const evaluationPoints = generateEvaluationGrid(
 
 export const osmUrl = (s: { osmType: string; osmId: number }) =>
   `https://www.openstreetmap.org/${s.osmType}/${s.osmId}`;
+
+export const CANDIDATE_SPACING_M = 100;
+
+/** Finer grid of candidate sites screened by the "best location" suggestion. */
+export const candidateSites = generateEvaluationGrid(
+  dataset.studyArea.bbox,
+  CANDIDATE_SPACING_M,
+  dataset.neighbourhoods,
+);

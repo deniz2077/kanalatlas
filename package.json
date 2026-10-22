@@ -10,7 +10,8 @@
     "data:build": "tsx scripts/build-dataset.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "proof": "tsx scripts/proof.ts"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

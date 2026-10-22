@@ -7,7 +7,7 @@
  */
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { dataset, evaluationPoints, osmUrl } from "@/lib/data";
+import { CANDIDATE_SPACING_M, candidateSites, dataset, evaluationPoints, osmUrl } from "@/lib/data";
 import { STATUS_HELP, STATUS_LABEL } from "@/lib/evidence";
 import { offsetMeters } from "@/lib/geo";
 import {
@@ -88,7 +88,7 @@ export default function KanalAtlasApp() {
     [result, visibleHyps, facilities],
   );
   const suggestions = useMemo(
-    () => suggestSites(evaluationPoints, facilities, category, scope, thresholdM, 3),
+    () => suggestSites(evaluationPoints, facilities, category, scope, thresholdM, 3, candidateSites),
     [facilities, category, scope, thresholdM],
   );
 
@@ -396,7 +396,7 @@ export default function KanalAtlasApp() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => suggestions[0] && addHypothetical(suggestions[0].lat, suggestions[0].lon, `Öneri 1 konumuna (nokta ${suggestions[0].candidateId}) eklendi`)}
+                    onClick={() => suggestions[0] && addHypothetical(suggestions[0].lat, suggestions[0].lon, `En çok fayda sağlayan aday konuma eklendi (+${suggestions[0].withinGained} nokta)`)}
                     disabled={!suggestions.length || visibleHyps.length >= MAX_HYPOTHETICALS}
                     className="min-h-11 rounded-lg border border-hypo bg-white px-4 text-sm font-semibold text-hypo hover:bg-hypo-soft disabled:opacity-50"
                   >
@@ -404,6 +404,10 @@ export default function KanalAtlasApp() {
                   </button>
                 </div>
                 <p className="mt-2 text-xs text-ink-soft">
+                  “En çok fayda”: {candidateSites.length.toLocaleString("tr-TR")} aday konum ({CANDIDATE_SPACING_M} m aralık) taranır; eşik içine en çok
+                  örnek nokta katan konum seçilir (eşitlikte ortalama mesafeyi en çok düşüren). Arazi uygunluğunu bilmez.
+                </p>
+                <p className="mt-1 text-xs text-ink-soft">
                   Klavye ile: “En çok fayda sağlayan konuma ekle” düğmesini kullanın, ardından ok düğmeleriyle {NUDGE_M} m adımlarla taşıyın.
                 </p>
 

@@ -304,8 +304,8 @@ export interface SiteSuggestion extends LatLon {
 }
 
 /**
- * "Where would ONE new facility help most?" — tries every evaluation point as a
- * candidate site and ranks by (1) sampled points newly within the threshold,
+ * "Where would ONE new facility help most?" — tries every candidate site
+ * (by default the evaluation points; the app passes a finer 100 m grid) and ranks by (1) sampled points newly within the threshold,
  * (2) reduction in mean distance. A greedy screening heuristic on sampled points
  * only; it knows nothing about land availability, cost or ownership.
  */
@@ -316,11 +316,12 @@ export function suggestSites(
   scope: DataScope,
   thresholdM: number,
   topN = 3,
+  candidates: EvaluationPoint[] = points,
 ): SiteSuggestion[] {
   const existing = activeFacilities(facilities, category, scope);
   const base = points.map((p) => nearestOf(p, existing)?.distanceM ?? Infinity);
   const n = points.length;
-  const suggestions: SiteSuggestion[] = points.map((cand) => {
+  const suggestions: SiteSuggestion[] = candidates.map((cand) => {
     let gained = 0;
     let reduction = 0;
     points.forEach((p, i) => {

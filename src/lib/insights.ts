@@ -123,7 +123,7 @@ export function interpretResult(r: ScenarioResult): string {
         (r.change.largestImprovementM ? `; en büyük kısalma ${formatMeters(r.change.largestImprovementM)}.` : "."),
     );
     if (r.change.meanDeltaM !== null) {
-      parts.push(`Ortalama mesafe ${formatMeters(r.before.meanM)} → ${formatMeters(r.after.meanM)}.`);
+      parts.push(`Ortalama mesafe: başlangıçta ${formatMeters(r.before.meanM)}, senaryoda ${formatMeters(r.after.meanM)}.`);
     }
   }
   parts.push("Bu değerler yürüme süresi değil, düz çizgi (kuş uçuşu) mesafedir ve nüfusu temsil etmez.");
