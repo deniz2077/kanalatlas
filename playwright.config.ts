@@ -14,7 +14,7 @@ export default defineConfig({
   webServer: {
     command: "node node_modules/next/dist/bin/next start -p 3100",
     url: "http://localhost:3100",
-    reuseExistingServer: true,
+    reuseExistingServer: false,
     timeout: 60_000,
   },
   projects: [

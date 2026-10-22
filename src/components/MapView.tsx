@@ -5,7 +5,7 @@
  * computed and reports clicks/drags back up. No calculations happen here.
  */
 import L from "leaflet";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   Circle,
   CircleMarker,
@@ -16,6 +16,7 @@ import {
   Rectangle,
   TileLayer,
   Tooltip,
+  useMap,
   useMapEvents,
 } from "react-leaflet";
 import { osmUrl } from "@/lib/data";
@@ -39,6 +40,8 @@ export interface MapViewProps {
   onMapClick: (lat: number, lon: number) => void;
   /** Returns false when the move was rejected (e.g. outside the study area). */
   onMoveHypothetical: (id: string, lat: number, lon: number, final: boolean) => boolean;
+  /** Changing this number re-frames the study area. */
+  recenterToken: number;
 }
 
 const icon = (cls: string, text: string, size = 22) =>
@@ -55,6 +58,42 @@ const STATUS_TR: Record<string, string> = {
   VERIFIED: "DOĞRULANMIŞ",
   HYPOTHETICAL: "VARSAYIMSAL",
 };
+
+/**
+ * Keep the study area framed when the container size changes (e.g. the map
+ * mounts before the layout settles), until the user pans or zooms themselves.
+ */
+function FitStudyArea({ bbox, token }: { bbox: StudyArea["bbox"]; token: number }) {
+  const map = useMap();
+  const userMoved = useRef(false);
+  useEffect(() => {
+    if (token === 0) return;
+    userMoved.current = false;
+    map.closePopup();
+    map.fitBounds(L.latLngBounds([bbox.south, bbox.west], [bbox.north, bbox.east]), { padding: [12, 12] });
+  }, [token, map, bbox]);
+  useEffect(() => {
+    const bounds = L.latLngBounds([bbox.south, bbox.west], [bbox.north, bbox.east]);
+    const fit = () => {
+      map.invalidateSize();
+      if (!userMoved.current) map.fitBounds(bounds, { padding: [12, 12], animate: false });
+    };
+    const markUser = () => (userMoved.current = true);
+    fit();
+    map.on("dragstart zoomstart", markUser);
+    // fitBounds itself fires zoomstart; only count interactions after the first fit settles.
+    map.off("zoomstart", markUser);
+    const t = setTimeout(() => map.on("zoomstart", markUser), 300);
+    const ro = new ResizeObserver(fit);
+    ro.observe(map.getContainer());
+    return () => {
+      clearTimeout(t);
+      ro.disconnect();
+      map.off("dragstart zoomstart", markUser);
+    };
+  }, [map, bbox]);
+  return null;
+}
 
 function ClickHandler({ onClick }: { onClick: (lat: number, lon: number) => void }) {
   useMapEvents({ click: (e) => onClick(e.latlng.lat, e.latlng.lng) });
@@ -136,6 +175,7 @@ export default function MapView(props: MapViewProps) {
     <MapContainer
       center={center}
       zoom={14}
+      zoomSnap={0.25}
       minZoom={12}
       maxZoom={18}
       scrollWheelZoom={false}
@@ -149,6 +189,7 @@ export default function MapView(props: MapViewProps) {
         maxZoom={19}
       />
       <ClickHandler onClick={props.onMapClick} />
+      <FitStudyArea bbox={b} token={props.recenterToken} />
 
       <Rectangle
         bounds={[

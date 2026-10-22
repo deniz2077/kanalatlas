@@ -44,3 +44,7 @@ next-env.d.ts
 /test-results
 /playwright-report
 /artifacts-tmp
+
+# demo video (large binary, distribute via YouTube/Vimeo)
+/submission/video/*.webm
+/submission/video/*.mp4

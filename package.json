@@ -11,7 +11,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "e2e": "playwright test",
-    "proof": "tsx scripts/proof.ts"
+    "proof": "tsx scripts/proof.ts",
+    "demo:record": "node scripts/record-demo.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

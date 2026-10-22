@@ -70,6 +70,7 @@ export default function KanalAtlasApp() {
   const [priorities, setPriorities] = useState<Priorities>(EMPTY_PRIORITIES);
   const [announce, setAnnounce] = useState("");
   const [reportState, setReportState] = useState<{ busy: boolean; done?: string; error?: string }>({ busy: false });
+  const [recenterToken, setRecenterToken] = useState(0);
   const nextId = useRef(1);
   const dragging = useRef(false);
 
@@ -273,7 +274,15 @@ export default function KanalAtlasApp() {
                   showLinks={showLinks}
                   onMapClick={onMapClick}
                   onMoveHypothetical={moveHypothetical}
+                  recenterToken={recenterToken}
                 />
+                <button
+                  type="button"
+                  onClick={() => setRecenterToken((t) => t + 1)}
+                  className="absolute right-2 top-2 z-[1000] min-h-9 rounded-md border border-line bg-white/95 px-3 text-xs font-semibold shadow hover:border-ink-soft"
+                >
+                  Alanı ortala
+                </button>
                 {(placing || movingId) && (
                   <div className="pointer-events-none absolute inset-x-0 top-3 z-[1000] flex justify-center px-3">
                     <p className="rounded-full bg-hypo px-4 py-2 text-center text-sm font-semibold text-white shadow">
