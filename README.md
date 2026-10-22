@@ -43,6 +43,7 @@ npm run dev            # http://localhost:3000
 |---|---|
 | `npm test` | 77 unit tests (geometry, scenario engine, corridor, data, PDF content) |
 | `npm run build && npx playwright install chromium && npm run e2e` | Production build + browser tests: journeys, corridor, keyboard-only, axe WCAG A/AA audit (desktop + mobile) |
+| `npm run build:static && npm run e2e:static` | Static export (for GitHub Pages) served under `/kanalatlas/` + the same browser tests |
 | `npm run proof` | Prints a real-data A/B scenario table (`docs/PROOF_RUN_OUTPUT.md`) |
 | `npm run data:build` | Rebuilds `src/data/kanalatlas-data.json` from the committed OSM extract |
 | `npm run demo:record` | Records the captioned demo walkthrough from the real app (needs `npm run build` first) |
@@ -56,7 +57,7 @@ Real-data example (swimming, 1 km): baseline **13/72** points; a hypothetical po
 
 ## Architecture
 
-Static Next.js 15 + TypeScript app; pure calculation modules in `src/lib/` (no UI code); Leaflet only draws. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+Static Next.js 15 + TypeScript app (also exportable as plain files and deployed by `.github/workflows/pages.yml`); pure calculation modules in `src/lib/` (no UI code); Leaflet only draws. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ```
 src/lib/geo.ts         Haversine, projections, point-to-segment, polygon centroid

@@ -28,7 +28,7 @@ _Last updated: 23 Oct 2026, ~01:00 Türkiye time (AI session)._
 
 ## Known issues / unverified
 
-- Touch-drag of the marker on real phones: **unverified** (tap-to-move and arrows verified).
+- Touch-drag of the marker on real phones: **unverified** (tap-to-move and arrows verified). An iOS Simulator Safari test was attempted, but simulator access needs the owner's approval in the app.
 - Screen-reader testing with real assistive technology: not done.
 - Facility operating status: unverified by design (MAPPED).
 
@@ -38,7 +38,7 @@ See `NEEDS_OWNER_INPUT.md`.
 
 ## Deployment status
 
-**Not deployed.** No Vercel/Netlify credentials on this machine. Commands are in `MORNING_READ_ME_FIRST.md`.
+**Not deployed yet, but ready.** A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
 
 ## Repository status
 

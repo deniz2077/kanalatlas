@@ -44,7 +44,7 @@ Three verified official sources (two council decisions of 12.06.2026 and the mun
 | 2–6 min demo video | **Draft file exists** (≈ 3:48); not uploaded; no narration |
 | Public repository | **No** (needs the owner's GitHub account) |
 | AI disclosure | **Draft**; the owner must correct it |
-| Live URL (optional) | **No** |
+| Live URL (optional) | **No**: GitHub Pages workflow and a tested static build are ready; they need the repo |
 
 **Verdict:** The software is ready to demonstrate. The **submission is not yet complete**: it needs the repo link, an uploaded video, the owner's genuine input, and a corrected disclosure. All of these are owner actions and are listed in `MORNING_READ_ME_FIRST.md`.
 

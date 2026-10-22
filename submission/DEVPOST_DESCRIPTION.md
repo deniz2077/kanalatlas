@@ -1,12 +1,12 @@
 # Devpost description (draft — student must review, personalise and fill placeholders)
 
-> Placeholders in [BRACKETS] must be replaced with genuine information or deleted. Do not fill them with invented details.
+> Placeholders in [BRACKETS] must be replaced with genuine information or deleted. Do not fill them with invented details. Items marked *(optional)* can simply be deleted; the text reads complete without them.
 
 ## Inspiration
 
-I live in Adana, in southern Türkiye, where summer temperatures regularly pass 40 °C. Open irrigation canals run straight through residential neighbourhoods, and some people, often children and teenagers, go into them to cool off.
+I live in Adana, in southern Türkiye, where summers are extremely hot. Open irrigation canals run straight through residential neighbourhoods, and some people, including children and teenagers according to local reports, go into them to cool off.
 
-[STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE — e.g. what you have seen near a canal, or why this matters to you. Keep it factual.]
+[STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE: 2–3 factual sentences about what you have seen near a canal or why this matters to you. Strongly recommended for the Community Relevance score.]
 
 This is not just a feeling. In June 2026, Adana Metropolitan Council approved a programme with local sports clubs to give free swimming lessons to children from low-income families. The council's written rationale names preventing drownings in unsafe places **such as irrigation canals** in the summer heat. The year before, the municipality reported free lessons for about 10,000 children in 26 pools. At the same time, the Ministry of Agriculture announced that the open canals running through the city centre will be replaced by closed, pressurised pipes, so the future of these canal corridors is changing.
 
@@ -21,8 +21,8 @@ What I noticed was an **information problem**. The swimming programmes exist, bu
 2. **Adana Metropolitan Municipality, 21 July 2025.** Free swimming lessons for about 10,000 children aged 6–14 in 26 semi-Olympic pools, aimed at reducing summer drownings. No pool locations are published.
 3. **Ministry of Agriculture and Forestry (Adana), 10 September 2025.** The transition to closed pressurised irrigation has begun; open canals passing through the city centre will be taken out of service.
 4. **OpenStreetMap (extracted 22 Oct 2026).** Our study area shows an open canal running through dense housing. Only 5 swimming facilities nearby have a name or swimming tag, and all of them lie in the north-west of the corridor.
-5. [STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE]
-6. [STUDENT MUST ADD VERIFIED INTERVIEW INFORMATION IF AVAILABLE]
+5. *(optional)* [STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE]
+6. *(optional)* [STUDENT MUST ADD VERIFIED INTERVIEW INFORMATION IF AVAILABLE]
 
 We deliberately do **not** quote drowning totals, because we could not confirm one with an official source and reporting period.
 
@@ -67,15 +67,15 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 
 ## What we learned
 
-[STUDENT: write 2–4 sentences in your own words — e.g. what you learned about geographic distance, open data quality, testing, or local government sources.]
+*Draft based on what happened during the build; rewrite it in your own words:* Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: our own browser test found a location that beat our “best location” button, which made us improve the algorithm. [STUDENT: add one thing you personally learned.]
 
 ## What's next for KanalAtlas
 
-Walking-network distances; verifying facilities against the official municipal pool list; a consent-based way for residents to submit priorities; more Adana neighbourhoods; and richer corridor scenarios (only some sections closing, shade, or water-play points along the route). [STUDENT: add only the next steps you actually intend.]
+Walking-network distances; verifying facilities against the official municipal pool list; a consent-based way for residents to submit priorities; more Adana neighbourhoods; and richer corridor scenarios (only some sections closing, shade, or water-play points along the route).
 
 ## Important limitations
 
-Straight-line distance is not walking distance. Sample points are not people (no population data is used). Facility operating status and public access are not verified. KanalAtlas does not predict drowning risk, does not claim any canal will close, and does not assess land availability or cost. One study area only. No community input has been collected yet [STUDENT: update if you collect genuine input].
+Straight-line distance is not walking distance. Sample points are not people (no population data is used). Facility operating status and public access are not verified. KanalAtlas does not predict drowning risk, does not claim any canal will close, and does not assess land availability or cost. One study area only. No community input has been collected yet.
 
 ## AI assistance disclosure (required by the rules)
 

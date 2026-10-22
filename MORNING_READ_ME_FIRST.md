@@ -22,9 +22,10 @@ Deniz, this is the honest state of KanalAtlas as of **23 Oct 2026, ~00:50 Türki
 - Personal observation / community input (placeholders only; never invented).
 - Filling the `[STUDENT …]` placeholders in the submission texts and correcting the AI disclosure.
 
-### ⛔ Blocked (needs your accounts)
+### ⛔ Blocked (needs your accounts or approval)
 - **Public GitHub repository**: no GitHub credentials on this machine.
-- **Live deployment**: no Vercel/Netlify credentials.
+- **Live deployment**: prepared (GitHub Pages workflow, tested static build); needs the repo to exist.
+- **Real touch-drag test in the iOS Simulator**: Xcode is installed and the simulator booted, but Claude was not granted access to the device. Open the simulator panel and click “Let Claude use it” if you want this verified, or just try dragging on your own phone.
 
 ## B. How to open the project
 
@@ -45,7 +46,15 @@ git push -u origin main
 ```
 (No secrets exist in this project: no API keys or `.env`. `node_modules`, `.next`, test results and the video file are git-ignored.)
 
-### Deploy to Vercel (≈ 5 min, free tier)
+### Live site via GitHub Pages (recommended: the push above is all it takes)
+The repo already contains `.github/workflows/pages.yml`. After pushing:
+1. GitHub repo → **Settings → Pages → Build and deployment → Source: “GitHub Actions”**.
+2. **Actions** tab → open “Test and deploy to GitHub Pages” → *Run workflow* (or push any commit). It runs the 77 unit tests and the typecheck, builds the static site and deploys it.
+3. Your URL will be `https://<YOUR-USERNAME>.github.io/kanalatlas/`.
+
+This exact static build was tested locally under `/kanalatlas/`: all 9 browser tests pass (`npm run build:static && npm run e2e:static`). The CI steps were also run in a fresh clone (`npm ci`, tests, typecheck, static build) and succeeded. The workflow itself has **not** run on GitHub yet, because no repo exists.
+
+### Or deploy to Vercel (≈ 5 min, free tier)
 Easiest: https://vercel.com/new → “Import Git Repository” → choose `kanalatlas` → Framework: Next.js (auto-detected) → Deploy. No environment variables are needed.
 Or from the terminal: `npx vercel` (log in when asked), then `npx vercel --prod`.
 **After deploying, test on the live URL:** the map loads, “En çok fayda sağlayan konuma ekle” works, drag the marker, download the PDF, and try it on your phone. Only then put the URL in Devpost.

@@ -7,4 +7,4 @@
 5. **More neighbourhoods.** Repeat the extract for Yüreğir and Çukurova canal corridors; add an area selector.
 6. **Population weighting** if reliable small-area data becomes available (and only then report people instead of points).
 7. **Accessibility audit** with VoiceOver/NVDA and automated contrast checks; a full English UI toggle.
-8. **Share with local stakeholders** (muhtars, municipal sports department) to learn whether the brief format is useful. [STUDENT: only list contacts you actually plan to make.]
+8. **Test the brief with potential users**, such as neighbourhood representatives (muhtars) or the municipal sports department, to learn whether the format is useful. No contact has been made yet.

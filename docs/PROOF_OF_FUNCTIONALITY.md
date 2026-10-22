@@ -68,7 +68,9 @@ Playwright runs against the **production build** (`next start`), in Desktop Chro
 15. **Keyboard-only** (desktop): the skip link is the first tab stop; add, nudge, save, switch category with arrow keys and export the PDF, all without a mouse.
 16. **axe-core audit** (WCAG 2.0/2.1 A + AA): 0 violations, initial and with a scenario, desktop and mobile (`docs/test-output/a11y-desktop.txt`, `a11y-mobile.txt`). The first run found one serious issue (scrollable tables not keyboard-focusable), which was fixed.
 
-The whole E2E suite was run twice in a row with identical results (no flakiness observed).
+The whole E2E suite was run twice in a row with identical results (no flakiness observed). It also passes **against the static export** served under `/kanalatlas/` (the GitHub Pages layout): 9 passed, 1 skipped (`npm run build:static && npm run e2e:static`).
+
+**CI simulation:** in a fresh `git clone` of the repo, `npm ci` → `npm test` (77 passed) → `tsc --noEmit` → static export succeeded. These are the same steps as `.github/workflows/pages.yml`, which has not run on GitHub yet because the repo does not exist.
 
 ## 4. Two locations, two different results (real data)
 
@@ -132,9 +134,9 @@ Captured by the E2E run in `docs/screenshots/`:
 
 | Item | Status |
 |---|---|
-| Touch **drag** of the hypothetical marker on real phones | **Not verified.** In Chrome mobile emulation, automated touch gestures panned the map instead of dragging the marker. Tap-to-move and the arrow buttons are verified instead. The owner should test drag on a real phone. |
+| Touch **drag** of the hypothetical marker on real phones | **Not verified.** An iOS Simulator Safari test was attempted but needs the owner's permission for simulator access. In Chrome mobile emulation, automated touch gestures panned the map instead of dragging the marker. Tap-to-move and the arrow buttons are verified instead. The owner should test drag on a real phone. |
 | Basemap tiles | Depend on tile.openstreetmap.org being reachable, and should respect its usage policy at scale. |
-| Deployment | **Not done**: no hosting credentials on this machine. See `MORNING_READ_ME_FIRST.md`. |
+| Deployment | **Prepared, not live**: GitHub Pages workflow and a tested static build; needs the owner's repo. |
 | GitHub publication | **Not done**: no GitHub credentials. See the same file. |
 | Screen-reader testing with real assistive technology | Not done. axe-core reports 0 WCAG A/AA violations and a keyboard-only journey passes, but neither replaces VoiceOver/NVDA testing. |
 | Facility operating status | Unverified for all facilities (labelled MAPPED). |

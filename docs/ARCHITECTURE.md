@@ -59,6 +59,8 @@ KanalAtlas is a static Next.js site. It has no server, database or accounts: all
 
 Development: vitest (unit), @playwright/test (E2E), pdfjs-dist (PDF text extraction in tests), tsx (scripts).
 
+Deployment: `STATIC_EXPORT=1 PAGES_BASE_PATH=/repo next build` writes a fully static site to `out/`. `.github/workflows/pages.yml` runs the tests and publishes it to GitHub Pages. Vercel can also host the default build.
+
 Basemap tiles: the OpenStreetMap Foundation tile server (attribution shown). For heavier production use, a tile provider with its own usage terms should be configured. See `ENGINEERING_DECISIONS.md`.
 
 ## Scaling to more neighbourhoods
