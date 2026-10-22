@@ -183,5 +183,8 @@ test("canal corridor → linear park scenario (parks)", async ({ page }) => {
   await download.saveAs(file);
   expect(await pdfText(file)).toContain("Kanal hattı doğrusal parkı");
   await page.locator('[data-testid="map"]').scrollIntoViewIfNeeded();
+  await page.mouse.move(0, 0); // close hover tooltips
+  await page.waitForLoadState("networkidle");
+  await page.waitForTimeout(500);
   await page.screenshot({ path: `${shotDir}/${test.info().project.name}-06-canal-corridor-park.png` });
 });

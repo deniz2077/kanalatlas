@@ -736,10 +736,17 @@ function MapLegend({ category, thresholdM }: { category: Category; thresholdM: n
       <li className="flex items-center gap-2"><span className="inline-block h-1 w-6 rounded bg-water" />Haritalanmış açık kanal (kesikli: menfez)</li>
       <li className="flex items-center gap-2"><span className="inline-block h-0 w-6 border-t-2 border-dashed border-ink" />Çalışma alanı</li>
       <li className="flex items-center gap-2">
-        <span className={`ka-marker ${category === "swimming" ? "ka-marker--swim" : "ka-marker--park"}`} style={{ width: 16, height: 16, fontSize: 9 }}>{category === "swimming" ? "H" : "P"}</span>
+        <span className={`ka-marker ${category === "swimming" ? "ka-marker--swim" : "ka-marker--park"}`} style={category === "swimming" ? { width: 16, height: 16, fontSize: 9 } : { width: 12, height: 12 }}>{category === "swimming" ? "H" : ""}</span>
         Analize dahil mevcut tesis (HARİTALANMIŞ)
       </li>
-      <li className="flex items-center gap-2"><span className="ka-marker ka-marker--swim ka-marker--faded" style={{ width: 14, height: 14, fontSize: 8 }}>h</span>Bu kapsamda sayılmayan kayıt</li>
+      <li className="flex items-center gap-2">
+        {category === "swimming" ? (
+          <span className="ka-marker ka-marker--swim ka-marker--faded" style={{ width: 14, height: 14, fontSize: 8 }}>h</span>
+        ) : (
+          <span className="ka-marker ka-marker--park ka-marker--faded" style={{ width: 10, height: 10 }} />
+        )}
+        Bu kapsamda sayılmayan kayıt
+      </li>
       <li className="flex items-center gap-2"><span className="ka-marker ka-marker--excluded" style={{ width: 14, height: 14, fontSize: 9 }}>×</span>Erişimi kısıtlı (hariç)</li>
       <li className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border-2 border-data bg-data" />Örnek nokta: {formatMeters(thresholdM)} içinde</li>
       <li className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border-2 border-ink-soft bg-white" />Örnek nokta: eşik dışında</li>

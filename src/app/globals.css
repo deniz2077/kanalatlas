@@ -64,10 +64,11 @@ body {
   border: 2px solid #fff;
   border-radius: 4px;
 }
+/* Parks are small squares so they are distinguishable from round sample points by shape, not only colour. */
 .ka-marker--park {
   background: #4d7c0f;
   border: 2px solid #fff;
-  border-radius: 999px;
+  border-radius: 3px;
 }
 .ka-marker--faded {
   opacity: 0.55;

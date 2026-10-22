@@ -109,9 +109,10 @@ export default function MapView(props: MapViewProps) {
   const icons = useMemo(
     () => ({
       swim: icon("ka-marker--swim", "H"),
-      park: icon("ka-marker--park", "P", 16),
+      // Parks are numerous: small plain dots keep the map readable (category is shown in the legend/popup).
+      park: icon("ka-marker--park", "", 12),
       swimFaded: icon("ka-marker--swim ka-marker--faded", "h", 16),
-      parkFaded: icon("ka-marker--park ka-marker--faded", "p", 12),
+      parkFaded: icon("ka-marker--park ka-marker--faded", "", 9),
       excluded: icon("ka-marker--excluded", "×", 16),
       hypo: icon("ka-marker--hypo", "+", 26),
       suggest: [1, 2, 3].map((n) => icon("ka-marker--suggest", String(n), 22)),
