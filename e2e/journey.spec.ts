@@ -163,3 +163,25 @@ test("category switch and data scope change the numbers (not hard-coded)", async
   await page.getByLabel("Mesafe eşiği (kuş uçuşu)").selectOption("800");
   await expect(headline(page)).not.toHaveText(park);
 });
+
+test("canal corridor → linear park scenario (parks)", async ({ page }) => {
+  await page.goto("/");
+  await page.getByText("Park / yeşil alan", { exact: true }).click();
+  const before = (await headline(page).innerText()).trim();
+  await page.getByRole("button", { name: "Kanal hattını doğrusal parka dönüştür" }).click();
+  await expect(page.getByTestId("hypothetical")).toHaveCount(1);
+  await expect(page.getByTestId("hyp-coords").first()).toContainText("kanal hattı boyunca");
+  await expect(headline(page)).toContainText("→");
+  expect((await headline(page).innerText()).trim()).not.toBe(before);
+  await expect(page.getByRole("button", { name: "Kanal hattını doğrusal parka dönüştür" })).toBeDisabled();
+  await expect(page.getByTestId("hyp-explanation")).toContainText("kanal hattı üzerindeki en yakın noktaya");
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("button", { name: "PDF raporu oluştur ve indir" }).click(),
+  ]);
+  const file = test.info().outputPath("corridor.pdf");
+  await download.saveAs(file);
+  expect(await pdfText(file)).toContain("Kanal hattı doğrusal parkı");
+  await page.locator('[data-testid="map"]').scrollIntoViewIfNeeded();
+  await page.screenshot({ path: `${shotDir}/${test.info().project.name}-06-canal-corridor-park.png` });
+});

@@ -3,7 +3,7 @@
  * Kept separate from the UI so the same sentences appear on screen and in the PDF.
  */
 import { haversineMeters } from "./geo";
-import { activeFacilities, type ScenarioResult } from "./scenario";
+import { activeFacilities, distanceToHypothetical, type ScenarioResult } from "./scenario";
 import type { Category, DataScope, EvaluationPoint, Facility, HypotheticalFacility, NeighbourhoodLabel } from "./types";
 
 export const CATEGORY_LABEL: Record<Category, string> = {
@@ -76,7 +76,7 @@ export function explainHypotheticals(
       const served = result.points.filter((r) => r.after?.hypothetical && r.after.facilityId === h.id);
       let nearestExisting: HypotheticalExplanation["nearestExisting"] = null;
       for (const f of existing) {
-        const d = haversineMeters(h, f);
+        const d = distanceToHypothetical(f, h);
         if (!nearestExisting || d < nearestExisting.distanceM) nearestExisting = { name: f.name, distanceM: d };
       }
       // Label = nearest neighbourhood centroid (same rule as the evaluation grid);

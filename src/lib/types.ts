@@ -87,4 +87,10 @@ export interface HypotheticalFacility extends LatLon {
   id: string;
   category: Category;
   label: string;
+  /**
+   * Optional linear geometry (e.g. a park along a decommissioned canal).
+   * When present, distance is measured to the nearest point on these lines
+   * and lat/lon is only a label position.
+   */
+  path?: LatLon[][];
 }

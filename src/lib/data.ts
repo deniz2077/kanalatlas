@@ -1,6 +1,6 @@
 /** The shipped dataset plus the evaluation grid derived from it (computed once). */
 import raw from "@/data/kanalatlas-data.json";
-import { generateEvaluationGrid } from "./scenario";
+import { canalCorridorPath, generateEvaluationGrid, pathLengthMeters } from "./scenario";
 import type { Dataset } from "./types";
 
 export const GRID_SPACING_M = 500;
@@ -25,3 +25,7 @@ export const candidateSites = generateEvaluationGrid(
   CANDIDATE_SPACING_M,
   dataset.neighbourhoods,
 );
+
+/** Hypothetical "canal → linear park" geometry: mapped canal segments inside the study box. */
+export const canalCorridor = canalCorridorPath(dataset.canals, dataset.studyArea.bbox);
+export const canalCorridorLengthM = pathLengthMeters(canalCorridor);

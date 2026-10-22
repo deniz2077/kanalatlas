@@ -34,9 +34,10 @@ KanalAtlas is a working geospatial decision-support prototype for one real study
 2. **Measures access:** 72 sample points on a 500 m grid. For each one, KanalAtlas calculates the straight-line distance to the nearest mapped facility of the chosen type. Baseline: **13 of 72** sample points are within 1 km of a named or swimming-tagged pool.
 3. **Tests “what if?”:** you place a hypothetical pool or park and **drag it**. Every point, line and number is recalculated live from coordinates. A “best location” button screens 1,456 candidate sites. A “why this result?” note explains the outcome (how many points it serves, how far it is from existing facilities).
 4. **Compares fairly:** save locations A, B and C; they are re-evaluated with identical settings side by side. With real data, a pool in the east of the corridor reaches **27/72** points, while the same pool in the west reaches **21/72**.
-5. **Is honest about uncertainty:** a data-scope switch shows that counting unnamed (probably private) pools would raise the baseline from 13 to 44. How much you trust the data is itself a finding.
-6. **Collects your priorities privately:** “Mahallen İçin Ne Önemli?” stores choices only in your browser. It is clearly labelled as personal input, not a survey.
-7. **Creates a planning brief:** a Turkish PDF with the settings, sources, before/after tables, a map drawn from the same coordinates, the A/B comparison, method, limitations and questions to ask local planners.
+5. **Asks “what if the canal closes?”** In the park view, one button turns the 6.82 km mapped canal line into a hypothetical linear park, with distance measured to the nearest point on the line. Park access within 300 m goes from **32/72 to 44/72** points (canal-side points: 12/27 → 24/27), while the best single new park reaches only 34/72. It is clearly labelled as an assumption: we do not claim the canal will close or that the land is available.
+6. **Is honest about uncertainty:** a data-scope switch shows that counting unnamed (probably private) pools would raise the baseline from 13 to 44. How much you trust the data is itself a finding.
+7. **Collects your priorities privately:** “Mahallen İçin Ne Önemli?” stores choices only in your browser. It is clearly labelled as personal input, not a survey.
+8. **Creates a planning brief:** a Turkish PDF with the settings, sources, before/after tables, a map drawn from the same coordinates, the A/B comparison, method, limitations and questions to ask local planners.
 
 **What can it tell you that a normal map can't?** A map shows where pools are. KanalAtlas tells you how many places in a neighbourhood are far from one, where one new facility would close the biggest gap, how that answer changes if you move it, and how confident you can be in the data.
 
@@ -46,8 +47,8 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 
 - **Data pipeline:** classifies OSM records (core / extended / excluded), merges duplicate records within 30 m while keeping every source ID, and excludes pools tagged as private.
 - **Scenario engine:** pure functions, separate from the UI. Haversine distance (R = 6,371,008.8 m); a hypothetical facility counts only if strictly closer; undefined baselines never produce fake percentages.
-- **Testing:** 71 unit tests with hand-calculated expected values (for example, a three-point line where moving the pool from 2,200 m to 1,500 m changes the results from 2/3 to 3/3 within range). The tests render real PDFs and read them back to check the numbers. Playwright tests run the full journey on desktop and mobile against the production build, including downloading and parsing the PDF.
-- **Accessibility:** Turkish-first, keyboard alternatives for every map action, a full text table instead of the map, labelled forms, visible focus, live-region announcements, and no meaning conveyed by colour alone.
+- **Testing:** 77 unit tests with hand-calculated expected values (for example, a three-point line where moving the pool from 2,200 m to 1,500 m changes the results from 2/3 to 3/3 within range). The tests render real PDFs and read them back to check the numbers. Playwright tests run the full journey on desktop and mobile against the production build, including downloading and parsing the PDF.
+- **Accessibility:** zero axe-core WCAG 2.1 A/AA violations in automated audits (desktop and mobile, with and without a scenario); a tested keyboard-only journey; Turkish-first; keyboard alternatives for every map action; a full text table instead of the map, labelled forms, visible focus, live-region announcements, and no meaning conveyed by colour alone.
 
 [STUDENT MUST CONFIRM TECHNICAL CONTRIBUTIONS — describe what you personally designed, decided, reviewed, tested or changed. The project was built with substantial AI coding assistance; see the AI disclosure.]
 
@@ -70,7 +71,7 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 
 ## What's next for KanalAtlas
 
-Walking-network distances; verifying facilities against the official municipal pool list; a consent-based way for residents to submit priorities; more Adana neighbourhoods; and a “canal corridor” scenario type for when a canal is decommissioned, such as a shaded linear park along its route. [STUDENT: add only the next steps you actually intend.]
+Walking-network distances; verifying facilities against the official municipal pool list; a consent-based way for residents to submit priorities; more Adana neighbourhoods; and richer corridor scenarios (only some sections closing, shade, or water-play points along the route). [STUDENT: add only the next steps you actually intend.]
 
 ## Important limitations
 

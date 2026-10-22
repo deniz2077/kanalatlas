@@ -2,7 +2,7 @@
 
 Record the **real running app** (local `npm run dev` or the deployed URL). Narrate in your own voice (Turkish or English; English subtitles help international judges). Every sentence below describes behaviour that has been tested. If something behaves differently when you record, describe what actually happens.
 
-An automated, captioned, silent draft already exists: `submission/video/kanalatlas-demo-draft.webm` (about 3:25, recorded by `npm run demo:record`). You can (a) add your voice-over to it, or (b) use this script to record yourself live, which is recommended.
+An automated, captioned, silent draft already exists: `submission/video/kanalatlas-demo-draft.webm` (about 3:48, recorded by `npm run demo:record`). You can (a) add your voice-over to it, or (b) use this script to record yourself live, which is recommended.
 
 ---
 
@@ -37,17 +37,24 @@ An automated, captioned, silent draft already exists: `submission/video/kanalatl
 
 > “Everything is also available as a table for people who can't use a map.”
 
-### 2:30–3:10 · Priorities
+### 2:30–2:55 · “What if the canal closes?”
+*Click “Park / yeşil alan”, then “Kanal hattını doğrusal parka dönüştür”. Pause on the map and headline.*
+
+> “The government plans to close these city-centre canals. So what if this canal line became a linear park? This button measures that: for parks within 300 metres, access goes from 32 to 44 of 72 points, and for points right next to the canal it doubles. It's a ‘what if’: I'm not claiming the canal will close or that the land is free.”
+
+*Click “Yüzme tesisi” to return.*
+
+### 2:55–3:20 · Priorities
 *Scroll to “Mahallen İçin Ne Önemli?”. Choose a neighbourhood, a priority and barriers; press save.*
 
 > “Residents can add their own priorities. This is not a fake survey: it stays only in your browser, with no names or addresses, and it's labelled as personal input in the report.”
 
-### 3:10–3:45 · The PDF
+### 3:20–3:50 · The PDF
 *Scroll to “Rapor”; click “PDF raporu oluştur ve indir”; open the downloaded file and scroll through it.*
 
 > “The report is generated from exactly what's on screen: settings, sources and their status, the before/after table, a map drawn from the same coordinates, my A/B comparison, my priorities, the method and the limitations.”
 
-### 3:45–4:00 · Limits and next steps
+### 3:50–4:10 · Limits and next steps
 *Scroll to “Yöntem, kaynaklar ve sınırlılıklar”.*
 
 > “It's honest about its limits: straight-line isn't walking distance, points aren't population, and it doesn't predict drowning risk. Next I want walking routes, a verified list of municipal pools, and real input from neighbours. Thanks for watching.”

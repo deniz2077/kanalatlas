@@ -9,7 +9,7 @@ cd ~/Documents/kanalatlas
 export PATH=~/.local/node/bin:$PATH
 npm install
 npm run dev          # open http://localhost:3000
-npm test             # 71 unit tests
+npm test             # 77 unit tests
 npm run proof        # prints the A/B real-data table
 ```
 
@@ -42,6 +42,9 @@ For each of the 72 sample points, we compute the Haversine distance to every act
 
 **Why Haversine?**
 It gives the exact great-circle distance between two coordinates, needs no external service, and anyone can check it by hand. At neighbourhood scale it is accurate to well under a metre for the straight line.
+
+**How does the canal-corridor scenario work?**
+The mapped canal segments inside the study box become one hypothetical park shaped like a line. For each point we measure the shortest distance to any segment of that line (point-to-segment, in a local flat projection) instead of to a single point. It answers “what if the canal closes and becomes a park?” It does not claim the canal will close or that the land is available, and a long linear park is not comparable one-to-one with a single park.
 
 **What are its limitations?**
 It is not walking distance: it ignores roads, bridges, the canal and the railway. A point 300 m from a pool “as the crow flies” could be a 1 km walk if there is no bridge. That is why we always say “kuş uçuşu” and never “walking time”.

@@ -2,15 +2,18 @@ import { describe, expect, it } from "vitest";
 import { haversineMeters, offsetMeters } from "../geo";
 import {
   activeFacilities,
+  canalCorridorPath,
+  distanceToHypothetical,
   evaluateScenario,
   generateEvaluationGrid,
   median,
   nearestOf,
+  pathLengthMeters,
   suggestSites,
   summarize,
   validateHypothetical,
 } from "../scenario";
-import type { EvaluationPoint, Facility, HypotheticalFacility } from "../types";
+import type { Canal, EvaluationPoint, Facility, HypotheticalFacility } from "../types";
 
 /*
  * Hand-built scenario on a straight east-west line (distances in metres):
@@ -265,5 +268,64 @@ describe("suggestSites", () => {
   it("returns nothing when no site can improve anything", () => {
     const one = [pt("P0", 0)];
     expect(suggestSites(one, [F], "swimming", "core", 600)).toEqual([]);
+  });
+});
+
+describe("linear (canal-corridor) hypotheticals", () => {
+  // Corridor along the east-west line from 0 to 2000 m; parks only.
+  const corridor = [[at(0, 0), at(1000, 0), at(2000, 0)]];
+  const parkPts = [
+    { ...pt("N3", 500), ...at(500, 300) }, // 300 m north of the line
+    { ...pt("N9", 1500), ...at(1500, 900) }, // 900 m north of the line
+    { ...pt("E", 2240), ...at(2240, 320) }, // beyond the east end: 240-320-400 triangle → 400 m to (2000,0)
+  ];
+  const park = fac("PK", 0, { category: "park", ...at(0, 2000) }); // existing park 2 km north of origin
+  const lin: HypotheticalFacility = { id: "COR", ...at(1000, 0), category: "park", label: "corridor", path: corridor };
+
+  it("measures distance to the nearest point on the line, not to its label point", () => {
+    close(distanceToHypothetical(parkPts[0], lin), 300);
+    close(distanceToHypothetical(parkPts[1], lin), 900);
+    close(distanceToHypothetical(parkPts[2], lin), 400);
+  });
+
+  it("evaluates before/after with the corridor (hand-checked)", () => {
+    const r = evaluateScenario({ points: parkPts, facilities: [park], category: "park", scope: "core", hypotheticals: [lin], thresholdM: 500 });
+    // Before: distances to the park at (0, 2000): N3 √(500²+1700²)=1772.0, N9 √(1500²+1100²)=1860.1, E √(2240²+1680²)=2800.0
+    close(r.points[0].before!.distanceM, 1772.0);
+    close(r.points[1].before!.distanceM, 1860.1);
+    close(r.points[2].before!.distanceM, 2800.0);
+    expect(r.before.withinCount).toBe(0);
+    // After: 300 / 900 / 400 → N3 and E within 500 m
+    expect(r.after.withinCount).toBe(2);
+    expect(r.points.every((p) => p.after!.facilityId === "COR")).toBe(true);
+  });
+
+  it("canalCorridorPath keeps only segments touching the box and splits at exits", () => {
+    const bbox = { south: 37.0, west: 35.29, north: 37.02, east: 35.31 };
+    const canal: Canal = {
+      id: "c",
+      name: null,
+      covered: false,
+      source: { osmType: "way", osmId: 1 },
+      coords: [
+        { lat: 37.01, lon: 35.28 }, // outside (west)
+        { lat: 37.01, lon: 35.295 }, // inside
+        { lat: 37.01, lon: 35.305 }, // inside
+        { lat: 37.01, lon: 35.32 }, // outside (east)
+        { lat: 37.01, lon: 35.33 }, // outside
+      ],
+    };
+    const lines = canalCorridorPath([canal], bbox);
+    expect(lines).toHaveLength(1);
+    expect(lines[0]).toHaveLength(4); // 35.28 → 35.295 → 35.305 → 35.32 (segments touching the box)
+    // 0.04° of longitude at 37.01°N ≈ 0.04 × 111,195 × cos(37.01°) ≈ 3,552 m
+    expect(pathLengthMeters(lines)).toBeGreaterThan(3540);
+    expect(pathLengthMeters(lines)).toBeLessThan(3565);
+  });
+
+  it("rejects a corridor with invalid vertices", () => {
+    const bad = { ...lin, path: [[at(0), { lat: NaN, lon: 35 }]] };
+    const r = evaluateScenario({ points: parkPts, facilities: [park], category: "park", scope: "core", hypotheticals: [bad], thresholdM: 500 });
+    expect(r.hypotheticalCount).toBe(0);
   });
 });

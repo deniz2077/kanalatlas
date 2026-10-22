@@ -151,6 +151,56 @@ export function nearestOf(
   return best;
 }
 
+/** Distance (m) from a point to a hypothetical facility: to its line(s) if it has a path, else to its point. */
+export function distanceToHypothetical(p: LatLon, h: HypotheticalFacility): number {
+  if (h.path && h.path.length > 0) return pointToPolylinesMeters(p, h.path) ?? haversineMeters(p, h);
+  return haversineMeters(p, h);
+}
+
+function nearestHypothetical(p: LatLon, hyps: HypotheticalFacility[]): NearestResult | null {
+  let best: NearestResult | null = null;
+  for (const h of hyps) {
+    const d = distanceToHypothetical(p, h);
+    if (!best || d < best.distanceM || (d === best.distanceM && h.id < best.facilityId)) {
+      best = { facilityId: h.id, distanceM: d, hypothetical: true };
+    }
+  }
+  return best;
+}
+
+/**
+ * Hypothetical linear park along the mapped canal inside the study box:
+ * every canal segment with at least one end inside the box (culverts included,
+ * since a decommissioned canal's whole route would be freed). A "what if"
+ * geometry only — closure and land availability are NOT verified.
+ */
+export function canalCorridorPath(canals: Canal[], bbox: BBox): LatLon[][] {
+  const lines: LatLon[][] = [];
+  for (const c of canals) {
+    let current: LatLon[] = [];
+    for (let i = 0; i < c.coords.length - 1; i++) {
+      const a = c.coords[i];
+      const b = c.coords[i + 1];
+      if (inBBox(a, bbox) || inBBox(b, bbox)) {
+        if (current.length === 0) current.push(a);
+        current.push(b);
+      } else if (current.length) {
+        lines.push(current);
+        current = [];
+      }
+    }
+    if (current.length) lines.push(current);
+  }
+  return lines;
+}
+
+/** Total length (m) of a set of polylines. */
+export function pathLengthMeters(lines: LatLon[][]): number {
+  let total = 0;
+  for (const l of lines) for (let i = 0; i < l.length - 1; i++) total += haversineMeters(l[i], l[i + 1]);
+  return total;
+}
+
 export interface PointResult {
   pointId: string;
   before: NearestResult | null;
@@ -227,11 +277,13 @@ export function evaluateScenario(input: ScenarioInput): ScenarioResult {
   const { points, category, scope, thresholdM } = input;
   if (!(thresholdM > 0)) throw new Error("thresholdM must be positive");
   const existing = activeFacilities(input.facilities, category, scope);
-  const hyps = input.hypotheticals.filter((h) => h.category === category && isValidLatLon(h));
+  const hyps = input.hypotheticals.filter(
+    (h) => h.category === category && isValidLatLon(h) && (!h.path || h.path.every((l) => l.every(isValidLatLon))),
+  );
 
   const results: PointResult[] = points.map((p) => {
     const before = nearestOf(p, existing, false);
-    const nearestHyp = nearestOf(p, hyps, true);
+    const nearestHyp = nearestHypothetical(p, hyps);
     // A hypothetical replaces the nearest only when strictly closer.
     const after =
       nearestHyp && (!before || nearestHyp.distanceM < before.distanceM) ? nearestHyp : before;

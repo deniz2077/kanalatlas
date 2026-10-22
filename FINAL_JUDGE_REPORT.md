@@ -1,6 +1,6 @@
 # Final judge report (acceptance test by the AI assistant)
 
-Performed on 23 Oct 2026, around 00:30–00:50 Türkiye time, on the **local production build**. There was no deployed URL to test.
+Performed on 23 Oct 2026, around 00:30–01:00 Türkiye time, on the **local production build**. There was no deployed URL to test.
 
 ## What makes KanalAtlas distinctive
 
@@ -16,6 +16,8 @@ It links a documented local safety concern (canal drowning, named in a June 2026
 - PDF downloads, and its extracted text contains the on-screen coordinates and values.
 - Mobile viewport: full journey passes; no horizontal scroll.
 - No page or console errors during the journey.
+- Canal corridor as a hypothetical linear park (parks within 300 m: 32 → 44 of 72); the PDF contains the corridor scenario.
+- Keyboard-only journey passes; axe-core finds 0 WCAG 2.1 A/AA violations (desktop and mobile).
 
 ## Technical evidence
 
@@ -39,7 +41,7 @@ Three verified official sources (two council decisions of 12.06.2026 and the mun
 |---|---|
 | Working project | **Yes** (locally) |
 | Name / pitch / description / tech / challenges / next steps | **Drafts ready**; placeholders need the owner |
-| 2–6 min demo video | **Draft file exists** (≈ 3:25); not uploaded; no narration |
+| 2–6 min demo video | **Draft file exists** (≈ 3:48); not uploaded; no narration |
 | Public repository | **No** (needs the owner's GitHub account) |
 | AI disclosure | **Draft**; the owner must correct it |
 | Live URL (optional) | **No** |

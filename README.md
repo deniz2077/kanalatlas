@@ -23,11 +23,12 @@ KanalAtlas connects these fragments. **What it adds to a normal map:** it *measu
 - Swimming and park categories, analysed separately; a data-scope switch (core vs. all mapped records); selectable thresholds.
 - Up to 3 hypothetical facilities: click to place, **drag with live recalculation**, tap-to-move, keyboard arrow buttons (100 m), and a “best location” button that screens 1,456 candidate sites.
 - Results: points within the threshold, mean/median/max distance, a canal-belt subset (≤ 500 m from a mapped canal), a per-facility “why this result?” explanation, and a plain-language interpretation.
+- **“Kanal kapatılırsa ne olur?”** In the park category, turn the mapped canal line (6.82 km) into a hypothetical linear park. Distance is measured to the nearest point on the line, which models the announced canal decommissioning (closure and land availability are not verified).
 - Saved scenarios A/B/C re-evaluated with identical settings in a comparison table.
 - A full text-table alternative to the map, and a facility list with statuses and sources.
 - “Mahallen İçin Ne Önemli?”: a local-only priorities form (no server, no personal data, clearly *not* a survey), downloadable as JSON.
 - A PDF planning brief generated from the current state, including a schematic map drawn from the same coordinates.
-- A Turkish-first interface with an English summary section; keyboard and screen-reader semantics; mobile layout.
+- A Turkish-first interface with an English summary section; keyboard-only operation (tested); **0 axe-core WCAG 2.1 A/AA violations** (tested); mobile layout.
 
 ## Quick start
 
@@ -40,8 +41,8 @@ npm run dev            # http://localhost:3000
 
 | Command | What it does |
 |---|---|
-| `npm test` | 71 unit tests (geometry, scenario engine, data, PDF content) |
-| `npm run build && npx playwright install chromium && npm run e2e` | Production build + browser journey tests (desktop + mobile) |
+| `npm test` | 77 unit tests (geometry, scenario engine, corridor, data, PDF content) |
+| `npm run build && npx playwright install chromium && npm run e2e` | Production build + browser tests: journeys, corridor, keyboard-only, axe WCAG A/AA audit (desktop + mobile) |
 | `npm run proof` | Prints a real-data A/B scenario table (`docs/PROOF_RUN_OUTPUT.md`) |
 | `npm run data:build` | Rebuilds `src/data/kanalatlas-data.json` from the committed OSM extract |
 | `npm run demo:record` | Records the captioned demo walkthrough from the real app (needs `npm run build` first) |
@@ -51,7 +52,7 @@ npm run dev            # http://localhost:3000
 
 For each sample point: the Haversine great-circle distance to the nearest active facility (R = 6,371,008.8 m). A hypothetical facility replaces it only if strictly closer. **This is straight-line distance, not walking distance; sample points are not people.** A full method with a hand-checkable worked example is in [docs/SCENARIO_METHOD.md](docs/SCENARIO_METHOD.md).
 
-Real-data example (swimming, 1 km): baseline **13/72** points; a hypothetical pool in the east (Gazipaşa) → **27/72**; the same pool in the west (İsmetpaşa) → **21/72** ([proof run](docs/PROOF_RUN_OUTPUT.md)). Counting unnamed pools as well gives a baseline of 44/72, so the data-trust question matters.
+Real-data example (swimming, 1 km): baseline **13/72** points; a hypothetical pool in the east (Gazipaşa) → **27/72**; the same pool in the west (İsmetpaşa) → **21/72** ([proof run](docs/PROOF_RUN_OUTPUT.md)). Counting unnamed pools as well gives a baseline of 44/72, so the data-trust question matters. Parks (300 m): baseline 32/72; best single new park 34/72; **canal corridor as a linear park 44/72**, and canal-belt points within 300 m go from 12/27 to 24/27.
 
 ## Architecture
 

@@ -3,6 +3,7 @@ import {
   haversineMeters,
   inBBox,
   isValidLatLon,
+  nearestPointOnPolylines,
   offsetMeters,
   pointToPolylinesMeters,
   pointToSegmentMeters,
@@ -125,5 +126,17 @@ describe("inBBox", () => {
     expect(inBBox({ lat: 37.05, lon: 35.05 }, b)).toBe(true);
     expect(inBBox({ lat: 37, lon: 35 }, b)).toBe(true);
     expect(inBBox({ lat: 37.2, lon: 35.05 }, b)).toBe(false);
+  });
+});
+
+describe("nearestPointOnPolylines", () => {
+  it("projects onto the segment interior and clamps at ends", () => {
+    const a = { lat: 37.01, lon: 35.3 };
+    const b = offsetMeters(a, 1000, 0);
+    const mid = nearestPointOnPolylines(offsetMeters(a, 400, 250), [[a, b]])!;
+    expect(haversineMeters(mid, offsetMeters(a, 400, 0))).toBeLessThan(0.5);
+    const end = nearestPointOnPolylines(offsetMeters(a, 1300, 100), [[a, b]])!;
+    expect(haversineMeters(end, b)).toBeLessThan(0.5);
+    expect(nearestPointOnPolylines(a, [])).toBeNull();
   });
 });

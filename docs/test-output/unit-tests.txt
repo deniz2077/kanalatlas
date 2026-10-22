@@ -2,7 +2,7 @@
 
  RUN  v5.0.5 /Users/deniz/Documents/kanalatlas
 
- ✓ src/lib/__tests__/geo.test.ts > haversineMeters > is zero for identical points 2ms
+ ✓ src/lib/__tests__/geo.test.ts > haversineMeters > is zero for identical points 1ms
  ✓ src/lib/__tests__/geo.test.ts > haversineMeters > matches 1° of latitude = 111,195 m (hand-calculated) 1ms
  ✓ src/lib/__tests__/geo.test.ts > haversineMeters > matches 0.01° of latitude in Adana = 1,111.95 m 0ms
  ✓ src/lib/__tests__/geo.test.ts > haversineMeters > shrinks east-west distances by cos(latitude): 0.01° lon at 37°N ≈ 888.0 m 0ms
@@ -10,7 +10,7 @@
  ✓ src/lib/__tests__/geo.test.ts > haversineMeters > matches a quarter of the meridian: equator → North Pole = πR/2 = 10,007.5 km 0ms
  ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > accepts valid coordinates 0ms
  ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > rejects null 0ms
- ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > rejects undefined 1ms
+ ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > rejects undefined 0ms
  ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > rejects {} 0ms
  ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > rejects {"lat":"37","lon":35} 0ms
  ✓ src/lib/__tests__/geo.test.ts > isValidLatLon > rejects {"lat":null,"lon":35} 0ms
@@ -26,15 +26,29 @@
  ✓ src/lib/__tests__/geo.test.ts > polygonAreaCentroid > is independent of ring orientation 0ms
  ✓ src/lib/__tests__/geo.test.ts > polygonAreaCentroid > falls back to the vertex average for degenerate rings 0ms
  ✓ src/lib/__tests__/geo.test.ts > inBBox > includes edges and interior, excludes outside 0ms
- ✓ src/lib/__tests__/scenario.test.ts > summary statistics > median of odd/even/empty lists 1ms
- ✓ src/lib/__tests__/scenario.test.ts > summary statistics > ignores undefined distances and counts threshold inclusively 0ms
+ ✓ src/lib/__tests__/geo.test.ts > nearestPointOnPolylines > projects onto the segment interior and clamps at ends 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > categoryOf > maps OSM tags to categories and ignores others 1ms
+ ✓ src/lib/__tests__/facilities.test.ts > classify > excludes access-restricted pools 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > classify > named or sport-tagged pools are core; bare pools are extended + REQUIRES_CONFIRMATION 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > classify > parks: named or >= 5,000 m² are core 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > classify > never labels mapped data as VERIFIED 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > facilityFromOsm > uses the polygon centroid and area for ways 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > facilityFromOsm > returns null for unrelated or geometry-less elements 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > mergeDuplicates > merges same-category facilities within 30 m and keeps every source id 6ms
+ ✓ src/lib/__tests__/facilities.test.ts > mergeDuplicates > a merged group with any access-restricted member is excluded and flagged 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > mergeDuplicates > does not merge across categories 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > shipped dataset integrity > has real OSM provenance on every facility and canal 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > shipped dataset integrity > has unique ids and no facility marked VERIFIED or HYPOTHETICAL 0ms
+ ✓ src/lib/__tests__/facilities.test.ts > shipped dataset integrity > facilities lie inside the documented extraction box 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > summary statistics > median of odd/even/empty lists 2ms
+ ✓ src/lib/__tests__/scenario.test.ts > summary statistics > ignores undefined distances and counts threshold inclusively 1ms
  ✓ src/lib/__tests__/scenario.test.ts > baseline (no hypothetical) > finds distances 0 / 1000 / 2000 m to the single pool 0ms
  ✓ src/lib/__tests__/scenario.test.ts > baseline (no hypothetical) > mean 1000, median 1000, 1 of 3 points within 800 m 0ms
- ✓ src/lib/__tests__/scenario.test.ts > baseline (no hypothetical) > reports no change when nothing is added 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > baseline (no hypothetical) > reports no change when nothing is added 1ms
  ✓ src/lib/__tests__/scenario.test.ts > Location A vs Location B produce different, hand-checked results > A: mean 400 m, median 200 m, 2/3 within 800 m, 1 point improved by 1800 m 0ms
  ✓ src/lib/__tests__/scenario.test.ts > Location A vs Location B produce different, hand-checked results > B: mean 333.3 m, median 500 m, 3/3 within 800 m, 2 points improved 0ms
  ✓ src/lib/__tests__/scenario.test.ts > Location A vs Location B produce different, hand-checked results > canal-belt subset (≤ 500 m from canal) only contains P1 and P2 0ms
- ✓ src/lib/__tests__/scenario.test.ts > edge cases > zero facilities: baseline undefined, no invented mean change 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > edge cases > zero facilities: baseline undefined, no invented mean change 1ms
  ✓ src/lib/__tests__/scenario.test.ts > edge cases > zero facilities and no hypothetical: everything undefined, nothing within 0ms
  ✓ src/lib/__tests__/scenario.test.ts > edge cases > duplicate coordinates resolve deterministically by id 0ms
  ✓ src/lib/__tests__/scenario.test.ts > edge cases > a hypothetical on top of an existing facility changes nothing (ties keep existing) 0ms
@@ -43,7 +57,7 @@
  ✓ src/lib/__tests__/scenario.test.ts > edge cases > ignores invalid hypothetical coordinates 0ms
  ✓ src/lib/__tests__/scenario.test.ts > edge cases > rejects a non-positive threshold 0ms
  ✓ src/lib/__tests__/scenario.test.ts > data scope and source-status handling > core scope uses only core facilities 0ms
- ✓ src/lib/__tests__/scenario.test.ts > data scope and source-status handling > all scope adds extended but never excluded (access=private) 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > data scope and source-status handling > all scope adds extended but never excluded (access=private) 1ms
  ✓ src/lib/__tests__/scenario.test.ts > data scope and source-status handling > scope changes the baseline numbers 0ms
  ✓ src/lib/__tests__/scenario.test.ts > validateHypothetical > accepts a point inside the study area 0ms
  ✓ src/lib/__tests__/scenario.test.ts > validateHypothetical > rejects outside points and invalid input with Turkish messages 0ms
@@ -51,31 +65,23 @@
  ✓ src/lib/__tests__/scenario.test.ts > generateEvaluationGrid > produces a deterministic labelled grid 0ms
  ✓ src/lib/__tests__/scenario.test.ts > generateEvaluationGrid > spaces neighbours 500 m apart and stays inside the box 0ms
  ✓ src/lib/__tests__/scenario.test.ts > generateEvaluationGrid > rejects invalid spacing 0ms
- ✓ src/lib/__tests__/scenario.test.ts > suggestSites > ranks by points gained, then mean reduction, then id 7ms
+ ✓ src/lib/__tests__/scenario.test.ts > suggestSites > ranks by points gained, then mean reduction, then id 5ms
  ✓ src/lib/__tests__/scenario.test.ts > suggestSites > screens a separate candidate grid when given one 0ms
  ✓ src/lib/__tests__/scenario.test.ts > suggestSites > returns nothing when no site can improve anything 0ms
- ✓ src/lib/__tests__/facilities.test.ts > categoryOf > maps OSM tags to categories and ignores others 1ms
- ✓ src/lib/__tests__/facilities.test.ts > classify > excludes access-restricted pools 0ms
- ✓ src/lib/__tests__/facilities.test.ts > classify > named or sport-tagged pools are core; bare pools are extended + REQUIRES_CONFIRMATION 0ms
- ✓ src/lib/__tests__/facilities.test.ts > classify > parks: named or >= 5,000 m² are core 0ms
- ✓ src/lib/__tests__/facilities.test.ts > classify > never labels mapped data as VERIFIED 0ms
- ✓ src/lib/__tests__/facilities.test.ts > facilityFromOsm > uses the polygon centroid and area for ways 0ms
- ✓ src/lib/__tests__/facilities.test.ts > facilityFromOsm > returns null for unrelated or geometry-less elements 0ms
- ✓ src/lib/__tests__/facilities.test.ts > mergeDuplicates > merges same-category facilities within 30 m and keeps every source id 8ms
- ✓ src/lib/__tests__/facilities.test.ts > mergeDuplicates > a merged group with any access-restricted member is excluded and flagged 1ms
- ✓ src/lib/__tests__/facilities.test.ts > mergeDuplicates > does not merge across categories 0ms
- ✓ src/lib/__tests__/facilities.test.ts > shipped dataset integrity > has real OSM provenance on every facility and canal 0ms
- ✓ src/lib/__tests__/facilities.test.ts > shipped dataset integrity > has unique ids and no facility marked VERIFIED or HYPOTHETICAL 0ms
- ✓ src/lib/__tests__/facilities.test.ts > shipped dataset integrity > facilities lie inside the documented extraction box 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > linear (canal-corridor) hypotheticals > measures distance to the nearest point on the line, not to its label point 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > linear (canal-corridor) hypotheticals > evaluates before/after with the corridor (hand-checked) 0ms
+ ✓ src/lib/__tests__/scenario.test.ts > linear (canal-corridor) hypotheticals > canalCorridorPath keeps only segments touching the box and splits at exits 1ms
+ ✓ src/lib/__tests__/scenario.test.ts > linear (canal-corridor) hypotheticals > rejects a corridor with invalid vertices 0ms
  ✓ src/lib/__tests__/report.test.ts > PDF report > the two locations produce different calculated results 1ms
- ✓ src/lib/__tests__/report.test.ts > PDF report > contains the scenario's own numbers, Turkish characters and caveats 289ms
- ✓ src/lib/__tests__/report.test.ts > PDF report > a different location produces a PDF with different numbers 158ms
- ✓ src/lib/__tests__/report.test.ts > PDF report > baseline-only report explains that no intervention was added 97ms
- ✓ src/lib/__tests__/report.test.ts > PDF report > labels user priorities as personal input, not a survey 101ms
+ ✓ src/lib/__tests__/report.test.ts > PDF report > contains the scenario's own numbers, Turkish characters and caveats 275ms
+ ✓ src/lib/__tests__/report.test.ts > PDF report > a different location produces a PDF with different numbers 145ms
+ ✓ src/lib/__tests__/report.test.ts > PDF report > baseline-only report explains that no intervention was added 95ms
+ ✓ src/lib/__tests__/report.test.ts > PDF report > labels user priorities as personal input, not a survey 95ms
+ ✓ src/lib/__tests__/report.test.ts > PDF report > canal-corridor park scenario: PDF explains the assumption and its numbers 97ms
  ✓ src/lib/__tests__/report.test.ts > PDF report > schematic SVG is drawn from coordinates and includes the hypothetical 0ms
 
  Test Files  4 passed (4)
-      Tests  71 passed (71)
-   Start at  00:40:57
-   Duration  856ms (tests 79%, import 16%, transform 4%, worker 1%)
+      Tests  77 passed (77)
+   Start at  00:51:11
+   Duration  904ms (tests 81%, import 14%, transform 4%, worker 1%)
 

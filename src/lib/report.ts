@@ -100,7 +100,13 @@ export function buildScenarioSvg(input: ReportInput, width = 515): string {
     const [x, y] = P(f).map(Number);
     parts.push(`<rect x="${x - 3}" y="${y - 3}" width="6" height="6" fill="#0f766e" stroke="#ffffff" stroke-width="0.8"/>`);
   }
-  for (const h of hypotheticals) {
+  for (const h of hypotheticals.filter((q) => q.path)) {
+    for (const line of h.path!) {
+      const d = line.map((q) => P(q).join(",")).join(" ");
+      parts.push(`<polyline points="${d}" fill="none" stroke="#b45309" stroke-width="5" stroke-opacity="0.55" stroke-linecap="round"/>`);
+    }
+  }
+  for (const h of hypotheticals.filter((q) => !q.path)) {
     const [x, y] = P(h).map(Number);
     parts.push(
       `<circle cx="${x}" cy="${y}" r="${(result.thresholdM * s).toFixed(1)}" fill="none" stroke="#b45309" stroke-width="0.8" stroke-dasharray="3,3"/>`,
@@ -207,6 +213,9 @@ export function buildReportDoc(input: ReportInput): TDocumentDefinitions {
       ? {
           ul: explanations.map((e) => {
             const h = hypotheticals.find((x) => x.id === e.id)!;
+            if (h.path) {
+              return `${e.label} (VARSAYIMSAL) — haritalanmış kanal hattının (${h.path.length} kesit) doğrusal parka dönüştüğü varsayımı; uzaklık hattın en yakın noktasına ölçülür. ${e.servesPoints.length} örnek noktanın en yakın parkı olur; ${e.newlyWithin} tanesi eşik içine yeni girer. Kanalın kapatılacağı ve arazinin kullanılabileceği doğrulanmamıştır; doğrusal park tek bir parkla birebir karşılaştırılmamalıdır.`;
+            }
             return `${e.label} (VARSAYIMSAL) — konum ${coord(h)}${e.nearLabel ? `, ${e.nearLabel} yakını` : ""}. ${e.servesPoints.length} örnek noktanın en yakın tesisi olur; bunlardan ${e.newlyWithin} tanesi eşik içine yeni girer. Aynı kategorideki en yakın mevcut tesise uzaklığı: ${e.nearestExisting ? `${formatMeters(e.nearestExisting.distanceM)} (${e.nearestExisting.name ?? "isimsiz"})` : "tanımsız"}.`;
           }),
         }
@@ -269,7 +278,7 @@ export function buildReportDoc(input: ReportInput): TDocumentDefinitions {
           ["Başlangıç", "—", `${result.before.withinCount} / ${result.before.pointCount}`, formatMeters(result.before.meanM), "—"],
           ...saved.map((s) => [
             s.label,
-            s.hypotheticals.map(coord).join("; ") || "—",
+            s.hypotheticals.map((h) => (h.path ? "kanal hattı (doğrusal park)" : coord(h))).join("; ") || "—",
             `${s.result.after.withinCount} / ${s.result.after.pointCount} (${s.result.change.withinGained >= 0 ? "+" : ""}${s.result.change.withinGained})`,
             formatMeters(s.result.after.meanM),
             String(s.result.change.pointsImproved),

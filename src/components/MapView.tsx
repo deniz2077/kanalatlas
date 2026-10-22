@@ -20,6 +20,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import { osmUrl } from "@/lib/data";
+import { nearestPointOnPolylines } from "@/lib/geo";
 import { formatMeters } from "@/lib/insights";
 import type { PointResult, SiteSuggestion } from "@/lib/scenario";
 import type { Canal, Category, EvaluationPoint, Facility, HypotheticalFacility, StudyArea } from "@/lib/types";
@@ -222,12 +223,14 @@ export default function MapView(props: MapViewProps) {
               : facilityById.get(r.after.facilityId)
             : undefined;
           if (!r?.after || !target) return null;
+          const hyp = r.after.hypothetical ? hypById.get(r.after.facilityId) : undefined;
+          const end = hyp?.path ? (nearestPointOnPolylines(p, hyp.path) ?? target) : target;
           return (
             <Polyline
               key={`link-${p.id}`}
               positions={[
                 [p.lat, p.lon],
-                [target.lat, target.lon],
+                [end.lat, end.lon],
               ]}
               pathOptions={{
                 color: r.after.hypothetical ? "#b45309" : "#0f766e",
@@ -241,7 +244,21 @@ export default function MapView(props: MapViewProps) {
 
       {facilityMarkers}
 
-      {hypotheticals.map((h) => (
+      {hypotheticals
+        .filter((h) => h.path)
+        .map((h) =>
+          h.path!.map((line, i) => (
+            <Polyline
+              key={`corr-${h.id}-${i}`}
+              positions={line.map((q) => [q.lat, q.lon] as [number, number])}
+              pathOptions={{ color: "#b45309", weight: 9, opacity: 0.55, dashArray: "2 10", lineCap: "round" }}
+            >
+              <Tooltip sticky>{h.label} — VARSAYIMSAL</Tooltip>
+            </Polyline>
+          )),
+        )}
+
+      {hypotheticals.filter((h) => !h.path).map((h) => (
         <Circle
           key={`ring-${h.id}`}
           center={[h.lat, h.lon]}
@@ -289,7 +306,7 @@ export default function MapView(props: MapViewProps) {
         </Marker>
       ))}
 
-      {hypotheticals.map((h) => (
+      {hypotheticals.filter((h) => !h.path).map((h) => (
         <Marker
           key={h.id}
           position={[h.lat, h.lon]}

@@ -19,7 +19,7 @@ Written by the AI assistant after building and testing the prototype, to find we
 ## Technical execution (20%)
 
 **Strong:**
-- Pure, tested engine (71 unit tests with hand-derived values), with a worked example in the docs.
+- Pure, tested engine (77 unit tests with hand-derived values), with a worked example in the docs.
 - Live recalculation while dragging; A/B comparison re-evaluated under identical settings.
 - PDF tested by rendering and parsing real PDFs, including the one the browser downloads.
 - E2E on desktop and mobile against the production build; a reproducible data pipeline with raw data committed.
@@ -35,12 +35,13 @@ Written by the AI assistant after building and testing the prototype, to find we
 
 **Strong:** The link between canal drowning risk, swimming access and the canal-closure transition is unusual and local. The distinctive interaction is dragging a proposed pool and watching amber “nearest facility” lines and counts re-route live, plus the “best location” screening and the “why this result” explanation. Treating data trust as a visible variable (the scope switch) is also uncommon.
 
-**Weak:** On first glance the visual language is still close to a standard map dashboard. The decommissioned-canal future (for example, a linear park along the closed canal) is described but not modelled: there is no corridor intervention type.
-→ A possible P3 addition: a “canal corridor” hypothetical (a polyline park along the mapped canal) evaluated with the same engine.
+**Added after the first review:** a “Kanal kapatılırsa ne olur?” scenario turns the mapped canal line into a hypothetical linear park, evaluated by the same engine with point-to-polyline distance (parks within 300 m: 32 → 44 of 72; canal belt 12 → 24 of 27).
+
+**Weak:** On first glance the visual language is still close to a standard map dashboard. The corridor scenario uses the whole mapped line; choosing individual sections is not supported.
 
 ## Presentation and clarity (10%)
 
-**Strong:** A Turkish-first landing page that states the problem with sources in the first screen; a bilingual captioned demo video (about 3.4 min) recorded from the real app; extensive docs.
+**Strong:** A Turkish-first landing page that states the problem with sources in the first screen; a bilingual captioned demo video (about 3:48) recorded from the real app; extensive docs.
 
 **Weak:** The automated video has captions but **no voice**. Judges often respond better to the student explaining in their own voice. The page is long; a judge may not scroll to the method section.
 → The owner should record narration over the video or re-record live (`submission/DEMO_SCRIPT.md`).
@@ -49,7 +50,9 @@ Written by the AI assistant after building and testing the prototype, to find we
 
 **Strong:** Turkish language, keyboard paths for every map action (best-location button, 100 m arrow buttons, tap-to-move), a full text-table alternative, labelled forms, visible focus, `aria-live` announcements, information not conveyed by colour alone (filled vs hollow points, text “Evet/Hayır”), reduced-motion support, no horizontal scroll on mobile, 44 px touch targets for main controls.
 
-**Weak:** Not tested with VoiceOver/NVDA; colour contrast was chosen with care but not measured with a tool; there is no English UI toggle (only an English summary section). Map tooltips are mouse/hover-oriented.
+**Measured:** axe-core 4.14 WCAG 2.0/2.1 A + AA audit: **0 violations**, on desktop and mobile, both on first load and with an active scenario (`docs/test-output/a11y-*.txt`). It found one serious issue (unfocusable scroll regions), which was fixed. A keyboard-only E2E journey passes.
+
+**Weak:** Not tested with VoiceOver/NVDA (axe does not replace a real screen-reader test); there is no English UI toggle (only an English summary section). Map tooltips are mouse/hover-oriented.
 
 ## Top three weaknesses to fix (in priority order)
 

@@ -24,7 +24,7 @@ See `docs/SCENARIO_METHOD.md`. In short: a Haversine straight-line distance to t
 
 ## 3. Test cases: expected vs. actual
 
-### Unit tests: 71 passed (`docs/test-output/unit-tests.txt`)
+### Unit tests: 77 passed (`docs/test-output/unit-tests.txt`)
 
 A selection of hand-calculated cases (expected values are derived in the test comments):
 
@@ -43,9 +43,11 @@ A selection of hand-calculated cases (expected values are derived in the test co
 | Placement outside study box / invalid input | rejected with Turkish message | passes |
 | Grid on 1,776 × 1,112 m box | 4 × 3 = 12 points, A01…C04, 500 m apart | passes |
 | Duplicate merge within 30 m | 3 records → 2, all source ids kept | passes |
+| Corridor (line 0–2000 m): points 300 m / 900 m north and 400 m past the end | distances 300 / 900 / 400; before 1772.0 / 1860.1 / 2800.0 to a park at (0, 2000); 2 of 3 within 500 m | passes |
+| Corridor clipping to study box | 4-vertex line, ≈ 3,552 m | passes |
 | PDF for two locations | each PDF contains its own coordinates and “X / 72” value; not the other's | passes (real PDFs rendered and parsed) |
 
-### Browser E2E: 4 passed (`docs/test-output/e2e-tests.txt`)
+### Browser E2E: 9 passed, 1 skipped by design (`docs/test-output/e2e-tests.txt`)
 
 Playwright runs against the **production build** (`next start`), in Desktop Chrome (1440×1000) and Pixel 7 (mobile) projects:
 
@@ -62,6 +64,11 @@ Playwright runs against the **production build** (`next start`), in Desktop Chro
 11. There are no page errors or console errors (tile network errors excluded).
 12. No horizontal scroll (`scrollWidth − innerWidth ≤ 1`).
 13. A second test checks that changing data scope, category and threshold changes the headline, so the value is not hard-coded.
+14. **Canal corridor:** in parks, “Kanal hattını doğrusal parka dönüştür” changes the headline, disables itself, explains the method, and the downloaded PDF contains the corridor scenario.
+15. **Keyboard-only** (desktop): the skip link is the first tab stop; add, nudge, save, switch category with arrow keys and export the PDF, all without a mouse.
+16. **axe-core audit** (WCAG 2.0/2.1 A + AA): 0 violations, initial and with a scenario, desktop and mobile (`docs/test-output/a11y-desktop.txt`, `a11y-mobile.txt`). The first run found one serious issue (scrollable tables not keyboard-focusable), which was fixed.
+
+The whole E2E suite was run twice in a row with identical results (no flakiness observed).
 
 ## 4. Two locations, two different results (real data)
 
@@ -88,6 +95,10 @@ B differs between runs because the drag (desktop) and the tap (mobile) land on d
 
 Development note: before the 100 m candidate grid was added, the “best” button only tested the 72 sample points. In one E2E run a hand-moved location (+12) beat it (+10). We then switched to the 100 m grid (`ENGINEERING_DECISIONS.md` #10).
 
+## 4b. Canal corridor as a linear park (real data)
+
+From `PROOF_RUN_OUTPUT.md` (parks, core scope, 300 m): baseline **32 / 72**; best single new park **34 / 72**; the canal corridor (10 mapped sections, 6.82 km) as a hypothetical linear park **44 / 72**, with canal-belt points 12 / 27 → 24 / 27. A linear park is a far larger intervention, so this shows reach, not equivalence. Closure and land availability are not verified.
+
 ## 5. Evidence of dynamic recalculation
 
 - `evaluateScenario` runs inside `useMemo` keyed on hypothetical positions (`KanalAtlasApp.tsx`). Leaflet's `drag` event updates the position on every frame. A test fails if the headline or coordinates do not change after moving.
@@ -104,6 +115,7 @@ Captured by the E2E run in `docs/screenshots/`:
 | `desktop-03-scenario-B-and-comparison.png` | Saved A/B comparison table |
 | `desktop-04-priorities.png` | Local-only priorities form after saving |
 | `desktop-05-report.png` | Report section after download |
+| `desktop-06-canal-corridor-park.png` | Canal line as a hypothetical linear park (32 → 44) |
 | `mobile-0*.png` | The same steps on a Pixel 7 viewport |
 
 ## 7. The PDF contains the calculated outputs
@@ -124,6 +136,6 @@ Captured by the E2E run in `docs/screenshots/`:
 | Basemap tiles | Depend on tile.openstreetmap.org being reachable, and should respect its usage policy at scale. |
 | Deployment | **Not done**: no hosting credentials on this machine. See `MORNING_READ_ME_FIRST.md`. |
 | GitHub publication | **Not done**: no GitHub credentials. See the same file. |
-| Screen-reader testing with real assistive technology | Not done; only semantic structure, labels and live regions were implemented. |
+| Screen-reader testing with real assistive technology | Not done. axe-core reports 0 WCAG A/AA violations and a keyboard-only journey passes, but neither replaces VoiceOver/NVDA testing. |
 | Facility operating status | Unverified for all facilities (labelled MAPPED). |
 | Community input | None collected; the template is in `docs/COMMUNITY_RESEARCH_TEMPLATE.md`. |

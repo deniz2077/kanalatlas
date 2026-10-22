@@ -16,7 +16,9 @@
 | 12 | 2:12 | Card | **Bu senaryoyu kaydet** | — |
 | 13 | 2:15 | Comparison table | Scroll | A vs B rows, “en iyi” label |
 | 14 | 2:25 | Text table | Open “Harita yerine tablo” | Table rows |
-| 15 | 2:30 | Priorities | Select mahalle, priority, 2 barriers, save | “Kaydedildi” |
+| 14b | 2:30 | Park category | Click **Park / yeşil alan** → **Kanal hattını doğrusal parka dönüştür** | Amber dashed line along the canal; 32 → 44 (+12) |
+| 14c | 2:52 | Category | Click **Yüzme tesisi** | Swimming scenario still there |
+| 15 | 2:55 | Priorities | Select mahalle, priority, 2 barriers, save | “Kaydedildi” |
 | 16 | 3:10 | Report | **PDF raporu oluştur ve indir** | “İndirildi: …pdf” |
 | 17 | 3:15 | PDF viewer | Open the downloaded PDF; scroll pages 1–3 | Coordinates, tables, schematic map |
 | 18 | 3:45 | Method/limits | Scroll | Limitations list |

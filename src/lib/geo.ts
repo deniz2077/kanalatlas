@@ -135,3 +135,24 @@ export interface BBox {
 export function inBBox(p: LatLon, b: BBox): boolean {
   return p.lat >= b.south && p.lat <= b.north && p.lon >= b.west && p.lon <= b.east;
 }
+
+/** The point on any of the polylines closest to p (used to draw "nearest" links to linear features). */
+export function nearestPointOnPolylines(p: LatLon, lines: LatLon[][]): LatLon | null {
+  let best: { d: number; q: LatLon } | null = null;
+  for (const line of lines) {
+    for (let i = 0; i < line.length - 1; i++) {
+      const a = line[i];
+      const P = toLocalXY(p, a);
+      const B = toLocalXY(line[i + 1], a);
+      const len2 = B.x * B.x + B.y * B.y;
+      const t = len2 === 0 ? 0 : Math.max(0, Math.min(1, (P.x * B.x + P.y * B.y) / len2));
+      const d = Math.hypot(P.x - t * B.x, P.y - t * B.y);
+      if (!best || d < best.d) best = { d, q: fromLocalXY({ x: t * B.x, y: t * B.y }, a) };
+    }
+    if (line.length === 1) {
+      const d = haversineMeters(p, line[0]);
+      if (!best || d < best.d) best = { d, q: line[0] };
+    }
+  }
+  return best?.q ?? null;
+}

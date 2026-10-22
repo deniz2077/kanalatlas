@@ -5,7 +5,7 @@
  */
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { dataset, evaluationPoints } from "../data";
+import { canalCorridor, dataset, evaluationPoints } from "../data";
 import { explainHypotheticals, formatMeters } from "../insights";
 import { buildReportDoc, buildScenarioSvg, type ReportInput } from "../report";
 import { evaluateScenario } from "../scenario";
@@ -116,6 +116,27 @@ describe("PDF report", () => {
     expect(text).toContain("Gazipaşa");
     expect(text).toContain("Ücret");
     expect(text).not.toMatch(/anket sonuçları/i);
+  }, 30_000);
+
+  it("canal-corridor park scenario: PDF explains the assumption and its numbers", async () => {
+    const corridor: HypotheticalFacility = { id: "hyp-9", lat: 37.011, lon: 35.3, category: "park", label: "Kanal hattı doğrusal parkı", path: canalCorridor };
+    const result = evaluateScenario({ points: evaluationPoints, facilities: dataset.facilities, category: "park", scope: "core", hypotheticals: [corridor], thresholdM: 300 });
+    expect(result.after.withinCount).toBeGreaterThan(result.before.withinCount);
+    const input: ReportInput = {
+      generatedAt: new Date("2026-10-23T09:00:00Z"),
+      dataset,
+      points: evaluationPoints,
+      result,
+      hypotheticals: [corridor],
+      explanations: explainHypotheticals(result, [corridor], dataset.facilities, evaluationPoints, dataset.neighbourhoods),
+      saved: [],
+      priorities: null,
+    };
+    const text = await pdfText(input);
+    expect(text).toContain("Kanal hattı doğrusal parkı");
+    expect(text).toContain("doğrulanmamıştır");
+    expect(text).toContain(`${result.after.withinCount} / 72`);
+    expect(buildScenarioSvg(input)).toContain('stroke="#b45309" stroke-width="5"');
   }, 30_000);
 
   it("schematic SVG is drawn from coordinates and includes the hypothetical", () => {

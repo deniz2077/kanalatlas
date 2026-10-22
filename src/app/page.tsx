@@ -173,6 +173,7 @@ export default function Home() {
               <ul className="mt-2 space-y-2 text-sm text-ink-soft">
                 <li><strong className="text-ink">Ölçer, sadece göstermez:</strong> Her örnek nokta için en yakın tesise mesafeyi hesaplar ve eşik içinde kalanları sayar.</li>
                 <li><strong className="text-ink">“Ya şöyle olsaydı?” sorusunu yanıtlar:</strong> Önerilen bir tesisi sürükledikçe kaç noktanın kazanç sağladığını anında yeniden hesaplar ve A/B konumlarını aynı yöntemle karşılaştırır.</li>
+                <li><strong className="text-ink">Kanalın geleceğini sorgular:</strong> Kanal kapatılırsa, hattın doğrusal bir parka dönüştüğü varsayımıyla erişimin nasıl değişeceğini hesaplar.</li>
                 <li><strong className="text-ink">Veriye ne kadar güvenildiğini açıkça söyler:</strong> Her tesisin kaynağı ve doğrulama durumu görünür; isimsiz veya özel havuzlar ayrı tutulur.</li>
                 <li><strong className="text-ink">Paylaşılabilir kanıt üretir:</strong> Sonuçları, yöntem ve sınırlılıklarla birlikte Türkçe PDF rapora çevirir.</li>
               </ul>
@@ -269,7 +270,8 @@ export default function Home() {
               straight-line (Haversine) distance from each to the nearest mapped swimming facility or park. Users can drop and drag up
               to three hypothetical facilities; the metrics (points within a threshold, mean/median distance, canal-belt subset) are
               recomputed on every move, saved scenarios are compared using identical settings, and the result can be exported as a
-              Turkish planning-brief PDF.
+              Turkish planning-brief PDF. A “what if the canal closes?” scenario turns the mapped canal line into a hypothetical
+              linear park and measures access to it by point-to-line distance.
             </p>
             <p className="mt-3 text-ink-soft">
               It does <strong>not</strong> measure walking distance, represent population, predict drowning risk, or assess land

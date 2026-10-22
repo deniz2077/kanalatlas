@@ -1,0 +1,3 @@
+axe-core 4.14.0 · project desktop · 2026-10-22T21:56:49.409Z
+initial: 0 violations, 34 rules passed
+with scenario: 0 violations, 35 rules passed

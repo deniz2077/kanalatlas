@@ -1,6 +1,6 @@
 # Build status
 
-_Last updated: 23 Oct 2026, ~00:45 Türkiye time (AI session)._
+_Last updated: 23 Oct 2026, ~01:00 Türkiye time (AI session)._
 
 ## Completed components
 
@@ -14,13 +14,16 @@ _Last updated: 23 Oct 2026, ~00:45 Türkiye time (AI session)._
 | Priorities form (local-only, validation, JSON download) | ✅ done, E2E-tested |
 | PDF planning brief (from state, schematic SVG map) | ✅ done, unit- and E2E-tested |
 | Landing / evidence / method / limitations / English summary | ✅ done |
+| Canal corridor → hypothetical linear park (point-to-polyline) | ✅ done, unit- and E2E-tested |
+| Accessibility audit (axe) + keyboard-only journey | ✅ 0 violations; keyboard test passes |
 | Docs (`docs/`), submission drafts (`submission/`) | ✅ drafted |
 | Captioned demo video (silent, automated, real app) | ✅ draft recorded (local file) |
 
 ## Test results (latest run, outputs in `docs/test-output/`)
 
-- Unit (Vitest): **71 passed**
-- E2E (Playwright, production build, desktop + Pixel 7): **4 passed**
+- Unit (Vitest): **77 passed**
+- E2E (Playwright, production build, desktop + Pixel 7): **9 passed, 1 skipped by design** (the keyboard-only journey runs on desktop only); run twice in a row with identical results
+- Accessibility (axe-core 4.14, WCAG 2.0/2.1 A+AA): **0 violations** on desktop and mobile, initial and with a scenario
 - `tsc --noEmit`: no errors · ESLint: no problems · `next build`: success
 
 ## Known issues / unverified
@@ -43,7 +46,7 @@ Local git repo, commits on `main`, author "Deniz Efe Bulut". **Not pushed**: no 
 
 ## Demo video status
 
-Draft at `submission/video/kanalatlas-demo-draft.webm` (≈ 3:25, silent, captions). See `submission/VIDEO_STATUS.md`.
+Draft at `submission/video/kanalatlas-demo-draft.webm` (≈ 3:48, silent, bilingual captions, includes the canal-corridor scenario). See `submission/VIDEO_STATUS.md`.
 
 ## Exact commands to resume
 

@@ -10,7 +10,8 @@ Deniz, this is the honest state of KanalAtlas as of **23 Oct 2026, ~00:50 Türki
 - A/B/C comparison under identical settings; a text-table alternative.
 - Local-only priorities form.
 - PDF planning brief built from the current state (text extracted and checked in tests).
-- 71 unit tests, 4 E2E tests (desktop + mobile, production build), typecheck, lint, build: all passing.
+- “Kanal kapatılırsa ne olur?”: the canal line as a hypothetical linear park (parks within 300 m: 32 → 44 of 72).
+- 77 unit tests; 9 browser tests (desktop + mobile, production build, incl. keyboard-only); axe accessibility audit with 0 WCAG A/AA violations; typecheck, lint, build: all passing.
 
 ### 🟡 Implemented but not fully verified
 - **Touch-drag** of the marker on a real phone (automation could not drive it; please try it yourself).

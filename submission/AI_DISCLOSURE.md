@@ -20,7 +20,7 @@
 - **Research:** read the three starting sources and found two more (a second June 2026 council decision and a local news report), extracted the council PDF text, and wrote the evidence ledger with status labels.
 - **Data:** wrote and ran the one-time Overpass queries, chose the study area based on data availability, and wrote the classification and duplicate-merge logic and the build script.
 - **Code:** wrote essentially all application code (scenario engine, geometry, React UI, Leaflet map, priorities form, PDF report), configuration and scripts.
-- **Tests:** wrote the 71 unit tests (with hand-calculated expected values) and the Playwright E2E tests, ran them, and fixed the failures they revealed.
+- **Tests:** wrote the 77 unit tests (with hand-calculated expected values) the Playwright E2E tests and the axe accessibility audit, ran them, and fixed the failures they revealed.
 - **Design:** chose the visual design, colours, layout and the original SVG illustration.
 - **Writing:** drafted the README, all docs and these submission texts, including placeholders where the student's own experience is required.
 - **Demo video:** wrote a Playwright script that records a captioned walkthrough of the real running app (no voice).

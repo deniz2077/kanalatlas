@@ -5,7 +5,7 @@
  *   npm run proof            # prints to stdout
  *   npm run proof > docs/PROOF_RUN_OUTPUT.md
  */
-import { candidateSites, dataset, evaluationPoints } from "../src/lib/data";
+import { canalCorridor, canalCorridorLengthM, candidateSites, dataset, evaluationPoints } from "../src/lib/data";
 import { formatDelta, formatMeters } from "../src/lib/insights";
 import { activeFacilities, evaluateScenario, suggestSites, type ScenarioResult } from "../src/lib/scenario";
 import type { HypotheticalFacility } from "../src/lib/types";
@@ -58,4 +58,25 @@ evaluationPoints.forEach((p, i) => {
     `| ${p.id} | ${p.nearLabel ?? "—"} | ${formatMeters(base.points[i].before?.distanceM)} | ${formatMeters(a.after?.distanceM)} | ${formatDelta(a.deltaM)} | ${formatMeters(b.after?.distanceM)} | ${formatDelta(b.deltaM)} |`,
   );
 });
+out.push("");
+out.push("## Canal corridor → linear park (parks, core scope, 300 m threshold)");
+out.push("");
+const parkRun = (h: HypotheticalFacility[]) =>
+  evaluateScenario({ points: evaluationPoints, facilities: dataset.facilities, category: "park", scope: "core", hypotheticals: h, thresholdM: 300 });
+const corridor: HypotheticalFacility[] = [
+  { id: "hyp-corridor", lat: 37.011, lon: 35.3, category: "park", label: "Kanal hattı doğrusal parkı", path: canalCorridor },
+];
+const parkBase = parkRun([]);
+const parkCorr = parkRun(corridor);
+const bestPark = suggestSites(evaluationPoints, dataset.facilities, "park", "core", 300, 1, candidateSites)[0];
+const parkBest = parkRun([{ id: "hyp-best", lat: bestPark.lat, lon: bestPark.lon, category: "park", label: "best single park" }]);
+out.push(`Corridor = ${canalCorridor.length} mapped canal sections touching the study box, ${formatMeters(canalCorridorLengthM)} in total. Hypothetical only: closure and land availability are not verified.`);
+out.push("");
+out.push("| Scenario | Points ≤ 300 m | Mean | Median | Points improved | Canal-belt ≤ 300 m |");
+out.push("|---|---|---|---|---|---|");
+for (const [label, r] of [["Baseline (119 core parks)", parkBase], [`Best single new park (${bestPark.lat.toFixed(5)}, ${bestPark.lon.toFixed(5)})`, parkBest], ["Canal corridor as linear park", parkCorr]] as const) {
+  out.push(`| ${label} | ${r.after.withinCount} / ${r.after.pointCount} | ${formatMeters(r.after.meanM)} | ${formatMeters(r.after.medianM)} | ${r.change.pointsImproved} | ${r.canalBelt.after.withinCount} / ${r.canalBelt.after.pointCount} |`);
+}
+out.push("");
+out.push("Note: a 6.8 km linear park is a much larger intervention than one park; the comparison shows reach, not equivalence.");
 console.log(out.join("\n"));

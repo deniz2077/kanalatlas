@@ -79,6 +79,12 @@ d  = 2 · 6,371,008.8 · asin(√1.39843e-8) = 2 · 6,371,008.8 · 0.000118255 �
 
 It is a **screening heuristic on sampled points**. It does not know about land ownership, cost, buildability or demand.
 
+## 7b. Canal corridor as a linear park (parks only)
+
+`canalCorridorPath(canals, bbox)` keeps every mapped canal segment with at least one end inside the study box. Culverts are included, because a decommissioned canal frees its whole route. The result is 10 polylines, 6.82 km in total. A hypothetical facility with a `path` is measured with `distanceToHypothetical`, which is the **point-to-polyline** distance (the shortest distance to any segment, in a local flat projection). Its lat/lon is only a label position. The map draws the “nearest” link to the closest point on the line (`nearestPointOnPolylines`).
+
+Real data (parks, core, 300 m): baseline 32/72 → corridor 44/72 (canal belt 12/27 → 24/27); the best single new park gives 34/72. A linear park is a far larger intervention than one park, so this shows reach, not equivalence. Closure timing and land availability are **not verified**.
+
 ## 8. Comparing locations A and B
 
 Saved scenarios store only their hypothetical coordinates. The comparison table **re-evaluates every saved scenario with the current category, scope and threshold**, so A and B are always compared with one method. “Best” means more points within the threshold, with a lower mean distance breaking ties. That is a ranking rule, not a recommendation.

@@ -7,7 +7,7 @@
  */
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { CANDIDATE_SPACING_M, candidateSites, dataset, evaluationPoints, osmUrl } from "@/lib/data";
+import { CANDIDATE_SPACING_M, canalCorridor, canalCorridorLengthM, candidateSites, dataset, evaluationPoints, osmUrl } from "@/lib/data";
 import { STATUS_HELP, STATUS_LABEL } from "@/lib/evidence";
 import { offsetMeters } from "@/lib/geo";
 import {
@@ -144,6 +144,34 @@ export default function KanalAtlasApp() {
     },
     [visibleHyps.length, studyArea.bbox, active, category],
   );
+
+  const hasCorridor = visibleHyps.some((h) => h.path);
+  const addCorridor = () => {
+    if (visibleHyps.length >= MAX_HYPOTHETICALS) {
+      setMessage({ kind: "error", text: `En fazla ${MAX_HYPOTHETICALS} varsayımsal tesis eklenebilir.` });
+      return;
+    }
+    // Label position: middle vertex of the longest corridor line.
+    const longest = [...canalCorridor].sort((a, b) => b.length - a.length)[0];
+    const mid = longest[Math.floor(longest.length / 2)];
+    const n = nextId.current++;
+    setHypotheticals((hs) => [
+      ...hs,
+      {
+        id: `hyp-${n}`,
+        lat: mid.lat,
+        lon: mid.lon,
+        category: "park",
+        label: `Kanal hattı doğrusal parkı (${formatMeters(canalCorridorLengthM)})`,
+        path: canalCorridor,
+      },
+    ]);
+    setPlacing(false);
+    setMessage({
+      kind: "info",
+      text: "Varsayımsal senaryo: haritalanmış kanal hattı boyunca doğrusal park. Kanalın kapatılacağı veya arazinin kullanılabileceği doğrulanmamıştır.",
+    });
+  };
 
   const moveHypothetical = useCallback(
     (id: string, lat: number, lon: number, final: boolean): boolean => {
@@ -412,6 +440,24 @@ export default function KanalAtlasApp() {
                     En çok fayda sağlayan konuma ekle
                   </button>
                 </div>
+                {category === "park" && (
+                  <div className="mt-3 rounded-lg border border-dashed border-hypo/60 bg-white p-3">
+                    <p className="text-sm font-semibold">Kanal kapatılırsa ne olur?</p>
+                    <p className="mt-1 text-xs text-ink-soft">
+                      Bakanlık, şehir merkezinden geçen açık kanalların devre dışı bırakılacağını duyurdu. Bu koridordaki{" "}
+                      {formatMeters(canalCorridorLengthM)}&apos;lik haritalanmış kanal hattının doğrusal bir parka dönüştüğünü varsayarak
+                      erişimi ölçün. Takvim ve arazi durumu doğrulanmamıştır.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={addCorridor}
+                      disabled={hasCorridor || visibleHyps.length >= MAX_HYPOTHETICALS}
+                      className="mt-2 min-h-11 rounded-lg border border-hypo bg-hypo-soft px-4 text-sm font-semibold text-[#7c2d12] hover:bg-white disabled:opacity-50"
+                    >
+                      Kanal hattını doğrusal parka dönüştür
+                    </button>
+                  </div>
+                )}
                 <p className="mt-2 text-xs text-ink-soft">
                   “En çok fayda”: {candidateSites.length.toLocaleString("tr-TR")} aday konum ({CANDIDATE_SPACING_M} m aralık) taranır; eşik içine en çok
                   örnek nokta katan konum seçilir (eşitlikte ortalama mesafeyi en çok düşüren). Arazi uygunluğunu bilmez.
@@ -435,8 +481,9 @@ export default function KanalAtlasApp() {
                                 {h.label}
                               </p>
                               <p className="mt-0.5 font-mono text-xs text-muted" data-testid="hyp-coords">
-                                {h.lat.toFixed(5)}, {h.lon.toFixed(5)}
-                                {ex?.nearLabel ? ` · ${ex.nearLabel} yakını` : ""}
+                                {h.path
+                                  ? `kanal hattı boyunca · ${h.path.length} kesit`
+                                  : `${h.lat.toFixed(5)}, ${h.lon.toFixed(5)}${ex?.nearLabel ? ` · ${ex.nearLabel} yakını` : ""}`}
                               </p>
                             </div>
                             <button
@@ -448,6 +495,7 @@ export default function KanalAtlasApp() {
                               Kaldır
                             </button>
                           </div>
+                          {!h.path && (
                           <div className="mt-2 flex flex-wrap items-center gap-1" role="group" aria-label={`${h.label} taşı`}>
                             {(
                               [
@@ -479,7 +527,16 @@ export default function KanalAtlasApp() {
                               {movingId === h.id ? "İptal" : "Haritada yeni konum seç"}
                             </button>
                           </div>
-                          {ex && (
+                          )}
+                          {ex && h.path && (
+                            <p className="mt-2 text-xs leading-relaxed text-ink-soft" data-testid="hyp-explanation">
+                              <strong>Neden bu sonuç?</strong> Uzaklık, kanal hattı üzerindeki en yakın noktaya ölçülür. Hat{" "}
+                              {ex.servesPoints.length} örnek noktanın en yakın parkı olur; {ex.newlyWithin} tanesi {formatMeters(thresholdM)}{" "}
+                              eşiğinin içine yeni girer. Doğrusal park tek bir noktadan çok daha büyük bir alandır; tek bir yeni parkla
+                              birebir karşılaştırılmamalıdır.
+                            </p>
+                          )}
+                          {ex && !h.path && (
                             <p className="mt-2 text-xs leading-relaxed text-ink-soft" data-testid="hyp-explanation">
                               <strong>Neden bu sonuç?</strong> {ex.servesPoints.length} örnek noktanın en yakın tesisi olur;{" "}
                               {ex.newlyWithin} tanesi {formatMeters(thresholdM)} eşiğinin içine yeni girer. En yakın mevcut{" "}
@@ -552,7 +609,7 @@ export default function KanalAtlasApp() {
               <p className="mt-1 text-sm text-muted">
                 Her senaryo şu anki ayarlarla ({CATEGORY_LABEL[category]}, {formatMeters(thresholdM)} eşik, {scope === "core" ? "temel veri" : "tüm kayıtlar"}) yeniden hesaplanır; böylece aynı yöntemle karşılaştırılır.
               </p>
-              <div className="mt-3 overflow-x-auto rounded-xl border border-line">
+              <div className="mt-3 overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label="Senaryo karşılaştırma tablosu (kaydırılabilir)">
                 <table className="w-full min-w-[640px] text-left text-sm tabular">
                   <thead className="bg-paper text-xs uppercase tracking-wide text-muted">
                     <tr>
@@ -580,7 +637,7 @@ export default function KanalAtlasApp() {
                         <th scope="row" className="px-3 py-2 font-medium">
                           Senaryo {c.label} {best === c && comparisons.length > 1 && <span className="ml-1 text-xs font-semibold text-hypo">(bu ölçüte göre en iyi)</span>}
                         </th>
-                        <td className="px-3 py-2 font-mono text-xs">{c.hypotheticals.map((h) => `${h.lat.toFixed(4)}, ${h.lon.toFixed(4)}`).join(" · ")}</td>
+                        <td className="px-3 py-2 font-mono text-xs">{c.hypotheticals.map((h) => (h.path ? "kanal hattı (doğrusal park)" : `${h.lat.toFixed(4)}, ${h.lon.toFixed(4)}`)).join(" · ")}</td>
                         <td className="px-3 py-2">
                           {c.result.after.withinCount} / {c.result.after.pointCount}{" "}
                           <span className="text-muted">({c.result.change.withinGained >= 0 ? "+" : ""}{c.result.change.withinGained})</span>
@@ -804,7 +861,7 @@ function TextAlternative({ result, thresholdM, category, scope }: { result: Scen
             <option value="far">En uzak (senaryo sonrası)</option>
           </select>
         </div>
-        <div className="mt-3 max-h-[420px] overflow-auto">
+        <div className="mt-3 max-h-[420px] overflow-auto" tabIndex={0} role="region" aria-label="Örnek nokta sonuç tablosu (kaydırılabilir)">
           <table className="w-full min-w-[720px] text-left text-sm tabular" data-testid="points-table">
             <caption className="sr-only">Örnek noktalar için önce ve sonra en yakın tesis mesafeleri</caption>
             <thead className="sticky top-0 bg-white text-xs text-muted">
@@ -844,7 +901,7 @@ function TextAlternative({ result, thresholdM, category, scope }: { result: Scen
         <summary className="cursor-pointer text-sm font-semibold">
           Haritalanmış {category === "swimming" ? "yüzme tesisleri" : "parklar"} listesi ({catFacilities.length} kayıt, {activeSet.size} tanesi analizde)
         </summary>
-        <div className="mt-3 max-h-[420px] overflow-auto">
+        <div className="mt-3 max-h-[420px] overflow-auto" tabIndex={0} role="region" aria-label="Haritalanmış tesis tablosu (kaydırılabilir)">
           <table className="w-full min-w-[720px] text-left text-sm">
             <caption className="sr-only">Haritalanmış tesisler, doğrulama durumları ve kaynakları</caption>
             <thead className="sticky top-0 bg-white text-xs text-muted">

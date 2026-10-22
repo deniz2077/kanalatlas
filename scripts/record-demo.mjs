@@ -246,6 +246,31 @@ await page.getByText(/Harita yerine tablo/).click();
 await wait(1);
 await caption("Haritayı kullanamayanlar için aynı sonuçlar tablo olarak da var (erişilebilirlik).", "The same results are available as a sortable table for people who cannot use the map.", 6);
 
+// ---------------------------------------------------------------- 3b. canal corridor
+await scrollTo('[data-testid="map"]', 62);
+const parkTab = page.getByText("Park / yeşil alan", { exact: true });
+await moveMouseTo(parkTab);
+await parkTab.click();
+await wait(1.5);
+await caption(
+  "Uzun vadeli soru: Bakanlık şehir merkezindeki açık kanalların kapatılacağını duyurdu. Kanal hattı bir parka dönüşse ne değişir?",
+  "The long-term question: open city canals are to be closed. What if this canal line became a park?",
+  7,
+);
+const corrBtn = page.getByRole("button", { name: "Kanal hattını doğrusal parka dönüştür" });
+await corrBtn.scrollIntoViewIfNeeded();
+await moveMouseTo(corrBtn);
+await corrBtn.click();
+await scrollTo('[data-testid="map"]', 62);
+const nC = await liveNumbers();
+await caption(
+  `Varsayımsal doğrusal park: 300 m içindeki nokta ${nC.before} → ${nC.after} (${nC.gain}). Uzaklık hattın en yakın noktasına ölçülüyor. Kapanma ve arazi durumu doğrulanmadı.`,
+  `Hypothetical linear park along the canal: points within 300 m ${nC.before} → ${nC.after} (${nC.gain}). Distance to the nearest point on the line. Closure and land are not verified.`,
+  10,
+);
+await page.getByText("Yüzme tesisi", { exact: true }).click();
+await wait(1);
+
 // ---------------------------------------------------------------- 4. priorities
 await scrollTo("#oncelikler", 70);
 await caption("Kendi önceliklerinizi ekleyebilirsiniz. Bu bir anket değildir: veriler yalnızca bu tarayıcıda kalır.", "Personal priorities — not a survey. Stored only in this browser, never sent to a server.", 6);

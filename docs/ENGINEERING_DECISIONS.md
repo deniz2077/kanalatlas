@@ -32,4 +32,6 @@ Each entry gives the decision, the alternatives, and the reason. The owner shoul
 
 15. **Basemap: OSM tiles, greyed with CSS.** The first choice, CARTO Positron, now requires an API key and showed “API KEY REQUIRED” tiles; screenshot review caught this. We switched to the OSM Foundation tile server, which is acceptable for low-traffic demos with attribution. For real deployment, configure a provider with a key.
 
-16. **Next.js 15 (not 16).** We used the stable major that `create-next-app@15` installs, to avoid spending deadline time on framework churn.
+16. **Canal corridor modelled as a polyline facility.** The long-term question is what happens if an open canal is decommissioned. Rather than a separate engine, a hypothetical facility can carry a `path`; the same `evaluateScenario` then measures point-to-polyline distance. One engine, one set of tests, and the PDF and comparison table work without special cases.
+
+17. **Next.js 15 (not 16).** We used the stable major that `create-next-app@15` installs, to avoid spending deadline time on framework churn.
