@@ -609,7 +609,7 @@ export default function KanalAtlasApp() {
               <p className="mt-1 text-sm text-muted">
                 Her senaryo şu anki ayarlarla ({CATEGORY_LABEL[category]}, {formatMeters(thresholdM)} eşik, {scope === "core" ? "temel veri" : "tüm kayıtlar"}) yeniden hesaplanır; böylece aynı yöntemle karşılaştırılır.
               </p>
-              <div className="mt-3 overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label="Senaryo karşılaştırma tablosu (kaydırılabilir)">
+              <div className="relative mt-3 overflow-x-auto rounded-xl border border-line" tabIndex={0} role="region" aria-label="Senaryo karşılaştırma tablosu (kaydırılabilir)">
                 <table className="w-full min-w-[640px] text-left text-sm tabular">
                   <thead className="bg-paper text-xs uppercase tracking-wide text-muted">
                     <tr>
@@ -868,7 +868,7 @@ function TextAlternative({ result, thresholdM, category, scope }: { result: Scen
             <option value="far">En uzak (senaryo sonrası)</option>
           </select>
         </div>
-        <div className="mt-3 max-h-[420px] overflow-auto" tabIndex={0} role="region" aria-label="Örnek nokta sonuç tablosu (kaydırılabilir)">
+        <div className="relative mt-3 max-h-[420px] overflow-auto" tabIndex={0} role="region" aria-label="Örnek nokta sonuç tablosu (kaydırılabilir)">
           <table className="w-full min-w-[720px] text-left text-sm tabular" data-testid="points-table">
             <caption className="sr-only">Örnek noktalar için önce ve sonra en yakın tesis mesafeleri</caption>
             <thead className="sticky top-0 bg-white text-xs text-muted">
@@ -908,7 +908,7 @@ function TextAlternative({ result, thresholdM, category, scope }: { result: Scen
         <summary className="cursor-pointer text-sm font-semibold">
           Haritalanmış {category === "swimming" ? "yüzme tesisleri" : "parklar"} listesi ({catFacilities.length} kayıt, {activeSet.size} tanesi analizde)
         </summary>
-        <div className="mt-3 max-h-[420px] overflow-auto" tabIndex={0} role="region" aria-label="Haritalanmış tesis tablosu (kaydırılabilir)">
+        <div className="relative mt-3 max-h-[420px] overflow-auto" tabIndex={0} role="region" aria-label="Haritalanmış tesis tablosu (kaydırılabilir)">
           <table className="w-full min-w-[720px] text-left text-sm">
             <caption className="sr-only">Haritalanmış tesisler, doğrulama durumları ve kaynakları</caption>
             <thead className="sticky top-0 bg-white text-xs text-muted">

@@ -10,7 +10,7 @@
 
 **4. Things that look fine in code can be broken on screen.** The first basemap provider began requiring an API key, and the tiles showed “API KEY REQUIRED”. Tests passed because they checked for map elements, not pixels. Reviewing real screenshots caught it, and we now also test that tile images actually load.
 
-**5. Mobile interaction.** Dragging a marker by touch could not be reliably automated in an emulated phone (the gesture panned the map). Rather than claim it works, we added a tap-to-move button and 100 m arrow buttons, which we could verify, and which also help keyboard users.
+**5. Mobile interaction.** Our first automated touch drags panned the map instead of moving the marker. Rather than claim it worked, we added tap-to-move and 100 m arrow buttons, which also help keyboard users. Then we read Leaflet's source and found that on touch devices it listens for native touch events, not pointer events. A test that sends real touch events now proves the drag works. Running the tests in Safari's engine (WebKit) also caught a bug where the page scrolled sideways on iPhone after saving a scenario: a hidden table header escaped its scroll box.
 
 **6. Turkish in PDFs.** Many PDF libraries' default fonts cannot draw ı, ğ, ş, İ. We used pdfmake with Roboto, and discovered by rendering the PDF that one symbol (→) was missing, so we removed it from the report text.
 

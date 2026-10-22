@@ -188,3 +188,38 @@ test("canal corridor → linear park scenario (parks)", async ({ page }) => {
   await page.waitForTimeout(500);
   await page.screenshot({ path: `${shotDir}/${test.info().project.name}-06-canal-corridor-park.png` });
 });
+
+test("touch drag moves the hypothetical facility (native TouchEvents)", async ({ page }, testInfo) => {
+  // Leaflet uses native touch events on touch devices (iOS Safari, Android Chrome).
+  // Playwright cannot perform a touch drag, so real TouchEvents are dispatched on the
+  // marker element; WebKit on macOS cannot construct Touch objects, so Chromium only.
+  test.skip(testInfo.project.name !== "mobile", "needs a touch-enabled Chromium profile");
+  await page.goto("./");
+  const add = page.getByRole("button", { name: "En çok fayda sağlayan konuma ekle" });
+  await add.focus();
+  await page.keyboard.press("Enter");
+  const marker = page.locator(".ka-marker--hypo").first();
+  await marker.scrollIntoViewIfNeeded();
+  const before = await headline(page).innerText();
+  const c0 = await coords(page).innerText();
+  await page.evaluate(async () => {
+    const icon = document.querySelector(".ka-marker--hypo")!.closest(".leaflet-marker-icon") as HTMLElement;
+    const r = icon.getBoundingClientRect();
+    const x = r.left + r.width / 2;
+    const y = r.top + r.height / 2;
+    const touch = (cx: number, cy: number) =>
+      new Touch({ identifier: 1, target: icon, clientX: cx, clientY: cy, pageX: cx + scrollX, pageY: cy + scrollY, radiusX: 2, radiusY: 2, force: 0.5 });
+    const fire = (type: string, t: Touch, active: boolean) =>
+      icon.dispatchEvent(
+        new TouchEvent(type, { bubbles: true, cancelable: true, touches: active ? [t] : [], targetTouches: active ? [t] : [], changedTouches: [t] }),
+      );
+    fire("touchstart", touch(x, y), true);
+    for (let i = 1; i <= 15; i++) {
+      fire("touchmove", touch(x - i * 8, y + i * 2), true);
+      await new Promise((res) => setTimeout(res, 16));
+    }
+    fire("touchend", touch(x - 120, y + 30), false);
+  });
+  await expect(coords(page)).not.toHaveText(c0);
+  await expect(headline(page)).not.toHaveText(before);
+});

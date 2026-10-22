@@ -47,7 +47,9 @@ A selection of hand-calculated cases (expected values are derived in the test co
 | Corridor clipping to study box | 4-vertex line, ≈ 3,552 m | passes |
 | PDF for two locations | each PDF contains its own coordinates and “X / 72” value; not the other's | passes (real PDFs rendered and parsed) |
 
-### Browser E2E: 9 passed, 1 skipped by design (`docs/test-output/e2e-tests.txt`)
+### Browser E2E: 14 passed, 4 skipped by design (`docs/test-output/e2e-tests.txt`)
+
+Three projects: Desktop Chrome (1440×1000), Pixel 7 (Android Chromium, touch) and **iPhone 15 Pro (WebKit, the Safari engine)**. Skips: the keyboard-only journey runs only on desktop; the touch-drag test runs only in touch-enabled Chromium (WebKit on macOS cannot construct `Touch` objects).
 
 Playwright runs against the **production build** (`next start`), in Desktop Chrome (1440×1000) and Pixel 7 (mobile) projects:
 
@@ -68,7 +70,10 @@ Playwright runs against the **production build** (`next start`), in Desktop Chro
 15. **Keyboard-only** (desktop): the skip link is the first tab stop; add, nudge, save, switch category with arrow keys and export the PDF, all without a mouse.
 16. **axe-core audit** (WCAG 2.0/2.1 A + AA): 0 violations, initial and with a scenario, desktop and mobile (`docs/test-output/a11y-desktop.txt`, `a11y-mobile.txt`). The first run found one serious issue (scrollable tables not keyboard-focusable), which was fixed.
 
-The whole E2E suite was run twice in a row with identical results (no flakiness observed). It also passes **against the static export** served under `/kanalatlas/` (the GitHub Pages layout): 9 passed, 1 skipped (`npm run build:static && npm run e2e:static`).
+17. **Touch drag** (Pixel 7): real `TouchEvent`s (touchstart → 15 × touchmove → touchend) are dispatched on the marker. Leaflet's native touch handler moves it, and the coordinates and headline change.
+18. **iPhone/WebKit run** found a real bug: after saving a scenario the page scrolled sideways by 238 px. A visually hidden, absolutely positioned table header escaped its non-positioned scroll container. It was fixed by making scroll containers `relative`, and the no-horizontal-scroll check now passes in WebKit too.
+
+The whole E2E suite was run twice in a row with identical results (no flakiness observed). It also passes **against the static export** served under `/kanalatlas/` (the GitHub Pages layout): 14 passed, 4 skipped (`npm run build:static && npm run e2e:static`).
 
 **CI simulation:** in a fresh `git clone` of the repo, `npm ci` → `npm test` (77 passed) → `tsc --noEmit` → static export succeeded. These are the same steps as `.github/workflows/pages.yml`, which has not run on GitHub yet because the repo does not exist.
 
@@ -134,7 +139,7 @@ Captured by the E2E run in `docs/screenshots/`:
 
 | Item | Status |
 |---|---|
-| Touch **drag** of the hypothetical marker on real phones | **Not verified.** An iOS Simulator Safari test was attempted but needs the owner's permission for simulator access. In Chrome mobile emulation, automated touch gestures panned the map instead of dragging the marker. Tap-to-move and the arrow buttons are verified instead. The owner should test drag on a real phone. |
+| Touch **drag** on physical phones | Verified in emulation with native TouchEvents (the Leaflet code path phones use). Not tested on a physical device; the iOS Simulator test needs the owner's permission. In Chrome mobile emulation, automated touch gestures panned the map instead of dragging the marker. Tap-to-move and the arrow buttons are verified instead. The owner should test drag on a real phone. |
 | Basemap tiles | Depend on tile.openstreetmap.org being reachable, and should respect its usage policy at scale. |
 | Deployment | **Prepared, not live**: GitHub Pages workflow and a tested static build; needs the owner's repo. |
 | GitHub publication | **Not done**: no GitHub credentials. See the same file. |

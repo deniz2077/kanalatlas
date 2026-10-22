@@ -17,6 +17,7 @@ It links a documented local safety concern (canal drowning, named in a June 2026
 - Mobile viewport: full journey passes; no horizontal scroll.
 - No page or console errors during the journey.
 - Canal corridor as a hypothetical linear park (parks within 300 m: 32 → 44 of 72); the PDF contains the corridor scenario.
+- Runs in Desktop Chrome, Android Chromium and the iPhone Safari engine (WebKit); touch-drag of the marker verified with native TouchEvents.
 - Keyboard-only journey passes; axe-core finds 0 WCAG 2.1 A/AA violations (desktop and mobile).
 
 ## Technical evidence
@@ -32,7 +33,7 @@ Three verified official sources (two council decisions of 12.06.2026 and the mun
 1. No personal observation or community input (owner must add genuine material).
 2. Straight-line distance only; one study area; no population weighting.
 3. Facility operating status unverified; the baseline is sensitive to data scope (13 vs 44).
-4. Touch-drag unverified on real devices; no screen-reader test.
+4. Touch-drag verified in emulation (native TouchEvents) but not on a physical device; no screen-reader test.
 5. Silent demo video (captions only).
 
 ## Actual submission readiness

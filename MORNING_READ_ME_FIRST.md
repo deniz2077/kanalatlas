@@ -11,10 +11,10 @@ Deniz, this is the honest state of KanalAtlas as of **23 Oct 2026, ~00:50 Türki
 - Local-only priorities form.
 - PDF planning brief built from the current state (text extracted and checked in tests).
 - “Kanal kapatılırsa ne olur?”: the canal line as a hypothetical linear park (parks within 300 m: 32 → 44 of 72).
-- 77 unit tests; 9 browser tests (desktop + mobile, production build, incl. keyboard-only); axe accessibility audit with 0 WCAG A/AA violations; typecheck, lint, build: all passing.
+- 77 unit tests; 14 browser tests across Desktop Chrome, Android Chromium and the iPhone Safari engine (WebKit), incl. keyboard-only and touch-drag; axe accessibility audit with 0 WCAG A/AA violations; typecheck, lint, build: all passing.
 
 ### 🟡 Implemented but not fully verified
-- **Touch-drag** of the marker on a real phone (automation could not drive it; please try it yourself).
+- **Touch-drag on a physical phone.** It is verified with real TouchEvents in mobile Chromium (the same Leaflet code path), but not on a physical device; please try it.
 - Screen-reader experience (semantics and labels are in place, but not tested with VoiceOver).
 - Demo video: a silent captioned draft exists; it has not been reviewed by you or narrated.
 
@@ -25,7 +25,7 @@ Deniz, this is the honest state of KanalAtlas as of **23 Oct 2026, ~00:50 Türki
 ### ⛔ Blocked (needs your accounts or approval)
 - **Public GitHub repository**: no GitHub credentials on this machine.
 - **Live deployment**: prepared (GitHub Pages workflow, tested static build); needs the repo to exist.
-- **Real touch-drag test in the iOS Simulator**: Xcode is installed and the simulator booted, but Claude was not granted access to the device. Open the simulator panel and click “Let Claude use it” if you want this verified, or just try dragging on your own phone.
+- **Optional iOS Simulator check**: Claude was not granted simulator access. Touch-drag is already verified in emulation, so this is optional.
 
 ## B. How to open the project
 
@@ -52,7 +52,7 @@ The repo already contains `.github/workflows/pages.yml`. After pushing:
 2. **Actions** tab → open “Test and deploy to GitHub Pages” → *Run workflow* (or push any commit). It runs the 77 unit tests and the typecheck, builds the static site and deploys it.
 3. Your URL will be `https://<YOUR-USERNAME>.github.io/kanalatlas/`.
 
-This exact static build was tested locally under `/kanalatlas/`: all 9 browser tests pass (`npm run build:static && npm run e2e:static`). The CI steps were also run in a fresh clone (`npm ci`, tests, typecheck, static build) and succeeded. The workflow itself has **not** run on GitHub yet, because no repo exists.
+This exact static build was tested locally under `/kanalatlas/`: all 14 browser tests pass (`npm run build:static && npm run e2e:static`). The CI steps were also run in a fresh clone (`npm ci`, tests, typecheck, static build) and succeeded. The workflow itself has **not** run on GitHub yet, because no repo exists.
 
 ### Or deploy to Vercel (≈ 5 min, free tier)
 Easiest: https://vercel.com/new → “Import Git Repository” → choose `kanalatlas` → Framework: Next.js (auto-detected) → Deploy. No environment variables are needed.

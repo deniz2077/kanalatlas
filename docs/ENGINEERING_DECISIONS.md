@@ -22,7 +22,7 @@ Each entry gives the decision, the alternatives, and the reason. The owner shoul
 
 10. **Suggestions screen a 100 m candidate grid.** The first version used the 72 sample points as candidates, and a hand-placed location beat the “best” one during E2E testing. The finer grid (1,456 candidates, about 13 ms) fixed that, and the method is described in the UI.
 
-11. **Tap-to-move in addition to dragging.** In mobile emulation, Leaflet marker dragging could not be driven by automated touch events: the gesture panned the map. Rather than claim untested touch-drag, we added a “Haritada yeni konum seç” (pick new location on map) button plus 100 m arrow buttons. These were verified on a mobile viewport and are also keyboard-accessible.
+11. **Tap-to-move in addition to dragging.** Early automated touch gestures (CDP and synthetic PointerEvents) panned the map instead of dragging the marker. Reading Leaflet's source explained why: on touch-capable browsers Leaflet listens for native TouchEvents, not PointerEvents. A test that dispatches real TouchEvents on the marker now proves touch-drag works (mobile Chromium). Rather than claim untested touch-drag, we added a “Haritada yeni konum seç” (pick new location on map) button plus 100 m arrow buttons. These were verified on a mobile viewport and are also keyboard-accessible.
 
 12. **Local-only priorities.** No authorised backend credentials existed, and collecting community data needs consent, moderation and a privacy notice. The form stores data only in localStorage and labels it “personal input, not a survey”.
 

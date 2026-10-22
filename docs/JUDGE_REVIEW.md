@@ -28,7 +28,7 @@ Written by the AI assistant after building and testing the prototype, to find we
 - “Straight-line distance across a canal and a railway isn't access.” True, and acknowledged. Network distance is the obvious next step.
 - “A 500 m grid of 72 points is coarse.” It is a deliberate choice for auditability; the spacing is a single constant.
 - “Centroid distance to large parks overestimates.” Documented.
-- Touch-drag of the marker is not verified on a real device (tap-to-move is).
+- Touch-drag is verified in emulation with native TouchEvents, but not on a physical device. Tap-to-move is the fallback.
 - No deployment URL yet, so judges must run it locally unless the owner deploys.
 
 ## Creativity (15%)

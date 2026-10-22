@@ -1,22 +1,33 @@
 
-Running 10 tests using 3 workers
+Running 18 tests using 3 workers
 
-axe-core 4.14.0 · project desktop · 2026-10-22T22:09:57.297Z
+axe-core 4.14.0 · project mobile · 2026-10-22T22:14:41.196Z
 initial: 0 violations, 34 rules passed
 with scenario: 0 violations, 35 rules passed
-  ✓   3 [desktop] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (2.8s)
-axe-core 4.14.0 · project mobile · 2026-10-22T22:09:58.400Z
+  ✓   2 [mobile] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (3.1s)
+  -   4 [mobile] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse
+axe-core 4.14.0 · project desktop · 2026-10-22T22:14:41.335Z
 initial: 0 violations, 34 rules passed
 with scenario: 0 violations, 35 rules passed
-  ✓   2 [mobile] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (4.0s)
-  -   5 [mobile] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse
-  ✓   4 [desktop] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse (1.5s)
-  ✓   1 [desktop] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (5.0s)
-  ✓   7 [desktop] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (464ms)
-  ✓   8 [desktop] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (2.1s)
-  ✓   6 [mobile] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (10.0s)
-  ✓   9 [mobile] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (410ms)
-  ✓  10 [mobile] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (2.2s)
+  ✓   3 [desktop] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (3.2s)
+  ✓   6 [desktop] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse (1.7s)
+  ✓   1 [desktop] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (5.9s)
+  ✓   8 [desktop] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (816ms)
+  ✓   5 [mobile] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (5.5s)
+  ✓   9 [desktop] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (2.4s)
+  -  11 [desktop] › e2e/journey.spec.ts:192:5 › touch drag moves the hypothetical facility (native TouchEvents)
+  ✓  10 [mobile] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (782ms)
+axe-core 4.14.0 · project mobile-safari · 2026-10-22T22:14:49.532Z
+initial: 0 violations, 33 rules passed
+with scenario: 0 violations, 35 rules passed
+  ✓   7 [mobile-safari] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (5.3s)
+  -  14 [mobile-safari] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse
+  ✓  12 [mobile] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (2.7s)
+  ✓  15 [mobile] › e2e/journey.spec.ts:192:5 › touch drag moves the hypothetical facility (native TouchEvents) (1.6s)
+  ✓  13 [mobile-safari] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (6.6s)
+  ✓  16 [mobile-safari] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (1.7s)
+  ✓  17 [mobile-safari] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (4.4s)
+  -  18 [mobile-safari] › e2e/journey.spec.ts:192:5 › touch drag moves the hypothetical facility (native TouchEvents)
 
-  1 skipped
-  9 passed (17.8s)
+  4 skipped
+  14 passed (24.3s)

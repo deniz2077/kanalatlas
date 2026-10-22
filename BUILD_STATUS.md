@@ -22,13 +22,13 @@ _Last updated: 23 Oct 2026, ~01:00 Türkiye time (AI session)._
 ## Test results (latest run, outputs in `docs/test-output/`)
 
 - Unit (Vitest): **77 passed**
-- E2E (Playwright, production build, desktop + Pixel 7): **9 passed, 1 skipped by design** (the keyboard-only journey runs on desktop only); run twice in a row with identical results
+- E2E (Playwright, production build; Desktop Chrome, Pixel 7 Chromium, iPhone 15 Pro WebKit/Safari engine): **14 passed, 4 skipped by design** (the keyboard journey is desktop-only; the touch-drag test needs touch-enabled Chromium). Run twice with identical results, and again against the static export.
 - Accessibility (axe-core 4.14, WCAG 2.0/2.1 A+AA): **0 violations** on desktop and mobile, initial and with a scenario
 - `tsc --noEmit`: no errors · ESLint: no problems · `next build`: success
 
 ## Known issues / unverified
 
-- Touch-drag of the marker on real phones: **unverified** (tap-to-move and arrows verified). An iOS Simulator Safari test was attempted, but simulator access needs the owner's approval in the app.
+- Touch-drag: Touch-drag is verified with native TouchEvents dispatched on the marker in mobile Chromium, which is the same Leaflet touch handler a phone uses. A physical-device check is still recommended. The iOS Simulator test needs the owner's approval. A WebKit-on-iPhone-profile run found and fixed a 238 px horizontal-overflow bug.
 - Screen-reader testing with real assistive technology: not done.
 - Facility operating status: unverified by design (MAPPED).
 

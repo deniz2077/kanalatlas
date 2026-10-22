@@ -39,7 +39,7 @@ test("no WCAG A/AA violations (initial and with scenario)", async ({ page }, tes
 });
 
 test("keyboard only: add, move, save and export without a mouse", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name === "mobile", "keyboard journey is a desktop concern");
+  test.skip(!!testInfo.project.use.hasTouch, "keyboard journey is a desktop concern");
   await page.goto("./");
   // Skip link is the first tab stop.
   await page.keyboard.press("Tab");

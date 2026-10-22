@@ -47,7 +47,7 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 
 - **Data pipeline:** classifies OSM records (core / extended / excluded), merges duplicate records within 30 m while keeping every source ID, and excludes pools tagged as private.
 - **Scenario engine:** pure functions, separate from the UI. Haversine distance (R = 6,371,008.8 m); a hypothetical facility counts only if strictly closer; undefined baselines never produce fake percentages.
-- **Testing:** 77 unit tests with hand-calculated expected values (for example, a three-point line where moving the pool from 2,200 m to 1,500 m changes the results from 2/3 to 3/3 within range). The tests render real PDFs and read them back to check the numbers. Playwright tests run the full journey on desktop and mobile against the production build, including downloading and parsing the PDF.
+- **Testing:** 77 unit tests with hand-calculated expected values (for example, a three-point line where moving the pool from 2,200 m to 1,500 m changes the results from 2/3 to 3/3 within range). The tests render real PDFs and read them back to check the numbers. Playwright tests run the full journey in Desktop Chrome, Android Chromium and Safari's WebKit engine against the production build, including downloading and parsing the PDF and a real touch-drag test.
 - **Accessibility:** zero axe-core WCAG 2.1 A/AA violations in automated audits (desktop and mobile, with and without a scenario); a tested keyboard-only journey; Turkish-first; keyboard alternatives for every map action; a full text table instead of the map, labelled forms, visible focus, live-region announcements, and no meaning conveyed by colour alone.
 
 [STUDENT MUST CONFIRM TECHNICAL CONTRIBUTIONS — describe what you personally designed, decided, reviewed, tested or changed. The project was built with substantial AI coding assistance; see the AI disclosure.]
@@ -57,7 +57,7 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 - **Honest data vs. impressive data.** Most mapped pools are unnamed polygons inside apartment complexes. Counting them makes access look three times better, so we made the choice visible instead of hiding it.
 - **A fair metric.** Real walking routes were out of reach in the time available. We used straight-line distance and say so on every screen and in the PDF.
 - **Testing our own claims.** In browser testing, a location dragged by hand beat our “best location” button. We fixed the algorithm to screen a 100 m candidate grid.
-- **Mobile.** Touch-dragging a map marker couldn't be verified in automated tests, so we added tap-to-move and arrow buttons that we could verify.
+- **Mobile.** Our first automated touch gestures panned the map instead of moving the marker. Reading Leaflet's source showed it uses native touch events on phones, so we rewrote the test to send real touch events, and it passed. We also added tap-to-move and arrow buttons. Testing in Safari's engine caught a layout bug that made the page scroll sideways on iPhone, which we fixed.
 
 ## Accomplishments that we're proud of
 

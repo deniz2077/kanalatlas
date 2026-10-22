@@ -15,5 +15,5 @@ None of these blocked the build: a safe default was chosen for each. Please revi
 | 9 | **Hosting** | A live URL helps judges | GitHub Pages workflow prepared and tested locally; Vercel also possible | See `MORNING_READ_ME_FIRST.md` §B |
 | 10 | **Video: your voice or captions only?** | Presentation score | Silent captioned draft recorded | Record a voice-over (`submission/DEMO_SCRIPT.md`) |
 | 11 | **Basemap: OSM Foundation tiles** | Their usage policy is for light use | Fine for a hackathon demo | For heavy traffic, use a provider with a key |
-| 12 | **Touch-drag on your real phone works?** | Not verifiable in automation | Tap-to-move added as a verified alternative | Report the result in `BUILD_STATUS.md` |
+| 12 | **Touch-drag on your real phone works?** | Physical devices can differ from emulation | Verified with native TouchEvents in mobile Chromium; tap-to-move and arrows as alternatives | Report the result in `BUILD_STATUS.md` |
 | 13 | **Allow Claude to use the iOS Simulator?** | Lets touch-drag be verified in mobile Safari | Not granted (a request was pending while you were away) | Click “Let Claude use it” in the simulator panel, then ask for the test |
