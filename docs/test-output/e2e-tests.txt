@@ -1,22 +1,22 @@
 
 Running 10 tests using 3 workers
 
-axe-core 4.14.0 · project desktop · 2026-10-22T21:51:46.969Z
+axe-core 4.14.0 · project desktop · 2026-10-22T22:03:08.153Z
 initial: 0 violations, 34 rules passed
 with scenario: 0 violations, 35 rules passed
-  ✓   3 [desktop] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (2.7s)
-axe-core 4.14.0 · project mobile · 2026-10-22T21:51:48.041Z
+  ✓   2 [desktop] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (2.9s)
+axe-core 4.14.0 · project mobile · 2026-10-22T22:03:09.429Z
 initial: 0 violations, 34 rules passed
 with scenario: 0 violations, 35 rules passed
-  ✓   1 [mobile] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (3.8s)
+  ✓   3 [mobile] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (4.2s)
   -   5 [mobile] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse
-  ✓   4 [desktop] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse (1.6s)
-  ✓   2 [desktop] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (5.0s)
-  ✓   7 [desktop] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (505ms)
-  ✓   8 [desktop] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (1.2s)
+  ✓   4 [desktop] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse (1.7s)
+  ✓   1 [desktop] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (5.6s)
+  ✓   7 [desktop] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (527ms)
+  ✓   8 [desktop] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (2.1s)
   ✓   6 [mobile] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (10.1s)
-  ✓   9 [mobile] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (418ms)
-  ✓  10 [mobile] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (1.1s)
+  ✓   9 [mobile] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (419ms)
+  ✓  10 [mobile] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (2.2s)
 
   1 skipped
-  9 passed (16.8s)
+  9 passed (18.3s)
