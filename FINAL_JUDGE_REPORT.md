@@ -34,7 +34,7 @@ Three verified official sources (two council decisions of 12.06.2026 and the mun
 2. Straight-line distance only; one study area; no population weighting.
 3. Facility operating status unverified; the baseline is sensitive to data scope (13 vs 44).
 4. Touch-drag verified in emulation (native TouchEvents) but not on a physical device; no screen-reader test.
-5. Silent demo video (captions only).
+5. The demo voice-over is computer-generated (disclosed), not the author's own voice.
 
 ## Actual submission readiness
 
@@ -42,13 +42,13 @@ Three verified official sources (two council decisions of 12.06.2026 and the mun
 |---|---|
 | Working project | **Yes** (locally) |
 | Name / pitch / description / tech / challenges / next steps | **Drafts ready**; placeholders need the owner |
-| 2–6 min demo video | **Draft file exists** (≈ 3:48); not uploaded; no narration |
+| 2–6 min demo video | **Yes**: ≈ 4:44, narrated (Kokoro TTS, disclosed) with subtitles; link in `submission/VIDEO_STATUS.md` |
 | Public repository | **Yes**: https://github.com/deniz2077/kanalatlas |
-| AI disclosure | **Draft**; the owner must correct it |
-| Live URL (optional) | **Yes**: https://deniz2077.github.io/kanalatlas/, with 14/17 browser tests passing against it |
+| AI disclosure | **Yes**: short, based on the owner's answers (`submission/AI_DISCLOSURE.md`) |
+| Live URL (optional) | **Yes**: https://deniz2077.github.io/kanalatlas/, with 17/17 browser tests passing against it |
 
-**Verdict:** The software is ready to demonstrate. The **submission is not yet complete**: it needs the repo link, an uploaded video, the owner's genuine input, and a corrected disclosure. All of these are owner actions and are listed in `MORNING_READ_ME_FIRST.md`.
+**Verdict:** The software is deployed and tested, and the submission materials are complete. What remains is the owner's own review, any genuine personal observation, and the Devpost submission itself (`MORNING_READ_ME_FIRST.md`).
 
 ## Outstanding actions requiring the owner
 
-Publish the repo → deploy and test the URL → review the code and do the hand calculation → add a genuine observation → fill the placeholders → correct the AI disclosure → narrate or record the video and upload it → submit on Devpost.
+Watch the video → try the live site on a phone → review the code and do the hand calculation → add a genuine observation if you have one → confirm the AI disclosure → submit on Devpost.

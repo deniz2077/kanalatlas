@@ -2,7 +2,7 @@
 
 Record the **real running app** (local `npm run dev` or the deployed URL). Narrate in your own voice (Turkish or English; English subtitles help international judges). Every sentence below describes behaviour that has been tested. If something behaves differently when you record, describe what actually happens.
 
-An automated, captioned, silent draft already exists: `submission/video/kanalatlas-demo-draft.webm` (about 3:48, recorded by `npm run demo:record`). You can (a) add your voice-over to it, or (b) use this script to record yourself live, which is recommended.
+A finished, narrated version already exists: `submission/video/kanalatlas-demo.mp4` (≈ 4:44, recorded by `npm run demo:record`, Kokoro voice-over). This script is for re-recording live in your own voice if you prefer; the UI labels below may be older than the current app (the main button is now “Find a promising location”).
 
 ---
 

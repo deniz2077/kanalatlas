@@ -429,8 +429,13 @@ for (const { samples, t } of cues) {
   for (let i = 0; i < samples.length && start + i < mix.length; i++) mix[start + i] = samples[i];
 }
 const audioPath = path.join(tmpDir, "narration.raw");
+fs.writeFileSync(path.join(tmpDir, "timeline.json"), JSON.stringify({ endTime, frames: frames.map((f) => ({ file: f.file, t: f.ts - t0f })) }));
 fs.writeFileSync(audioPath, Buffer.from(mix.buffer));
 const dest = path.join(outDir, "kanalatlas-demo.mp4");
 console.log(`recorded ~${seconds}s, ${frames.length} frames, ${cues.length} narration lines; encoding…`);
 const info = await encodeMp4({ framesDir, frames: frames.map((f) => ({ file: f.file, t: f.ts - t0f })), outPath: dest, endTime, audioPath });
 console.log(`→ ${path.relative(root, dest)} ${info.width}×${info.height}, ${info.seconds.toFixed(1)} s, ${(info.bytes / 1e6).toFixed(1)} MB`);
+// Second, smaller copy for browser uploads that cap file size (same frames and narration).
+const small = path.join(outDir, "kanalatlas-demo-upload.mp4");
+const sInfo = await encodeMp4({ framesDir, frames: frames.map((f) => ({ file: f.file, t: f.ts - t0f })), outPath: small, endTime, audioPath, fps: 24, bitrate: 160_000, audioBitrate: 48_000, keyFrameSeconds: 10 });
+console.log(`→ ${path.relative(root, small)} ${(sInfo.bytes / 1e6).toFixed(1)} MB`);

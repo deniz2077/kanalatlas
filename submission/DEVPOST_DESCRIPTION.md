@@ -27,16 +27,16 @@ We deliberately do **not** quote drowning totals, because we could not confirm o
 
 ## What it does
 
-KanalAtlas is a working geospatial decision-support prototype for one real study area: the open canal corridor in central Seyhan, Adana (about 5.5 × 2.6 km).
+KanalAtlas is a working geospatial decision-support prototype for one real study area: the open canal corridor in central Seyhan, Adana (about 5.5 × 2.6 km). The page asks one question (“Where would a new swimming pool make the biggest difference in Adana?”) and guides you through three steps: explore the baseline, test a solution, compare and share.
 
 1. **Shows real data:** canals, swimming facilities and parks from OpenStreetMap, each with a link to its source and an honest status label. Nothing is called “open” or “public” without evidence; mapped facilities are labelled *MAPPED*.
 2. **Measures access:** 72 sample points on a 500 m grid. For each one, KanalAtlas calculates the straight-line distance to the nearest mapped facility of the chosen type. Baseline: **13 of 72** sample points are within 1 km of a named or swimming-tagged pool.
-3. **Tests “what if?”:** you place a hypothetical pool or park and **drag it**. Every point, line and number is recalculated live from coordinates. A “best location” button screens 1,456 candidate sites. A “why this result?” note explains the outcome (how many points it serves, how far it is from existing facilities).
+3. **Tests “what if?”:** you place a hypothetical pool or park and **drag it**. Every point, line and number is recalculated live from coordinates. A “Find a promising location” button screens 1,456 candidate sites and places the best one for you. Results appear as BEFORE / AFTER / CHANGE tiles computed from the coordinates. A “why this result?” note explains the outcome (how many points it serves, how far it is from existing facilities).
 4. **Compares fairly:** save locations A, B and C; they are re-evaluated with identical settings side by side. With real data, a pool in the east of the corridor reaches **27/72** points, while the same pool in the west reaches **21/72**.
 5. **Asks “what if the canal closes?”** In the park view, one button turns the 6.82 km mapped canal line into a hypothetical linear park, with distance measured to the nearest point on the line. Park access within 300 m goes from **32/72 to 44/72** points (canal-side points: 12/27 → 24/27), while the best single new park reaches only 34/72. It is clearly labelled as an assumption: we do not claim the canal will close or that the land is available.
 6. **Is honest about uncertainty:** a data-scope switch shows that counting unnamed (probably private) pools would raise the baseline from 13 to 44. How much you trust the data is itself a finding.
-7. **Collects your priorities privately:** “Mahallen İçin Ne Önemli?” stores choices only in your browser. It is clearly labelled as personal input, not a survey.
-8. **Creates a planning brief:** a Turkish PDF with the settings, sources, before/after tables, a map drawn from the same coordinates, the A/B comparison, method, limitations and questions to ask local planners.
+7. **Collects your priorities privately:** “What matters in your neighbourhood?” stores choices only in your browser. It is clearly labelled as personal input, not a survey.
+8. **Creates a planning brief:** a PDF in the interface language (English or Turkish) with the settings, sources, before/after tables, a map drawn from the same coordinates, the A/B comparison, method, limitations and questions to ask local planners.
 
 **What can it tell you that a normal map can't?** A map shows where pools are. KanalAtlas tells you how many places in a neighbourhood are far from one, where one new facility would close the biggest gap, how that answer changes if you move it, and how confident you can be in the data.
 
@@ -56,7 +56,7 @@ I chose the problem, wrote the project brief and its honesty rules, found the st
 
 - **Honest data vs. impressive data.** Most mapped pools are unnamed polygons inside apartment complexes. Counting them makes access look three times better, so we made the choice visible instead of hiding it.
 - **A fair metric.** Real walking routes were out of reach in the time available. We used straight-line distance and say so on every screen and in the PDF.
-- **Testing our own claims.** In browser testing, a location dragged by hand beat our “best location” button. We fixed the algorithm to screen a 100 m candidate grid.
+- **Testing our own claims.** In browser testing, a location dragged by hand beat our “Find a promising location” button. We fixed the algorithm to screen a 100 m candidate grid.
 - **Mobile.** Our first automated touch gestures panned the map instead of moving the marker. Reading Leaflet's source showed it uses native touch events on phones, so we rewrote the test to send real touch events, and it passed. We also added tap-to-move and arrow buttons. Testing in Safari's engine caught a layout bug that made the page scroll sideways on iPhone, which we fixed.
 
 ## Accomplishments that we're proud of
@@ -67,7 +67,7 @@ I chose the problem, wrote the project brief and its honesty rules, found the st
 
 ## What we learned
 
-Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: our own browser test found a location that beat our “best location” button, which made us improve the algorithm.
+Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: our own browser test found a location that beat our “Find a promising location” button, which made us improve the algorithm.
 
 ## What's next for KanalAtlas
 
@@ -79,7 +79,7 @@ Straight-line distance is not walking distance. Sample points are not people (no
 
 ## AI disclosure
 
-The idea, problem, sources, design decisions and testing are mine. The code was written with an AI coding assistant (Claude Code). No data or results were AI-generated: every fact comes from the cited sources and OpenStreetMap.
+The idea, problem, sources, design decisions and testing are mine. The code was written with an AI coding assistant (Claude Code), and the demo video's voice-over is computer-generated (Kokoro text-to-speech). No data or results were AI-generated: every fact comes from the cited sources and OpenStreetMap.
 
 ## Sources
 

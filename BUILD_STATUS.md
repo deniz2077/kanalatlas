@@ -17,7 +17,7 @@ _Last updated: 23 Oct 2026, ~01:00 Türkiye time (AI session)._
 | Canal corridor → hypothetical linear park (point-to-polyline) | ✅ done, unit- and E2E-tested |
 | Accessibility audit (axe) + keyboard-only journey | ✅ 0 violations; keyboard test passes |
 | Docs (`docs/`), submission drafts (`submission/`) | ✅ drafted |
-| Captioned demo video (silent, automated, real app) | ✅ draft recorded (local file) |
+| Narrated demo video (automated from the real app, Kokoro voice-over, subtitles) | ✅ recorded (≈ 4:44); upload state in `submission/VIDEO_STATUS.md` |
 
 ## Test results (latest run, outputs in `docs/test-output/`)
 
@@ -38,7 +38,7 @@ See `NEEDS_OWNER_INPUT.md`.
 
 ## Deployment status
 
-**LIVE: https://deniz2077.github.io/kanalatlas/** (GitHub Pages, deployed by `.github/workflows/pages.yml`; the CI run passed the unit tests and typecheck; 14/17 browser tests pass against the live URL, see `docs/test-output/e2e-live-github-pages.txt`). Previously: A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
+**LIVE: https://deniz2077.github.io/kanalatlas/** (GitHub Pages, deployed by `.github/workflows/pages.yml` on every push; latest deploy 23 Oct 2026 evening with the guided 3-step UI; **17/17 browser tests pass against the live URL**, 4 skipped by design). A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
 
 ## Repository status
 
@@ -46,7 +46,7 @@ Public: https://github.com/deniz2077/kanalatlas (pushed 23 Oct 2026).
 
 ## Demo video status
 
-Draft at `submission/video/kanalatlas-demo-draft.webm` (≈ 3:48, silent, bilingual captions, includes the canal-corridor scenario). See `submission/VIDEO_STATUS.md`.
+`submission/video/kanalatlas-demo.mp4` (≈ 4:44, English, Kokoro “am_michael” voice-over plus subtitles, recorded from the production build by `npm run demo:record`). See `submission/VIDEO_STATUS.md`.
 
 ## Exact commands to resume
 

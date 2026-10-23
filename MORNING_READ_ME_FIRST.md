@@ -1,110 +1,64 @@
-# ☀️ MORNING — READ ME FIRST
+# ☀️ READ ME FIRST
 
-Deniz, this is the honest state of KanalAtlas as of **23 Oct 2026, ~00:50 Türkiye time**. The Devpost deadline is **24 Oct, 08:00 TRT**; confirm it on the Devpost countdown.
+Deniz, this is the honest state of KanalAtlas as of **23 Oct 2026, evening (Türkiye time)**. The Devpost deadline is **24 Oct, 08:00 TRT**; confirm it on the Devpost countdown. Nothing has been submitted for you.
 
-## A. Actual completion status
+## A. Status
 
-### ✅ Fully working and tested
-- Interactive map of the Seyhan canal corridor with real OSM data (canals, 5 core swimming facilities, 119 core parks; source link and status on every facility).
-- Scenario engine: add up to 3 hypothetical facilities; drag (desktop), tap-to-move (mobile) or arrow buttons; live recalculation; “best location” over 1,456 candidates; “why this result?” explanations.
-- A/B/C comparison under identical settings; a text-table alternative.
-- Local-only priorities form.
-- PDF planning brief built from the current state (text extracted and checked in tests).
-- “Kanal kapatılırsa ne olur?”: the canal line as a hypothetical linear park (parks within 300 m: 32 → 44 of 72).
-- 79 unit tests; 17 browser tests across Desktop Chrome, Android Chromium and the iPhone Safari engine (WebKit), incl. keyboard-only and touch-drag; axe accessibility audit with 0 WCAG A/AA violations; typecheck, lint, build: all passing.
+### ✅ Done and verified
+- **Live site:** https://deniz2077.github.io/kanalatlas/. It is deployed by GitHub Actions on every push, and all 17 browser tests pass against the live URL.
+- **Public repo:** https://github.com/deniz2077/kanalatlas
+- **App:** a question headline, then a guided 3-step flow (explore the baseline → test a solution → compare & share).
+  - “Find a promising location” screens 1,456 candidate sites.
+  - You can drag the hypothetical facility or tap to move it; BEFORE / AFTER / CHANGE tiles show the effect.
+  - A/B/C comparison and the canal line as a hypothetical linear park.
+  - A local-only priorities form and a PDF brief in the UI language.
+  - English by default, with a TR toggle.
+- **Tests:** 79 unit and 17 E2E (Desktop Chrome, Android Chromium, iPhone WebKit; 4 skipped by design). axe reports 0 WCAG A/AA violations. Typecheck, lint and build pass.
+- **Demo video:** `submission/video/kanalatlas-demo.mp4`, about 4:44, 1280×720, recorded from the real app.
+  - English voice-over by the Kokoro text-to-speech model (voice “am_michael”), with subtitles.
+  - The recorder aborts if any spoken number differs from what the app showed.
+  - See `submission/VIDEO_STATUS.md` for the upload state.
 
-### 🟡 Implemented but not fully verified
-- **Touch-drag on a physical phone.** It is verified with real TouchEvents in mobile Chromium (the same Leaflet code path), but not on a physical device; please try it.
-- Screen-reader experience (semantics and labels are in place, but not tested with VoiceOver).
-- Demo video: a silent captioned draft exists; it has not been reviewed by you or narrated.
+### 🟡 Not verified
+- Touch-drag on a physical phone: it is verified with native TouchEvents in mobile Chromium, but not on a real device. Please try it.
+- Screen reader (VoiceOver) use.
 
-### ❌ Incomplete (needs you)
-- Personal observation / community input (placeholders only; never invented).
-- Filling the `[STUDENT …]` placeholders in the submission texts and correcting the AI disclosure.
+### ❌ Only you can do
+- Watch and listen to the video once (pronunciation, pacing).
+- Add a genuine personal observation if you have one (`docs/COMMUNITY_RESEARCH_TEMPLATE.md`). Never invent one.
+- Read `submission/AI_DISCLOSURE.md` and confirm it is accurate.
+- **Submit on Devpost yourself**, pasting from `submission/`.
 
-### ⛔ Blocked (needs your accounts or approval)
-- **Public GitHub repository**: no GitHub credentials on this machine.
-- **Live deployment**: prepared (GitHub Pages workflow, tested static build); needs the repo to exist.
-- **Optional iOS Simulator check**: Claude was not granted simulator access. Touch-drag is already verified in emulation, so this is optional.
-
-## B. How to open the project
+## B. Run it locally
 
 ```bash
 cd ~/Documents/kanalatlas
 export PATH=~/.local/node/bin:$PATH
-npm install          # already installed; harmless
 npm run dev          # → http://localhost:3000
+npm test             # unit tests
+npm run e2e          # browser tests (builds first)
 ```
 
-### Publish to GitHub (≈ 5 min)
-1. Go to https://github.com/new → name `kanalatlas` → **Public** → do **not** add a README or licence → Create.
-2. Then:
-```bash
-cd ~/Documents/kanalatlas
-git remote add origin https://github.com/<YOUR-USERNAME>/kanalatlas.git
-git push -u origin main
-```
-(No secrets exist in this project: no API keys or `.env`. `node_modules`, `.next`, test results and the video file are git-ignored.)
+## C. Devpost copy-paste map
 
-### Live site via GitHub Pages (recommended: the push above is all it takes)
-The repo already contains `.github/workflows/pages.yml`. After pushing:
-1. GitHub repo → **Settings → Pages → Build and deployment → Source: “GitHub Actions”**.
-2. **Actions** tab → open “Test and deploy to GitHub Pages” → *Run workflow* (or push any commit). It runs the 79 unit tests and the typecheck, builds the static site and deploys it.
-3. Your URL will be `https://<YOUR-USERNAME>.github.io/kanalatlas/`.
-
-This exact static build was tested locally under `/kanalatlas/`: all 17 browser tests pass (`npm run build:static && npm run e2e:static`). The CI steps were also run in a fresh clone (`npm ci`, tests, typecheck, static build) and succeeded. The workflow itself has **not** run on GitHub yet, because no repo exists.
-
-### Or deploy to Vercel (≈ 5 min, free tier)
-Easiest: https://vercel.com/new → “Import Git Repository” → choose `kanalatlas` → Framework: Next.js (auto-detected) → Deploy. No environment variables are needed.
-Or from the terminal: `npx vercel` (log in when asked), then `npx vercel --prod`.
-**After deploying, test on the live URL:** the map loads, “En çok fayda sağlayan konuma ekle” works, drag the marker, download the PDF, and try it on your phone. Only then put the URL in Devpost.
-
-## C. What you need to do personally (in order)
-
-1. **Review the code and decisions:** `docs/OWNER_REVIEW.md` (30–60 min). Do the hand calculation in `docs/SCENARIO_METHOD.md` §6.
-2. **Test the scenario calculations yourself** in the app; try your phone, especially dragging.
-3. **Add genuine personal observations or research**: `docs/COMMUNITY_RESEARCH_TEMPLATE.md`. Even one honest paragraph about what you have seen helps the most heavily weighted category.
-4. **Check every factual claim** against `docs/EVIDENCE.md`. Open the source links.
-5. **Make meaningful decisions or changes of your own** (`NEEDS_OWNER_INPUT.md`), and record them in the AI disclosure.
-6. **Correct `submission/AI_DISCLOSURE.md`** so it truthfully says who did what. The rules require disclosure, and misrepresentation can disqualify.
-7. **Confirm authorship requirements:** the rules allow AI assistants with disclosure; work must be created during 16–23 Oct (CST). All commits are dated 22–23 Oct.
-8. **Record or review the demo video** (`submission/DEMO_SCRIPT.md`; draft: `submission/video/kanalatlas-demo-draft.webm`). Upload it to YouTube (Unlisted/Public).
-9. **Publish the repo** (§B) and check it is public in a logged-out browser.
-10. **Deploy** (§B) and test the live URL.
-11. **Submit on Devpost yourself.** Paste from `submission/`. Nothing was submitted for you.
-
-## D. Submission checklist (real paths only)
-
-| Item | Path / URL |
+| Field | Source |
 |---|---|
 | Project name | `submission/PROJECT_NAME.md` |
 | Elevator pitch | `submission/ELEVATOR_PITCH.md` |
-| Description (incl. problem evidence + AI disclosure) | `submission/DEVPOST_DESCRIPTION.md` |
-| Tech stack | `submission/TECH_STACK.md` |
+| Description (problem evidence, what it does, AI disclosure, links) | `submission/DEVPOST_DESCRIPTION.md` |
+| Built with | `submission/TECH_STACK.md` |
 | Challenges | `submission/CHALLENGES.md` |
 | Next steps | `submission/FUTURE_WORK.md` |
-| AI disclosure (long) | `submission/AI_DISCLOSURE.md` |
-| Checklist | `submission/SUBMISSION_CHECKLIST.md` |
-| Video (draft, local) | `submission/video/kanalatlas-demo-draft.webm` |
-| Screenshots | `docs/screenshots/` |
+| Screenshots | `docs/screenshots/` (desktop-07-english.png is the English view) |
 | Sample PDF | `docs/sample-report.pdf` |
-| GitHub URL | **does not exist yet** |
-| Live URL | **does not exist yet** |
-| Video URL | **does not exist yet** |
+| Repo | https://github.com/deniz2077/kanalatlas |
+| Live demo | https://deniz2077.github.io/kanalatlas/ |
+| Video | see `submission/VIDEO_STATUS.md` |
 
-## E. Biggest remaining risks
+## D. Remaining risks
 
-1. **Missing repo/video links at the deadline.** These are required; do them first if time is short.
-2. **Unfilled placeholders** in the description would look careless, and the AI screening round checks completeness.
-3. **The AI disclosure not matching reality** could lead to disqualification. Be precise.
-4. **Community relevance without any personal voice** would score lower; add something genuine.
-5. **Judges may treat straight-line distance as walking distance.** The app labels it everywhere; say it in the video too.
-6. **OSM tile server availability** on the live site; if tiles fail, the analysis still works but looks bare.
+1. Judges may read straight-line distance as walking distance. The app, video and description all say “straight line”.
+2. There is no first-hand community input. The description says so honestly.
+3. The OSM tile server could be slow; the analysis still works without tiles.
 
-## F. Three things to inspect first
-
-1. **Open the app and do the A → B drag yourself** (`npm run dev`). This is the core of the demo; make sure you can explain why the numbers change.
-2. **Read `submission/DEVPOST_DESCRIPTION.md`** and fill or delete every `[STUDENT …]`.
-3. **Watch `submission/video/kanalatlas-demo-draft.webm`**, then decide: narrate it, or re-record live with `DEMO_SCRIPT.md`.
-
-Other useful files: `BUILD_STATUS.md`, `FINAL_JUDGE_REPORT.md`, `docs/PROOF_OF_FUNCTIONALITY.md`, `docs/JUDGE_REVIEW.md`.
+Other files: `BUILD_STATUS.md`, `FINAL_JUDGE_REPORT.md`, `docs/PROOF_OF_FUNCTIONALITY.md`, `docs/OWNER_REVIEW.md`.

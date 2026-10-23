@@ -17,7 +17,7 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 
 // endTime: video length in seconds. Screencasts only emit frames when the screen changes,
 // so the last frame is held until endTime (e.g. a static end card).
-export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate = 6_000_000, endTime, audioPath }) {
+export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate = 6_000_000, audioBitrate = 128_000, keyFrameSeconds = 2, endTime, audioPath }) {
   const browser = await chromium.launch();
   const page = await browser.newPage();
   const out = [];
@@ -37,7 +37,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
   await page.goto("http://localhost:7/");
   await page.addScriptTag({ url: "http://localhost:7/muxer.js" });
   const result = await page.evaluate(
-    async ({ fps, bitrate, endTime, hasAudio }) => {
+    async ({ fps, bitrate, audioBitrate, keyFrameSeconds, endTime, hasAudio }) => {
       const times = await (await fetch("/index.json")).json();
       const load = async (i) => createImageBitmap(await (await fetch(`/frame/${i}`)).blob());
       let bmp = await load(0);
@@ -58,7 +58,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
         const pcm = new Int16Array(await (await fetch("/audio.raw")).arrayBuffer());
         let audioFailure = null;
         const aenc = new AudioEncoder({ output: (chunk, meta) => muxer.addAudioChunk(chunk, meta), error: (e) => (audioFailure = String(e)) });
-        aenc.configure({ codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 1, bitrate: 128000 });
+        aenc.configure({ codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 1, bitrate: audioBitrate });
         const block = 4800;
         for (let i = 0; i < pcm.length; i += block) {
           const part = pcm.subarray(i, Math.min(i + block, pcm.length));
@@ -91,7 +91,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
         }
         ctx.drawImage(bmp, 0, 0, width, height);
         const frame = new VideoFrame(canvas, { timestamp: Math.round(t * 1e6), duration: Math.round(1e6 / fps) });
-        encoder.encode(frame, { keyFrame: n % (fps * 2) === 0 });
+        encoder.encode(frame, { keyFrame: n % Math.round(fps * keyFrameSeconds) === 0 });
         frame.close();
         while (encoder.encodeQueueSize > 20) await new Promise((r) => setTimeout(r, 2));
         if (failure) throw new Error(failure);
@@ -108,7 +108,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
       }
       return { width, height, frames: n, seconds: n / fps, bytes: buf.length };
     },
-    { fps, bitrate, endTime, hasAudio: !!audioPath },
+    { fps, bitrate, audioBitrate, keyFrameSeconds, endTime, hasAudio: !!audioPath },
   );
   await browser.close();
   fs.writeFileSync(outPath, Buffer.concat(out));
