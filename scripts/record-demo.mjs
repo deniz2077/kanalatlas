@@ -1,10 +1,12 @@
 /**
  * Records a captioned, automated walkthrough of the REAL running app
- * (production build) with Playwright's built-in screen recorder.
+ * (production build): Chrome streams 1920×1080 screencast frames of the page
+ * while Playwright drives it, then scripts/encode-mp4.mjs encodes them to an
+ * H.264 MP4 with the browser's WebCodecs encoder.
  *
  *   npm run build && npm run demo:record
  *
- * Output: submission/video/kanalatlas-demo-draft.webm (1280×720).
+ * Output: submission/video/kanalatlas-demo.mp4 (1920×1080, 30 fps, no audio).
  * Every interaction below is performed on the live app; captions only
  * describe what is happening on screen. Nothing is composited or faked.
  */
@@ -13,6 +15,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
+import { encodeMp4 } from "./encode-mp4.mjs";
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const outDir = path.join(root, "submission/video");
@@ -43,6 +46,8 @@ const viewer = http
       "/pdf.mjs": ["text/javascript", path.join(root, "node_modules/pdfjs-dist/build/pdf.mjs")],
       "/pdf.worker.mjs": ["text/javascript", path.join(root, "node_modules/pdfjs-dist/build/pdf.worker.mjs")],
       "/report.pdf": ["application/pdf", path.join(tmpDir, "report.pdf")],
+      "/card-start": ["text/html; charset=utf-8", path.join(tmpDir, "card-start.html")],
+      "/card-end": ["text/html; charset=utf-8", path.join(tmpDir, "card-end.html")],
     };
     const f = files[req.url];
     if (!f) return res.writeHead(404).end();
@@ -64,6 +69,25 @@ document.title = "ready";
 </script>`,
 );
 
+// Title and end cards (plain HTML pages, recorded like everything else).
+const card = (inner) => `<!doctype html><meta charset="utf-8"><title>KanalAtlas</title>
+<body style="margin:0;height:100vh;display:flex;align-items:center;justify-content:center;background:#faf8f3;color:#0f2340;font-family:Inter,system-ui,sans-serif">
+<div style="max-width:980px;padding:40px">${inner}</div></body>`;
+const logo = `<svg width="64" height="64" viewBox="0 0 26 26" style="vertical-align:middle;margin-right:14px"><rect width="26" height="26" rx="6" fill="#0f2340"/><path d="M3 16 C 8 12, 12 18, 17 14 S 23 11, 23 11" stroke="#5fb3e6" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="15" y="5" width="6" height="6" rx="1" transform="rotate(45 18 8)" fill="#f59e0b"/></svg>`;
+fs.writeFileSync(
+  path.join(tmpDir, "card-start.html"),
+  card(`<div style="font-size:64px;font-weight:800;letter-spacing:-1px">${logo}KanalAtlas</div>
+  <div style="font-size:30px;margin-top:22px;font-weight:600">Mahalleni keşfet. İhtiyaçları gör. <span style="color:#b45309">Geleceği birlikte düşün.</span></div>
+  <div style="font-size:22px;margin-top:10px;color:#3d4f6b">An accessibility &amp; scenario map for Adana's open irrigation canal corridor</div>
+  <div style="font-size:18px;margin-top:36px;color:#5b6577;border-top:1px solid #e4e0d6;padding-top:18px">Neighborhood Hacks 2026 · Seyhan, Adana, Türkiye<br>Real footage of the working app · captions in Turkish and English</div>`),
+);
+fs.writeFileSync(
+  path.join(tmpDir, "card-end.html"),
+  card(`<div style="font-size:48px;font-weight:800">${logo}KanalAtlas</div>
+  <div style="font-size:24px;margin-top:24px;line-height:1.6">Live demo: <b>deniz2077.github.io/kanalatlas</b><br>Code: <b>github.com/deniz2077/kanalatlas</b></div>
+  <div style="font-size:18px;margin-top:28px;color:#3d4f6b;line-height:1.6">Straight-line distances on OpenStreetMap data · sampled points, not population · no drowning-risk prediction.<br>Sources: Adana Metropolitan Council (12.06.2026), Adana Municipality (21.07.2025), Ministry of Agriculture (10.09.2025).</div>`),
+);
+
 const CAPTION_JS = `
 (() => {
   if (document.getElementById("__demo_caption")) return;
@@ -81,10 +105,23 @@ await waitFor(`http://localhost:${PORT}/`);
 const browser = await chromium.launch();
 const context = await browser.newContext({
   viewport: { width: 1280, height: 720 },
-  recordVideo: { dir: tmpDir, size: { width: 1280, height: 720 } },
+  deviceScaleFactor: 1.5, // 1920×1080 frames
   acceptDownloads: true,
 });
 const page = await context.newPage();
+
+// Full-HD screencast of the page; every frame is saved with its timestamp.
+const framesDir = path.join(tmpDir, "frames");
+fs.mkdirSync(framesDir, { recursive: true });
+const frames = [];
+const cdp = await context.newCDPSession(page);
+cdp.on("Page.screencastFrame", (f) => {
+  const file = `${String(frames.length).padStart(6, "0")}.jpg`;
+  fs.writeFileSync(path.join(framesDir, file), Buffer.from(f.data, "base64"));
+  frames.push({ file, ts: f.metadata.timestamp });
+  cdp.send("Page.screencastFrameAck", { sessionId: f.sessionId }).catch(() => {});
+});
+await cdp.send("Page.startScreencast", { format: "jpeg", quality: 90, maxWidth: 1920, maxHeight: 1080, everyNthFrame: 1 });
 page.on("pageerror", (e) => console.log("PAGEERROR", e.message));
 page.on("console", (m) => { if (m.type() === "error") console.log("CONSOLE", m.text()); });
 await page.addInitScript({ content: `window.addEventListener("DOMContentLoaded", () => { ${CAPTION_JS} });` });
@@ -126,6 +163,10 @@ async function moveMouseTo(locator) {
 process.on("uncaughtException", (e) => { console.error(e); server.kill(); viewer.close(); process.exit(1); });
 process.on("unhandledRejection", (e) => { console.error(e); server.kill(); viewer.close(); process.exit(1); });
 const t0 = Date.now();
+// ---------------------------------------------------------------- 0. title card
+await page.goto(`http://localhost:${VIEW_PORT}/card-start`);
+await wait(6);
+
 // ---------------------------------------------------------------- 1. problem
 await page.goto(`http://localhost:${PORT}/`);
 await wait(1.5);
@@ -320,15 +361,18 @@ await caption(
   "Next: walking-network distance, a verified municipal pool list, real community input and more neighbourhoods.",
   8,
 );
-await caption("KanalAtlas · açık kaynak · Neighborhood Hacks 2026", "", 4);
+await page.goto(`http://localhost:${VIEW_PORT}/card-end`);
+await wait(7);
 
 const seconds = Math.round((Date.now() - t0) / 1000);
-const video = page.video();
+const stopWall = Date.now() / 1000;
+await cdp.send("Page.stopScreencast");
 await context.close();
-const src = await video.path();
-const dest = path.join(outDir, "kanalatlas-demo-draft.webm");
-fs.copyFileSync(src, dest);
 await browser.close();
 viewer.close();
 server.kill();
-console.log(`recorded ~${seconds}s → ${path.relative(root, dest)} (${(fs.statSync(dest).size / 1e6).toFixed(1)} MB)`);
+const t0f = frames[0].ts;
+const dest = path.join(outDir, "kanalatlas-demo.mp4");
+console.log(`recorded ~${seconds}s, ${frames.length} frames; encoding…`);
+const info = await encodeMp4({ framesDir, frames: frames.map((f) => ({ file: f.file, t: f.ts - t0f })), outPath: dest, endTime: stopWall - t0f });
+console.log(`→ ${path.relative(root, dest)} ${info.width}×${info.height}, ${info.seconds.toFixed(1)} s, ${(info.bytes / 1e6).toFixed(1)} MB`);
