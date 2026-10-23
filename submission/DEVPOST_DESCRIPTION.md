@@ -16,14 +16,14 @@ What I noticed was an **information problem**. The swimming programmes exist, bu
 
 **The problem:** In Adana's open-canal neighbourhoods, it is hard for residents and planners to see where public swimming and cooling options actually are, how far canal-side areas are from them, and where a new facility would help most, just as the canals themselves are set to be closed.
 
-**How we know it's real (sources we read, with dates):**
+**How I know it's real (sources I read, with dates):**
 1. **Adana Metropolitan Council decision no. 183, 12 June 2026.** It approves free swimming lessons via sports clubs. The rationale explicitly names drowning in unsafe places “such as irrigation canals” in the summer heat.
 2. **Adana Metropolitan Municipality, 21 July 2025.** Free swimming lessons for about 10,000 children aged 6–14 in 26 semi-Olympic pools, aimed at reducing summer drownings. No pool locations are published.
 3. **Ministry of Agriculture and Forestry (Adana), 10 September 2025.** The transition to closed pressurised irrigation has begun; open canals passing through the city centre will be taken out of service.
-4. **OpenStreetMap (extracted 22 Oct 2026).** Our study area shows an open canal running through dense housing. Only 5 swimming facilities nearby have a name or swimming tag, and all of them lie in the north-west of the corridor.
-5. **People around me** talk about canal swimming in summer. This is second-hand, not a formal interview. We have not yet run interviews or surveys, and none are claimed.
+4. **OpenStreetMap (extracted 22 Oct 2026).** My study area shows an open canal running through dense housing. Only 5 swimming facilities nearby have a name or swimming tag, and all of them lie in the north-west of the corridor.
+5. **People around me** talk about canal swimming in summer. This is second-hand, not a formal interview. I have not yet run interviews or surveys, and none are claimed.
 
-We deliberately do **not** quote drowning totals, because we could not confirm one with an official source and reporting period.
+I deliberately do **not** quote drowning totals, because I could not confirm one with an official source and reporting period.
 
 ## What it does
 
@@ -33,14 +33,14 @@ KanalAtlas is a working geospatial decision-support prototype for one real study
 2. **Measures access:** 72 sample points on a 500 m grid. For each one, KanalAtlas calculates the straight-line distance to the nearest mapped facility of the chosen type. Baseline: **13 of 72** sample points are within 1 km of a named or swimming-tagged pool.
 3. **Tests “what if?”:** you place a hypothetical pool or park and **drag it**. Every point, line and number is recalculated live from coordinates. A “Find a promising location” button screens 1,456 candidate sites and places the best one for you. Results appear as BEFORE / AFTER / CHANGE tiles computed from the coordinates. A “why this result?” note explains the outcome (how many points it serves, how far it is from existing facilities).
 4. **Compares fairly:** save locations A, B and C; they are re-evaluated with identical settings side by side. With real data, a pool in the east of the corridor reaches **27/72** points, while the same pool in the west reaches **21/72**.
-5. **Asks “what if the canal closes?”** In the park view, one button turns the 6.82 km mapped canal line into a hypothetical linear park, with distance measured to the nearest point on the line. Park access within 300 m goes from **32/72 to 44/72** points (canal-side points: 12/27 → 24/27), while the best single new park reaches only 34/72. It is clearly labelled as an assumption: we do not claim the canal will close or that the land is available.
+5. **Asks “what if the canal closes?”** In the park view, one button turns the 6.82 km mapped canal line into a hypothetical linear park, with distance measured to the nearest point on the line. Park access within 300 m goes from **32/72 to 44/72** points (canal-side points: 12/27 → 24/27), while the best single new park reaches only 34/72. It is clearly labelled as an assumption: it does not claim the canal will close or that the land is available.
 6. **Is honest about uncertainty:** a data-scope switch shows that counting unnamed (probably private) pools would raise the baseline from 13 to 44. How much you trust the data is itself a finding.
 7. **Collects your priorities privately:** “What matters in your neighbourhood?” stores choices only in your browser. It is clearly labelled as personal input, not a survey.
 8. **Creates a planning brief:** a PDF in the interface language (English or Turkish) with the settings, sources, before/after tables, a map drawn from the same coordinates, the A/B comparison, method, limitations and questions to ask local planners.
 
 **What can it tell you that a normal map can't?** A map shows where pools are. KanalAtlas tells you how many places in a neighbourhood are far from one, where one new facility would close the biggest gap, how that answer changes if you move it, and how confident you can be in the data.
 
-## How we built it
+## How I built it
 
 TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenStreetMap data extracted once through the Overpass API and committed to the repo.
 
@@ -52,22 +52,22 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 
 **My role:** I chose the problem, wrote the project brief and its honesty rules, found the starting sources (the municipality's swimming news, the council decision PDF and the ministry announcement), made the design decisions (study area, thresholds, what counts as a verified facility) and tested the app.
 
-## Challenges we ran into
+## Challenges I ran into
 
-- **Honest data vs. impressive data.** Most mapped pools are unnamed polygons inside apartment complexes. Counting them makes access look three times better, so we made the choice visible instead of hiding it.
-- **A fair metric.** Real walking routes were out of reach in the time available. We used straight-line distance and say so on every screen and in the PDF.
-- **Testing our own claims.** In browser testing, a location dragged by hand beat our “Find a promising location” button. We fixed the algorithm to screen a 100 m candidate grid.
-- **Mobile.** Our first automated touch gestures panned the map instead of moving the marker. Reading Leaflet's source showed it uses native touch events on phones, so we rewrote the test to send real touch events, and it passed. We also added tap-to-move and arrow buttons. Testing in Safari's engine caught a layout bug that made the page scroll sideways on iPhone, which we fixed.
+- **Honest data vs. impressive data.** Most mapped pools are unnamed polygons inside apartment complexes. Counting them makes access look three times better, so I made the choice visible instead of hiding it.
+- **A fair metric.** Real walking routes were out of reach in the time available. I chose straight-line distance and the app says so on every screen and in the PDF.
+- **Testing my own claims.** In browser testing, a location dragged by hand beat the “Find a promising location” button, so the algorithm was changed to screen a 100 m candidate grid.
+- **Mobile.** The first automated touch gestures panned the map instead of moving the marker. Leaflet's source showed it uses native touch events on phones, so the test was rewritten to send real touch events, and it passed. Tap-to-move and arrow buttons were added too. Testing in Safari's engine caught a layout bug that made the page scroll sideways on iPhone, and it was fixed.
 
-## Accomplishments that we're proud of
+## Accomplishments that I'm proud of
 
 - Every number on screen and in the PDF comes from one tested function using real coordinates.
 - The tool says clearly what it does *not* know.
 - The full journey is tested in a real browser on desktop and mobile, from the map to the downloaded PDF.
 
-## What we learned
+## What I learned
 
-Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: our own browser test found a location that beat our “Find a promising location” button, which made us improve the algorithm.
+Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: a browser test found a location that beat the “Find a promising location” button, which led to a better algorithm.
 
 ## What's next for KanalAtlas
 
