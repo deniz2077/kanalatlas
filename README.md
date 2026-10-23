@@ -30,7 +30,7 @@ KanalAtlas connects these fragments. **What it adds to a normal map:** it *measu
 - A full text-table alternative to the map, and a facility list with statuses and sources.
 - “Mahallen İçin Ne Önemli?”: a local-only priorities form (no server, no personal data, clearly *not* a survey), downloadable as JSON.
 - A PDF planning brief generated from the current state, including a schematic map drawn from the same coordinates.
-- A Turkish-first interface with an English summary section; keyboard-only operation (tested); **0 axe-core WCAG 2.1 A/AA violations** (tested); mobile layout.
+- **English by default, with a one-click Turkish (TR/EN) toggle** for the whole interface and the PDF report; keyboard-only operation (tested); **0 axe-core WCAG 2.1 A/AA violations** (tested); mobile layout.
 
 ## Quick start
 
@@ -43,7 +43,7 @@ npm run dev            # http://localhost:3000
 
 | Command | What it does |
 |---|---|
-| `npm test` | 77 unit tests (geometry, scenario engine, corridor, data, PDF content) |
+| `npm test` | 79 unit tests (geometry, scenario engine, corridor, data, PDF content) |
 | `npm run build && npx playwright install chromium && npm run e2e` | Production build + browser tests: journeys, corridor, keyboard-only, axe WCAG A/AA audit (desktop + mobile) |
 | `npm run build:static && npm run e2e:static` | Static export (for GitHub Pages) served under `/kanalatlas/` + the same browser tests |
 | `npm run proof` | Prints a real-data A/B scenario table (`docs/PROOF_RUN_OUTPUT.md`) |

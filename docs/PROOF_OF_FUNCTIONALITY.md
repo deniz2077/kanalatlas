@@ -24,7 +24,7 @@ See `docs/SCENARIO_METHOD.md`. In short: a Haversine straight-line distance to t
 
 ## 3. Test cases: expected vs. actual
 
-### Unit tests: 77 passed (`docs/test-output/unit-tests.txt`)
+### Unit tests: 79 passed (`docs/test-output/unit-tests.txt`)
 
 A selection of hand-calculated cases (expected values are derived in the test comments):
 
@@ -47,7 +47,7 @@ A selection of hand-calculated cases (expected values are derived in the test co
 | Corridor clipping to study box | 4-vertex line, ≈ 3,552 m | passes |
 | PDF for two locations | each PDF contains its own coordinates and “X / 72” value; not the other's | passes (real PDFs rendered and parsed) |
 
-### Browser E2E: 14 passed, 4 skipped by design (`docs/test-output/e2e-tests.txt`)
+### Browser E2E: 17 passed, 4 skipped by design (`docs/test-output/e2e-tests.txt`)
 
 Three projects: Desktop Chrome (1440×1000), Pixel 7 (Android Chromium, touch) and **iPhone 15 Pro (WebKit, the Safari engine)**. Skips: the keyboard-only journey runs only on desktop; the touch-drag test runs only in touch-enabled Chromium (WebKit on macOS cannot construct `Touch` objects).
 
@@ -73,9 +73,9 @@ Playwright runs against the **production build** (`next start`), in Desktop Chro
 17. **Touch drag** (Pixel 7): real `TouchEvent`s (touchstart → 15 × touchmove → touchend) are dispatched on the marker. Leaflet's native touch handler moves it, and the coordinates and headline change.
 18. **iPhone/WebKit run** found a real bug: after saving a scenario the page scrolled sideways by 238 px. A visually hidden, absolutely positioned table header escaped its non-positioned scroll container. It was fixed by making scroll containers `relative`, and the no-horizontal-scroll check now passes in WebKit too.
 
-The whole E2E suite was run twice in a row with identical results (no flakiness observed). It also passes **against the static export** served under `/kanalatlas/` (the GitHub Pages layout): 14 passed, 4 skipped (`npm run build:static && npm run e2e:static`).
+The whole E2E suite was run twice in a row with identical results (no flakiness observed). It also passes **against the static export** served under `/kanalatlas/` (the GitHub Pages layout): 17 passed, 4 skipped (`npm run build:static && npm run e2e:static`).
 
-**CI simulation:** in a fresh `git clone` of the repo, `npm ci` → `npm test` (77 passed) → `tsc --noEmit` → static export succeeded. These are the same steps as `.github/workflows/pages.yml`, which has not run on GitHub yet because the repo does not exist.
+**CI simulation:** in a fresh `git clone` of the repo, `npm ci` → `npm test` (79 passed) → `tsc --noEmit` → static export succeeded. These are the same steps as `.github/workflows/pages.yml`, which has not run on GitHub yet because the repo does not exist.
 
 ## 4. Two locations, two different results (real data)
 

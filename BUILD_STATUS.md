@@ -21,8 +21,8 @@ _Last updated: 23 Oct 2026, ~01:00 Türkiye time (AI session)._
 
 ## Test results (latest run, outputs in `docs/test-output/`)
 
-- Unit (Vitest): **77 passed**
-- E2E (Playwright, production build; Desktop Chrome, Pixel 7 Chromium, iPhone 15 Pro WebKit/Safari engine): **14 passed, 4 skipped by design** (the keyboard journey is desktop-only; the touch-drag test needs touch-enabled Chromium). Run twice with identical results, and again against the static export.
+- Unit (Vitest): **79 passed**
+- E2E (Playwright, production build; Desktop Chrome, Pixel 7 Chromium, iPhone 15 Pro WebKit/Safari engine): **17 passed, 4 skipped by design** (the keyboard journey is desktop-only; the touch-drag test needs touch-enabled Chromium). Run twice with identical results, and again against the static export.
 - Accessibility (axe-core 4.14, WCAG 2.0/2.1 A+AA): **0 violations** on desktop and mobile, initial and with a scenario
 - `tsc --noEmit`: no errors · ESLint: no problems · `next build`: success
 
@@ -38,7 +38,7 @@ See `NEEDS_OWNER_INPUT.md`.
 
 ## Deployment status
 
-**LIVE: https://deniz2077.github.io/kanalatlas/** (GitHub Pages, deployed by `.github/workflows/pages.yml`; the CI run passed the unit tests and typecheck; 14/14 browser tests pass against the live URL, see `docs/test-output/e2e-live-github-pages.txt`). Previously: A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
+**LIVE: https://deniz2077.github.io/kanalatlas/** (GitHub Pages, deployed by `.github/workflows/pages.yml`; the CI run passed the unit tests and typecheck; 14/17 browser tests pass against the live URL, see `docs/test-output/e2e-live-github-pages.txt`). Previously: A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
 
 ## Repository status
 

@@ -5,7 +5,9 @@
  * the next one arrives), so timing matches what happened on screen.
  *
  *   import { encodeMp4 } from "./encode-mp4.mjs";
- *   await encodeMp4({ framesDir, frames: [{ file, t }], outPath });
+ *   await encodeMp4({ framesDir, frames: [{ file, t }], outPath, audioPath });
+ *
+ * audioPath (optional): raw mono 16-bit little-endian PCM at 48 kHz, encoded to AAC.
  */
 import { chromium } from "@playwright/test";
 import fs from "node:fs";
@@ -15,7 +17,7 @@ const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..")
 
 // endTime: video length in seconds. Screencasts only emit frames when the screen changes,
 // so the last frame is held until endTime (e.g. a static end card).
-export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate = 6_000_000, endTime }) {
+export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate = 6_000_000, endTime, audioPath }) {
   const browser = await chromium.launch();
   const page = await browser.newPage();
   const out = [];
@@ -27,6 +29,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
     if (url.pathname === "/muxer.js")
       return route.fulfill({ contentType: "text/javascript", path: path.join(root, "node_modules/mp4-muxer/build/mp4-muxer.js") });
     if (url.pathname === "/index.json") return route.fulfill({ contentType: "application/json", body: JSON.stringify(frames.map((f) => f.t)) });
+    if (url.pathname === "/audio.raw" && audioPath) return route.fulfill({ contentType: "application/octet-stream", path: audioPath });
     const m = url.pathname.match(/^\/frame\/(\d+)$/);
     if (m) return route.fulfill({ contentType: "image/jpeg", path: path.join(framesDir, frames[Number(m[1])].file) });
     return route.fulfill({ status: 404, body: "" });
@@ -34,7 +37,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
   await page.goto("http://localhost:7/");
   await page.addScriptTag({ url: "http://localhost:7/muxer.js" });
   const result = await page.evaluate(
-    async ({ fps, bitrate, endTime }) => {
+    async ({ fps, bitrate, endTime, hasAudio }) => {
       const times = await (await fetch("/index.json")).json();
       const load = async (i) => createImageBitmap(await (await fetch(`/frame/${i}`)).blob());
       let bmp = await load(0);
@@ -44,7 +47,31 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
       const support = await VideoEncoder.isConfigSupported(config);
       if (!support.supported) throw new Error("H.264 encoder config not supported: " + JSON.stringify(config));
       const { Muxer, ArrayBufferTarget } = window.Mp4Muxer;
-      const muxer = new Muxer({ target: new ArrayBufferTarget(), video: { codec: "avc", width, height, frameRate: fps }, fastStart: "in-memory" });
+      const SR = 48000;
+      const muxer = new Muxer({
+        target: new ArrayBufferTarget(),
+        video: { codec: "avc", width, height, frameRate: fps },
+        ...(hasAudio ? { audio: { codec: "aac", numberOfChannels: 1, sampleRate: SR } } : {}),
+        fastStart: "in-memory",
+      });
+      if (hasAudio) {
+        const pcm = new Int16Array(await (await fetch("/audio.raw")).arrayBuffer());
+        let audioFailure = null;
+        const aenc = new AudioEncoder({ output: (chunk, meta) => muxer.addAudioChunk(chunk, meta), error: (e) => (audioFailure = String(e)) });
+        aenc.configure({ codec: "mp4a.40.2", sampleRate: SR, numberOfChannels: 1, bitrate: 128000 });
+        const block = 4800;
+        for (let i = 0; i < pcm.length; i += block) {
+          const part = pcm.subarray(i, Math.min(i + block, pcm.length));
+          const f32 = new Float32Array(part.length);
+          for (let j = 0; j < part.length; j++) f32[j] = part[j] / 32768;
+          const data = new AudioData({ format: "f32-planar", sampleRate: SR, numberOfFrames: f32.length, numberOfChannels: 1, timestamp: Math.round((i / SR) * 1e6), data: f32 });
+          aenc.encode(data);
+          data.close();
+          if (aenc.encodeQueueSize > 50) await new Promise((r) => setTimeout(r, 1));
+        }
+        await aenc.flush();
+        if (audioFailure) throw new Error(audioFailure);
+      }
       let failure = null;
       const encoder = new VideoEncoder({ output: (chunk, meta) => muxer.addVideoChunk(chunk, meta), error: (e) => (failure = String(e)) });
       encoder.configure(config);
@@ -81,7 +108,7 @@ export async function encodeMp4({ framesDir, frames, outPath, fps = 30, bitrate 
       }
       return { width, height, frames: n, seconds: n / fps, bytes: buf.length };
     },
-    { fps, bitrate, endTime },
+    { fps, bitrate, endTime, hasAudio: !!audioPath },
   );
   await browser.close();
   fs.writeFileSync(outPath, Buffer.concat(out));

@@ -9,7 +9,7 @@ cd ~/Documents/kanalatlas
 export PATH=~/.local/node/bin:$PATH
 npm install
 npm run dev          # open http://localhost:3000
-npm test             # 77 unit tests
+npm test             # 79 unit tests
 npm run proof        # prints the A/B real-data table
 ```
 

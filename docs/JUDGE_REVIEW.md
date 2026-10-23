@@ -19,7 +19,7 @@ Written by the AI assistant after building and testing the prototype, to find we
 ## Technical execution (20%)
 
 **Strong:**
-- Pure, tested engine (77 unit tests with hand-derived values), with a worked example in the docs.
+- Pure, tested engine (79 unit tests with hand-derived values), with a worked example in the docs.
 - Live recalculation while dragging; A/B comparison re-evaluated under identical settings.
 - PDF tested by rendering and parsing real PDFs, including the one the browser downloads.
 - E2E on desktop and mobile against the production build; a reproducible data pipeline with raw data committed.
@@ -41,7 +41,7 @@ Written by the AI assistant after building and testing the prototype, to find we
 
 ## Presentation and clarity (10%)
 
-**Strong:** A Turkish-first landing page that states the problem with sources in the first screen; a bilingual captioned demo video (about 3:48) recorded from the real app; extensive docs.
+**Strong:** An English-by-default landing page (with a Turkish toggle for residents) that states the problem with sources in the first screen; a bilingual captioned demo video (about 3:48) recorded from the real app; extensive docs.
 
 **Weak:** The automated video has captions but **no voice**. Judges often respond better to the student explaining in their own voice. The page is long; a judge may not scroll to the method section.
 → The owner should record narration over the video or re-record live (`submission/DEMO_SCRIPT.md`).
