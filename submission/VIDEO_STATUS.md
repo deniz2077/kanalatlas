@@ -4,8 +4,8 @@
 |---|---|
 | Finished demo video | **EXISTS:** `submission/video/kanalatlas-demo.mp4`: H.264 MP4, 1280×720, 30 fps, 3:51, about 35 MB, no audio. Recorded 23 Oct 2026 by `npm run demo:record`, which drives the real production build and encodes Chrome's screencast frames with WebCodecs. Not committed to git (size); regenerate with `npm run build && npm run demo:record`. |
 | Narration | None. Bilingual on-screen captions (TR/EN) explain every step; their numbers are read from the live page. |
-| Uploaded to YouTube | Pending the owner's confirmation |
-| URL added to Devpost text | Pending |
+| Uploaded to YouTube | **Yes, Unlisted:** https://youtu.be/dLlOJlkT4So (a 9.8 MB copy encoded from the same frames) |
+| URL added to Devpost text | Yes |
 
 ## Contents (all real interactions with the running app)
 
