@@ -13,9 +13,9 @@ Rules: https://neighborhoodhacks.org/rules/. The development window is **16–23
 | 7 | Challenges & lessons | `submission/CHALLENGES.md` | ⚠️ Draft; rewrite in own voice |
 | 8 | Next steps | `submission/FUTURE_WORK.md` | ✅ Draft |
 | 9 | Demo video 2–6 min | `submission/video/kanalatlas-demo-draft.webm` (local) | ⚠️ Silent draft exists; **narrate/record and upload** |
-| 10 | Public code repository | — | ❌ **Not created** (no GitHub credentials on this machine) |
+| 10 | Public code repository | https://github.com/deniz2077/kanalatlas | ✅ Public, pushed 23 Oct 2026 |
 | 11 | AI-use disclosure in the written description | Description § “AI assistance disclosure” + `AI_DISCLOSURE.md` | ⚠️ Draft; **student must correct** |
-| 12 | Live demo URL (optional but strongly recommended) | — | ❌ **Not deployed** |
+| 12 | Live demo URL (optional but strongly recommended) | https://deniz2077.github.io/kanalatlas/ | ✅ Deployed by GitHub Actions; all 14 browser tests pass against it |
 | 13 | Original work during the window | git history: first commit 22 Oct 2026 23:46 TRT | ✅ Owner to confirm |
 
 ## Final pre-submit checks (owner)

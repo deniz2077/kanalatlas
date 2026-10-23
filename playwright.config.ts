@@ -3,8 +3,10 @@ import { defineConfig, devices } from "@playwright/test";
 // E2E tests run against the production build (`next build` must run first).
 // With E2E_STATIC=1 they run against the static export (out/) served under /kanalatlas,
 // exactly as GitHub Pages would serve it (`npm run build:static` must run first).
+// With E2E_BASE_URL=https://… they run against an already deployed site (no local server).
 const isStatic = process.env.E2E_STATIC === "1";
-const baseURL = isStatic ? "http://localhost:3400/kanalatlas/" : "http://localhost:3100";
+const remote = process.env.E2E_BASE_URL;
+const baseURL = remote || (isStatic ? "http://localhost:3400/kanalatlas/" : "http://localhost:3100");
 
 export default defineConfig({
   testDir: "e2e",
@@ -16,12 +18,14 @@ export default defineConfig({
     acceptDownloads: true,
     trace: "retain-on-failure",
   },
-  webServer: {
+  webServer: remote
+    ? undefined
+    : {
     command: isStatic ? "node scripts/serve-static.mjs 3400 /kanalatlas" : "node node_modules/next/dist/bin/next start -p 3100",
     url: baseURL,
-    reuseExistingServer: false,
-    timeout: 60_000,
-  },
+        reuseExistingServer: false,
+        timeout: 60_000,
+      },
   projects: [
     { name: "desktop", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 1000 } } },
     { name: "mobile", use: { ...devices["Pixel 7"] } },

@@ -38,11 +38,11 @@ See `NEEDS_OWNER_INPUT.md`.
 
 ## Deployment status
 
-**Not deployed yet, but ready.** A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
+**LIVE: https://deniz2077.github.io/kanalatlas/** (GitHub Pages, deployed by `.github/workflows/pages.yml`; the CI run passed the unit tests and typecheck; 14/14 browser tests pass against the live URL, see `docs/test-output/e2e-live-github-pages.txt`). Previously: A static export (`npm run build:static`) passes all 9 E2E tests when served under `/kanalatlas/` (`npm run e2e:static`). `.github/workflows/pages.yml` runs tests and deploys to GitHub Pages on push. Its steps were verified in a fresh clone (`npm ci` → 77 tests → `tsc` → static export). It needs the GitHub repo to exist (owner). Vercel works too (`MORNING_READ_ME_FIRST.md`).
 
 ## Repository status
 
-Local git repo, commits on `main`, author "Deniz Efe Bulut". **Not pushed**: no GitHub remote or credentials.
+Public: https://github.com/deniz2077/kanalatlas (pushed 23 Oct 2026).
 
 ## Demo video status
 

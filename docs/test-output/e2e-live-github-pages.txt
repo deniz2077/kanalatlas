@@ -1,0 +1,33 @@
+
+Running 18 tests using 3 workers
+
+axe-core 4.14.0 · project mobile · 2026-10-23T14:42:56.134Z
+initial: 0 violations, 34 rules passed
+with scenario: 0 violations, 35 rules passed
+axe-core 4.14.0 · project desktop · 2026-10-23T14:42:56.136Z
+initial: 0 violations, 34 rules passed
+with scenario: 0 violations, 35 rules passed
+  ✓   2 [desktop] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (3.9s)
+  ✓   3 [mobile] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (3.9s)
+  -   5 [mobile] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse
+  ✓   4 [desktop] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse (2.2s)
+  ✓   1 [desktop] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (6.6s)
+  ✓   7 [desktop] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (1.4s)
+  ✓   6 [mobile] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (5.5s)
+  ✓   9 [desktop] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (3.1s)
+  ✓  10 [mobile] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (1.7s)
+  -  11 [desktop] › e2e/journey.spec.ts:192:5 › touch drag moves the hypothetical facility (native TouchEvents)
+axe-core 4.14.0 · project mobile-safari · 2026-10-23T14:43:06.246Z
+initial: 0 violations, 34 rules passed
+with scenario: 0 violations, 35 rules passed
+  ✓   8 [mobile-safari] › e2e/a11y.spec.ts:12:5 › no WCAG A/AA violations (initial and with scenario) (6.0s)
+  -  14 [mobile-safari] › e2e/a11y.spec.ts:41:5 › keyboard only: add, move, save and export without a mouse
+  ✓  12 [mobile] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (3.4s)
+  ✓  15 [mobile] › e2e/journey.spec.ts:192:5 › touch drag moves the hypothetical facility (native TouchEvents) (2.9s)
+  ✓  13 [mobile-safari] › e2e/journey.spec.ts:27:5 › complete journey: map → scenario → move → compare → priorities → PDF (7.2s)
+  ✓  16 [mobile-safari] › e2e/journey.spec.ts:155:5 › category switch and data scope change the numbers (not hard-coded) (2.0s)
+  ✓  17 [mobile-safari] › e2e/journey.spec.ts:167:5 › canal corridor → linear park scenario (parks) (4.8s)
+  -  18 [mobile-safari] › e2e/journey.spec.ts:192:5 › touch drag moves the hypothetical facility (native TouchEvents)
+
+  4 skipped
+  14 passed (28.1s)

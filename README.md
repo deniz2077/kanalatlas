@@ -5,6 +5,8 @@
 
 KanalAtlas is a working, open-source geospatial decision-support prototype for one real canal corridor in Adana, Türkiye. It measures straight-line access from 72 sampled map locations to mapped swimming facilities and parks. Users can place and drag hypothetical facilities and see the metrics recomputed live, compare locations under identical settings, record their own priorities, and download a Turkish planning brief (PDF) containing the actual results, sources and limitations.
 
+**Live demo:** https://deniz2077.github.io/kanalatlas/  ·  **Code:** https://github.com/deniz2077/kanalatlas
+
 Built for **Neighborhood Hacks 2026** by Deniz Efe Bulut, with AI coding assistance (see [AI disclosure](submission/AI_DISCLOSURE.md)).
 
 ![Scenario analysis on the real map](docs/screenshots/desktop-02-scenario-A.png)

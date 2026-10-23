@@ -43,9 +43,9 @@ Three verified official sources (two council decisions of 12.06.2026 and the mun
 | Working project | **Yes** (locally) |
 | Name / pitch / description / tech / challenges / next steps | **Drafts ready**; placeholders need the owner |
 | 2–6 min demo video | **Draft file exists** (≈ 3:48); not uploaded; no narration |
-| Public repository | **No** (needs the owner's GitHub account) |
+| Public repository | **Yes**: https://github.com/deniz2077/kanalatlas |
 | AI disclosure | **Draft**; the owner must correct it |
-| Live URL (optional) | **No**: GitHub Pages workflow and a tested static build are ready; they need the repo |
+| Live URL (optional) | **Yes**: https://deniz2077.github.io/kanalatlas/, with 14/14 browser tests passing against it |
 
 **Verdict:** The software is ready to demonstrate. The **submission is not yet complete**: it needs the repo link, an uploaded video, the owner's genuine input, and a corrected disclosure. All of these are owner actions and are listed in `MORNING_READ_ME_FIRST.md`.
 
