@@ -14,7 +14,7 @@
 
 ## A. Personal observation (owner's own experience)
 
-[STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE]
+Owner's answer (23 Oct 2026): I have **heard about canal swimming from people around me**. I have not seen it personally, and no formal conversations or interviews have taken place yet.
 
 - Where (general area only):
 - When (month/year):

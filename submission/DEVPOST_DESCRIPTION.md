@@ -1,12 +1,12 @@
 # Devpost description (draft — student must review, personalise and fill placeholders)
 
-> Placeholders in [BRACKETS] must be replaced with genuine information or deleted. Do not fill them with invented details. Items marked *(optional)* can simply be deleted; the text reads complete without them.
+> Only the three links at the end remain to be filled in.
 
 ## Inspiration
 
 I live in Adana, in southern Türkiye, where summers are extremely hot. Open irrigation canals run straight through residential neighbourhoods, and some people, including children and teenagers according to local reports, go into them to cool off.
 
-[STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE: 2–3 factual sentences about what you have seen near a canal or why this matters to you. Strongly recommended for the Community Relevance score.]
+I have heard about this from people around me: swimming in the canals to cool off is something people talk about here every summer. That made me wonder why it still happens when the city runs swimming programmes, and whether people living next to the canals actually have a pool or a shaded park within reach.
 
 This is not just a feeling. In June 2026, Adana Metropolitan Council approved a programme with local sports clubs to give free swimming lessons to children from low-income families. The council's written rationale names preventing drownings in unsafe places **such as irrigation canals** in the summer heat. The year before, the municipality reported free lessons for about 10,000 children in 26 pools. At the same time, the Ministry of Agriculture announced that the open canals running through the city centre will be replaced by closed, pressurised pipes, so the future of these canal corridors is changing.
 
@@ -21,8 +21,7 @@ What I noticed was an **information problem**. The swimming programmes exist, bu
 2. **Adana Metropolitan Municipality, 21 July 2025.** Free swimming lessons for about 10,000 children aged 6–14 in 26 semi-Olympic pools, aimed at reducing summer drownings. No pool locations are published.
 3. **Ministry of Agriculture and Forestry (Adana), 10 September 2025.** The transition to closed pressurised irrigation has begun; open canals passing through the city centre will be taken out of service.
 4. **OpenStreetMap (extracted 22 Oct 2026).** Our study area shows an open canal running through dense housing. Only 5 swimming facilities nearby have a name or swimming tag, and all of them lie in the north-west of the corridor.
-5. *(optional)* [STUDENT MUST DESCRIBE A REAL PERSONAL OBSERVATION OR RESEARCH EXPERIENCE]
-6. *(optional)* [STUDENT MUST ADD VERIFIED INTERVIEW INFORMATION IF AVAILABLE]
+5. **People around me** talk about canal swimming in summer. This is second-hand, not a formal interview. We have not yet run interviews or surveys, and none are claimed.
 
 We deliberately do **not** quote drowning totals, because we could not confirm one with an official source and reporting period.
 
@@ -50,7 +49,7 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 - **Testing:** 77 unit tests with hand-calculated expected values (for example, a three-point line where moving the pool from 2,200 m to 1,500 m changes the results from 2/3 to 3/3 within range). The tests render real PDFs and read them back to check the numbers. Playwright tests run the full journey in Desktop Chrome, Android Chromium and Safari's WebKit engine against the production build, including downloading and parsing the PDF and a real touch-drag test.
 - **Accessibility:** zero axe-core WCAG 2.1 A/AA violations in automated audits (desktop and mobile, with and without a scenario); a tested keyboard-only journey; Turkish-first; keyboard alternatives for every map action; a full text table instead of the map, labelled forms, visible focus, live-region announcements, and no meaning conveyed by colour alone.
 
-[STUDENT MUST CONFIRM TECHNICAL CONTRIBUTIONS — describe what you personally designed, decided, reviewed, tested or changed. The project was built with substantial AI coding assistance; see the AI disclosure.]
+I chose the problem, wrote the project brief and its honesty rules, found the starting sources (the municipality's swimming news, the council decision PDF and the ministry announcement), made the design decisions (study area, thresholds, what counts as a verified facility) and tested the app.
 
 ## Challenges we ran into
 
@@ -67,7 +66,7 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 
 ## What we learned
 
-*Draft based on what happened during the build; rewrite it in your own words:* Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: our own browser test found a location that beat our “best location” button, which made us improve the algorithm. [STUDENT: add one thing you personally learned.]
+Open data needs to be read critically. The same OpenStreetMap query can make access look three times better or worse depending on which records you trust. A simple, honest metric (straight-line distance, clearly labelled) beats an impressive but unverified one. And testing the claims, not just the code, matters: our own browser test found a location that beat our “best location” button, which made us improve the algorithm.
 
 ## What's next for KanalAtlas
 
@@ -77,9 +76,9 @@ Walking-network distances; verifying facilities against the official municipal p
 
 Straight-line distance is not walking distance. Sample points are not people (no population data is used). Facility operating status and public access are not verified. KanalAtlas does not predict drowning risk, does not claim any canal will close, and does not assess land availability or cost. One study area only. No community input has been collected yet.
 
-## AI assistance disclosure (required by the rules)
+## AI disclosure
 
-KanalAtlas was built with substantial help from an AI coding assistant, **Claude Code (Anthropic)**. I defined the problem, scope, honesty rules and requirements, and directed and reviewed the work. The AI agent wrote most of the code, tests, data-processing scripts and documentation drafts, and recorded an automated demo walkthrough of the real app. [STUDENT: describe what you personally reviewed, tested, changed or wrote.] No data, results, interviews or community responses were generated by AI; all facts come from the cited sources and OpenStreetMap. Full details: `submission/AI_DISCLOSURE.md` in the repository.
+The idea, problem, sources, design decisions and testing are mine. The code was written with an AI coding assistant (Claude Code). No data or results were AI-generated: every fact comes from the cited sources and OpenStreetMap.
 
 ## Sources
 

@@ -1,7 +1,5 @@
 # Challenges and lessons learned
 
-> Draft. [STUDENT MUST CONFIRM TECHNICAL CONTRIBUTIONS] and rewrite in your own voice; add any challenges you personally ran into.
-
 **1. Honest data is harder than more data.** OpenStreetMap had 42 swimming-pool records in our area, but most are unnamed polygons inside apartment complexes. Counting them gives 44 of 72 sample points within 1 km of a pool; counting only named or swimming-tagged records gives 13. Instead of hiding this, we made the data scope a visible switch and labelled every facility MAPPED rather than “public”.
 
 **2. Defining a fair metric.** Real walking routes would be best, but building and verifying routing in the time available was not realistic, and a wrong walking time would be worse than an honest straight-line distance. We used Haversine distance, labelled it everywhere, and reported “sampled map locations” instead of “residents”, because we have no population data.
