@@ -19,7 +19,7 @@ test("no WCAG A/AA violations (initial and with scenario)", async ({ page }, tes
       .exclude(".leaflet-tile-pane")
       .analyze();
   const initial = await scan();
-  await page.getByRole("button", { name: "Add at the best location" }).click();
+  await page.getByRole("button", { name: "Find a promising location" }).click();
   await page.getByRole("button", { name: "Save this scenario" }).click();
   await page.getByText(/Table instead of the map/).click();
   const withScenario = await scan();
@@ -51,7 +51,7 @@ test("keyboard only: add, move, save and export without a mouse", async ({ page 
     await page.keyboard.press("Enter");
   };
   const headline = page.getByTestId("within-headline");
-  await press("Add at the best location");
+  await press("Find a promising location");
   await expect(headline).toContainText("→");
   const coords = page.getByTestId("hyp-coords").first();
   const c0 = await coords.innerText();

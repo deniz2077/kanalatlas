@@ -64,6 +64,8 @@ export default function KanalAtlasApp() {
   const [movingId, setMovingId] = useState<string | null>(null);
   const [showLinks, setShowLinks] = useState(true);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  /** Unnamed/private records are hidden by default to keep the map readable. */
+  const [showInactive, setShowInactive] = useState(false);
   const [message, setMessage] = useState<Message>(null);
   const [saved, setSaved] = useState<SavedScenario[]>([]);
   const [priorities, setPriorities] = useState<Priorities>(EMPTY_PRIORITIES);
@@ -288,7 +290,7 @@ export default function KanalAtlasApp() {
                   studyArea={studyArea}
                   canals={canals}
                   category={category}
-                  facilities={facilities}
+                  facilities={showInactive ? facilities : active}
                   activeIds={activeIds}
                   points={evaluationPoints}
                   results={resultsById}
@@ -339,7 +341,7 @@ export default function KanalAtlasApp() {
                   )}
                 </div>
               </div>
-              <MapLegend t={t} category={category} threshold={fm(thresholdM)} />
+              <MapLegend t={t} category={category} threshold={fm(thresholdM)} showInactive={showInactive} />
             </div>
 
             {/* Control + results column */}
@@ -388,6 +390,9 @@ export default function KanalAtlasApp() {
                     ))}
                   </select>
                 </div>
+                <p className="mt-3 rounded-lg bg-data-soft px-3 py-2 text-sm text-ink" data-testid="baseline-line">
+                  {t.baselineLine(result.before.withinCount, result.before.pointCount, fm(thresholdM), category)}
+                </p>
 
                 <details className="group mt-3 rounded-lg border border-line bg-paper/60 px-3 py-2" data-testid="advanced">
                   <summary className="cursor-pointer text-sm font-medium text-ink-soft">{t.advanced}</summary>
@@ -419,6 +424,10 @@ export default function KanalAtlasApp() {
                         <input type="checkbox" checked={showSuggestions} onChange={(e) => setShowSuggestions(e.target.checked)} className="h-4 w-4" />
                         {t.showSuggestions}
                       </label>
+                      <label className="flex min-h-9 items-center gap-2">
+                        <input type="checkbox" checked={showInactive} onChange={(e) => setShowInactive(e.target.checked)} className="h-4 w-4" />
+                        {t.showInactive}
+                      </label>
                     </div>
                     <p className="text-xs text-muted">{t.categoryNote}</p>
                     <p className="text-xs text-muted">{t.bestInfo(fmtInt(candidateSites.length, lang), CANDIDATE_SPACING_M)}</p>
@@ -429,6 +438,7 @@ export default function KanalAtlasApp() {
 
               <fieldset className="rounded-xl border border-hypo/40 bg-hypo-soft/50 p-4">
                 <legend className="px-1 text-sm font-semibold">{t.step2}</legend>
+                <p className="mb-3 text-xs text-ink-soft">{t.step2Hint}</p>
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
@@ -548,16 +558,6 @@ export default function KanalAtlasApp() {
                   </ul>
                 )}
 
-                {visibleHyps.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <button type="button" onClick={saveScenario} className="min-h-11 rounded-lg bg-ink px-4 text-sm font-semibold text-white hover:bg-ink-soft">
-                      {t.save}
-                    </button>
-                    <button type="button" onClick={resetScenario} className="min-h-11 rounded-lg border border-line bg-white px-4 text-sm font-medium hover:border-ink-soft">
-                      {t.reset}
-                    </button>
-                  </div>
-                )}
               </fieldset>
 
               <div aria-live="assertive" className="min-h-0">
@@ -579,6 +579,26 @@ export default function KanalAtlasApp() {
               </div>
 
               <ResultsCard t={t} lang={lang} result={result} />
+
+              <fieldset className="rounded-xl border border-line p-4">
+                <legend className="px-1 text-sm font-semibold">{t.step3}</legend>
+                <p className="text-xs text-ink-soft">{t.step3Text}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {visibleHyps.length > 0 && (
+                    <>
+                      <button type="button" onClick={saveScenario} className="min-h-11 rounded-lg bg-ink px-4 text-sm font-semibold text-white hover:bg-ink-soft">
+                        {t.save}
+                      </button>
+                      <button type="button" onClick={resetScenario} className="min-h-11 rounded-lg border border-line bg-white px-4 text-sm font-medium hover:border-ink-soft">
+                        {t.reset}
+                      </button>
+                    </>
+                  )}
+                  <a href="#rapor" className="inline-flex min-h-11 items-center rounded-lg border border-data/50 bg-data-soft px-4 text-sm font-semibold text-data hover:border-data">
+                    {t.goReport}
+                  </a>
+                </div>
+              </fieldset>
             </div>
           </div>
 
@@ -700,7 +720,7 @@ export default function KanalAtlasApp() {
   );
 }
 
-function MapLegend({ t, category, threshold }: { t: Dict; category: Category; threshold: string }) {
+function MapLegend({ t, category, threshold, showInactive }: { t: Dict; category: Category; threshold: string; showInactive: boolean }) {
   const L = t.legend;
   return (
     <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-ink-soft" aria-label={t.legendLabel}>
@@ -710,6 +730,7 @@ function MapLegend({ t, category, threshold }: { t: Dict; category: Category; th
         <span className={`ka-marker ${category === "swimming" ? "ka-marker--swim" : "ka-marker--park"}`} style={category === "swimming" ? { width: 16, height: 16, fontSize: 9 } : { width: 12, height: 12 }}>{category === "swimming" ? "H" : ""}</span>
         {L.active}
       </li>
+      {showInactive && (
       <li className="flex items-center gap-2">
         {category === "swimming" ? (
           <span className="ka-marker ka-marker--swim ka-marker--faded" style={{ width: 14, height: 14, fontSize: 8 }}>h</span>
@@ -718,7 +739,10 @@ function MapLegend({ t, category, threshold }: { t: Dict; category: Category; th
         )}
         {L.inactive}
       </li>
-      <li className="flex items-center gap-2"><span className="ka-marker ka-marker--excluded" style={{ width: 14, height: 14, fontSize: 9 }}>×</span>{L.excluded}</li>
+      )}
+      {showInactive && (
+        <li className="flex items-center gap-2"><span className="ka-marker ka-marker--excluded" style={{ width: 14, height: 14, fontSize: 9 }}>×</span>{L.excluded}</li>
+      )}
       <li className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border-2 border-data bg-data" />{L.within(threshold)}</li>
       <li className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border-2 border-ink-soft bg-white" />{L.outside}</li>
       <li className="flex items-center gap-2"><span className="inline-block h-3 w-3 rounded-full border-2 border-hypo bg-amber-400" />{L.nearestHyp}</li>
@@ -743,70 +767,93 @@ function ResultsCard({ t, lang, result: r }: { t: Dict; lang: Lang; result: Scen
   const has = r.hypotheticalCount > 0;
   const fm = (m: number | null) => fmtMeters(m, lang);
   const fd = (m: number | null) => fmtDelta(m, lang);
+  const th = fm(r.thresholdM);
   const rows: [string, string, string, string][] = [
     [t.meanDist, fm(r.before.meanM), has ? fm(r.after.meanM) : "—", has ? fd(r.change.meanDeltaM) : "—"],
     [t.medianDist, fm(r.before.medianM), has ? fm(r.after.medianM) : "—", has ? fd(r.change.medianDeltaM) : "—"],
     [t.farthest, fm(r.before.maxM), has ? fm(r.after.maxM) : "—", has && r.before.maxM !== null && r.after.maxM !== null ? fd(r.after.maxM - r.before.maxM) : "—"],
   ];
   const beltGain = r.canalBelt.after.withinCount - r.canalBelt.before.withinCount;
+  const Tile = ({ label, value, sub, tone, testid }: { label: string; value: string; sub: string; tone: "ink" | "hypo" | "muted"; testid: string }) => (
+    <div className={`rounded-lg border p-3 ${tone === "hypo" ? "border-hypo/40 bg-hypo-soft" : "border-line bg-paper"}`} data-testid={testid}>
+      <p className="text-[11px] font-semibold uppercase tracking-wide text-muted">{label}</p>
+      <p className={`mt-1 text-2xl font-bold tabular ${tone === "hypo" ? "text-hypo" : tone === "muted" ? "text-muted" : "text-ink"}`}>{value}</p>
+      <p className="text-[11px] text-muted">{sub}</p>
+    </div>
+  );
   return (
     <section aria-labelledby="sonuc-baslik" className="rounded-xl border border-line bg-white p-4 shadow-sm" data-testid="results">
-      <h3 id="sonuc-baslik" className="text-sm font-semibold">{t.step3}</h3>
-      <p className="mt-2 text-sm text-ink-soft">{t.withinCard(fm(r.thresholdM))}</p>
-      <p className="mt-1 flex items-baseline gap-2 text-3xl font-bold tabular" data-testid="within-headline">
+      <h3 id="sonuc-baslik" className="text-sm font-semibold">{t.resultTitle}</h3>
+      {/* Screen-reader / test summary in one line, e.g. "13 → 27 (+14) / 72" */}
+      <p className="sr-only" data-testid="within-headline">
         <span>{r.before.withinCount}</span>
         {has && (
           <>
-            <span className="text-lg text-muted" aria-hidden="true">→</span>
-            <span className="text-hypo">{r.after.withinCount}</span>
-            <span className="text-base font-semibold text-hypo">({r.change.withinGained >= 0 ? "+" : ""}{r.change.withinGained})</span>
+            {" "}→ <span>{r.after.withinCount}</span> ({r.change.withinGained >= 0 ? "+" : ""}
+            {r.change.withinGained})
           </>
-        )}
-        <span className="text-base font-normal text-muted">/ {r.before.pointCount}</span>
-        <span className="sr-only">{has ? t.srBeforeAfter(r.before.withinCount, r.after.withinCount) : ""}</span>
+        )}{" "}
+        / {r.before.pointCount}
+        {has ? ` — ${t.srBeforeAfter(r.before.withinCount, r.after.withinCount)}` : ""}
       </p>
-      <div className="mt-3 space-y-2">
+      <div className="mt-3 grid grid-cols-3 gap-2" aria-hidden="true">
+        <Tile label={t.tileBefore} value={`${r.before.withinCount} / ${r.before.pointCount}`} sub={t.tileWithin(th)} tone="ink" testid="tile-before" />
+        <Tile label={t.tileAfter} value={has ? `${r.after.withinCount} / ${r.after.pointCount}` : "—"} sub={t.tileWithin(th)} tone={has ? "hypo" : "muted"} testid="tile-after" />
+        <Tile
+          label={t.tileChange}
+          value={has ? `${r.change.withinGained >= 0 ? "+" : ""}${r.change.withinGained}` : "—"}
+          sub={has ? t.tileWithin(th) : ""}
+          tone={has ? "hypo" : "muted"}
+          testid="tile-change"
+        />
+      </div>
+      <p className="mt-3 text-sm font-medium text-ink" data-testid="change-sentence">
+        {has ? t.changeSentence(r.change.withinGained, th, r.category) : t.addToSee}
+      </p>
+      <div className="mt-3 space-y-2" aria-hidden="true">
         <Bar value={r.before.withinCount} total={r.before.pointCount} tone="data" label={t.barBaseline} />
         {has && <Bar value={r.after.withinCount} total={r.after.pointCount} tone="hypo" label={t.barScenario} />}
       </div>
+      <p className="mt-3 text-[11px] leading-snug text-muted">{t.resultsFoot(r.baselineFacilityCount)}</p>
 
-      <table className="mt-4 w-full text-sm tabular">
-        <caption className="sr-only">{t.statsCaption}</caption>
-        <thead>
-          <tr className="text-left text-xs text-muted">
-            {t.statsHead.map((hd) => (
-              <th key={hd} scope="col" className="pb-1 font-medium">
-                {hd}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map(([l, b, a, d]) => (
-            <tr key={l} className="border-t border-line">
-              <th scope="row" className="py-1.5 pr-2 text-left font-normal text-ink-soft">{l}</th>
-              <td className="py-1.5">{b}</td>
-              <td className="py-1.5">{a}</td>
-              <td className="py-1.5">{d}</td>
+      <details className="mt-3 rounded-lg border border-line bg-paper/60 px-3 py-2">
+        <summary className="cursor-pointer text-sm font-medium text-ink-soft">{t.detailsStats}</summary>
+        <table className="mt-3 w-full text-sm tabular">
+          <caption className="sr-only">{t.statsCaption}</caption>
+          <thead>
+            <tr className="text-left text-xs text-muted">
+              {t.statsHead.map((hd) => (
+                <th key={hd} scope="col" className="pb-1 font-medium">
+                  {hd}
+                </th>
+              ))}
             </tr>
-          ))}
-          <tr className="border-t border-line">
-            <th scope="row" className="py-1.5 pr-2 text-left font-normal text-ink-soft">{t.beltRow}</th>
-            <td className="py-1.5">{r.canalBelt.before.withinCount}/{r.canalBelt.before.pointCount}</td>
-            <td className="py-1.5">{has ? `${r.canalBelt.after.withinCount}/${r.canalBelt.after.pointCount}` : "—"}</td>
-            <td className="py-1.5">{has ? `${beltGain >= 0 ? "+" : ""}${beltGain}` : "—"}</td>
-          </tr>
-        </tbody>
-      </table>
-      <p className="mt-1 text-[11px] text-muted">{t.beltNote(CANAL_BELT_M)}</p>
-
-      <p className="mt-3 rounded-lg bg-paper p-3 text-sm leading-relaxed text-ink" data-testid="interpretation">{interpretResult(r, lang)}</p>
+          </thead>
+          <tbody>
+            {rows.map(([l, b, a, d]) => (
+              <tr key={l} className="border-t border-line">
+                <th scope="row" className="py-1.5 pr-2 text-left font-normal text-ink-soft">{l}</th>
+                <td className="py-1.5">{b}</td>
+                <td className="py-1.5">{a}</td>
+                <td className="py-1.5">{d}</td>
+              </tr>
+            ))}
+            <tr className="border-t border-line">
+              <th scope="row" className="py-1.5 pr-2 text-left font-normal text-ink-soft">{t.beltRow}</th>
+              <td className="py-1.5">{r.canalBelt.before.withinCount}/{r.canalBelt.before.pointCount}</td>
+              <td className="py-1.5">{has ? `${r.canalBelt.after.withinCount}/${r.canalBelt.after.pointCount}` : "—"}</td>
+              <td className="py-1.5">{has ? `${beltGain >= 0 ? "+" : ""}${beltGain}` : "—"}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="mt-1 text-[11px] text-muted">{t.beltNote(CANAL_BELT_M)}</p>
+        <p className="mt-3 rounded-lg bg-white p-3 text-sm leading-relaxed text-ink" data-testid="interpretation">{interpretResult(r, lang)}</p>
+      </details>
       {r.notes.length > 0 && (
         <ul className="mt-2 space-y-1 text-xs text-[#7c2d12]">
           {r.notes.map((n) => <li key={n}>⚠ {n}</li>)}
         </ul>
       )}
-      <p className="mt-3 text-[11px] leading-snug text-muted">{t.resultsFoot(r.baselineFacilityCount)}</p>
     </section>
   );
 }

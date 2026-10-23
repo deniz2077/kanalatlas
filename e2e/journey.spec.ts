@@ -36,7 +36,7 @@ test("complete journey: map → scenario → move → compare → priorities →
   // 1. Homepage
   await page.goto("./?lang=tr");
   await expect(page).toHaveTitle(/KanalAtlas/);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Mahalleni keşfet");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Adana'da yeni bir yüzme havuzu");
   await page.screenshot({ path: `${shotDir}/${p}-01-landing.png` });
 
   // 2–3. Map, study area, canals, evaluation points
@@ -67,13 +67,14 @@ test("complete journey: map → scenario → move → compare → priorities →
   await page.getByRole("button", { name: "Seçimi iptal et" }).click();
 
   // 5. Add a hypothetical facility (keyboard-accessible path)
-  await page.getByRole("button", { name: "En çok fayda sağlayan konuma ekle" }).click();
+  await page.getByRole("button", { name: "Umut vadeden bir konum bul" }).click();
   await expect(page.getByTestId("hypothetical")).toHaveCount(1);
   await expect(headline(page)).toContainText("→");
   const afterA = (await headline(page).innerText()).replace(/\s+/g, " ");
   const coordsA = await coords(page).innerText();
-  const interpA = await page.getByTestId("interpretation").innerText();
+  const interpA = (await page.getByTestId("interpretation").textContent()) ?? "";
   expect(interpA).toMatch(/Varsayımsal senaryoda/);
+  await expect(page.getByTestId("change-sentence")).toContainText("örnek konum daha");
   await page.locator("#analiz").scrollIntoViewIfNeeded();
   await page.screenshot({ path: `${shotDir}/${p}-02-scenario-A.png`, fullPage: false });
   await page.getByRole("button", { name: "Bu senaryoyu kaydet" }).click();
@@ -196,7 +197,7 @@ test("touch drag moves the hypothetical facility (native TouchEvents)", async ({
   // marker element; WebKit on macOS cannot construct Touch objects, so Chromium only.
   test.skip(testInfo.project.name !== "mobile", "needs a touch-enabled Chromium profile");
   await page.goto("./?lang=tr");
-  const add = page.getByRole("button", { name: "En çok fayda sağlayan konuma ekle" });
+  const add = page.getByRole("button", { name: "Umut vadeden bir konum bul" });
   await add.focus();
   await page.keyboard.press("Enter");
   const marker = page.locator(".ka-marker--hypo").first();
@@ -227,10 +228,10 @@ test("touch drag moves the hypothetical facility (native TouchEvents)", async ({
 
 test("English (default): journey, language toggle and English PDF", async ({ page }) => {
   await page.goto("./");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Explore your neighbourhood.");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Where would a new swimming pool");
   await expect(page.locator("html")).toHaveAttribute("lang", "en");
   await expect(headline(page)).toHaveText(/13\s*\/\s*72/);
-  await page.getByRole("button", { name: "Add at the best location" }).click();
+  await page.getByRole("button", { name: "Find a promising location" }).click();
   await expect(page.getByTestId("hyp-explanation")).toContainText("It becomes the nearest facility for");
   await expect(page.getByTestId("interpretation")).toContainText("In the hypothetical scenario this becomes");
   const [download] = await Promise.all([
@@ -247,11 +248,11 @@ test("English (default): journey, language toggle and English PDF", async ({ pag
   expect(text).not.toContain("Varsayımsal");
   // Toggle to Turkish and back; the scenario state is kept.
   await page.getByTestId("lang-toggle").click();
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Mahalleni keşfet.");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Adana'da yeni bir yüzme havuzu");
   await expect(page.locator("html")).toHaveAttribute("lang", "tr");
   await expect(page.getByTestId("hypothetical")).toHaveCount(1);
   await page.getByTestId("lang-toggle").click();
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Explore your neighbourhood.");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Where would a new swimming pool");
   if (test.info().project.name === "desktop") {
     await page.locator('[data-testid="map"]').scrollIntoViewIfNeeded();
     await page.screenshot({ path: `${shotDir}/desktop-07-english.png` });

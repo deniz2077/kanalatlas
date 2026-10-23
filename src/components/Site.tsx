@@ -103,22 +103,33 @@ function Content({ facts }: { facts: BaselineFacts }) {
         <section className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_1fr] lg:py-16">
           <div>
             <p className="text-sm font-semibold text-data">{t.heroKicker}</p>
-            <h1 className="mt-3 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-              {t.heroTitle[0]}
-              <br />
-              {t.heroTitle[1]}
-              <br />
-              <span className="text-hypo">{t.heroTitle[2]}</span>
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-ink-soft">{t.heroText}</p>
+            <h1 className="mt-3 text-[2rem] font-bold leading-[1.12] tracking-tight sm:text-5xl">{t.heroQuestion}</h1>
+            <div className="mt-5 max-w-xl space-y-3 text-lg text-ink-soft">
+              {t.heroAnswer.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href="#analiz" className="rounded-lg bg-ink px-5 py-3 font-semibold text-white hover:bg-ink-soft">{t.heroCta}</a>
+              <a href="#analiz" className="rounded-lg bg-hypo px-5 py-3 font-semibold text-white shadow-sm hover:bg-[#92400e]">{t.heroCta} →</a>
               <a href="#yontem" className="rounded-lg border border-line bg-white px-5 py-3 font-semibold hover:border-ink-soft">{t.heroCta2}</a>
             </div>
           </div>
-          <div className="rounded-2xl border border-line bg-white p-4 shadow-sm">
+          <div className="rounded-2xl border border-line bg-white p-5 shadow-sm">
             <CanalIllustration label={t.illustrationLabel} />
-            <p className="mt-3 text-xs text-muted">{t.illustrationNote}</p>
+            <ol className="mt-5 space-y-3" aria-label="KanalAtlas">
+              {t.steps.map((st, i) => (
+                <li key={st.title} className="flex gap-3">
+                  <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${i === 1 ? "bg-hypo" : "bg-ink"}`}>{i + 1}</span>
+                  <div>
+                    <p className="font-semibold">{st.title}</p>
+                    <p className="text-sm text-ink-soft">{st.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-4 border-t border-line pt-3 text-xs italic text-muted">
+              {t.heroTitle.join(" ")}
+            </p>
           </div>
         </section>
 
@@ -196,7 +207,7 @@ function Content({ facts }: { facts: BaselineFacts }) {
             </dl>
           </div>
 
-          <details className="mt-6 rounded-xl border border-line bg-card p-5" open>
+          <details className="mt-6 rounded-xl border border-line bg-card p-5">
             <summary className="cursor-pointer font-semibold">{t.ledgerTitle}</summary>
             <ul className="mt-3 space-y-4">
               {EVIDENCE.map((e) => (

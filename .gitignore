@@ -48,3 +48,6 @@ next-env.d.ts
 # demo video (large binary, distribute via YouTube/Vimeo)
 /submission/video/*.webm
 /submission/video/*.mp4
+/submission/video/samples/
+/tools/tts/node_modules/
+/tools/tts/cache/

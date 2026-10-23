@@ -41,7 +41,17 @@ const en = {
   heroTitle: ["Explore your neighbourhood.", "See what it needs.", "Imagine its future together."],
   heroText:
     "Open irrigation canals run through neighbourhoods in Adana, and summers are extremely hot. KanalAtlas measures how far people are from mapped swimming facilities and parks along one canal corridor, tests where a new one would help most, and turns the result into a sourced planning brief.",
-  heroCta: "Open the map",
+  heroQuestion: "Where would a new swimming pool make the biggest difference in Adana?",
+  heroAnswer: [
+    "Open irrigation canals run through Adana's neighbourhoods, and the city council itself names drowning in them as a reason for its free swimming lessons.",
+    "KanalAtlas measures how far each part of a canal corridor is from mapped pools and parks — then lets you drop in a new one, move it, and see the difference instantly.",
+  ],
+  steps: [
+    { title: "Explore", text: "See the real canal corridor, the mapped pools and parks, and today's baseline." },
+    { title: "Test a solution", text: "Add a hypothetical pool or park, drag it, and watch the numbers recalculate." },
+    { title: "Compare & share", text: "Compare locations side by side and download an evidence-based PDF brief." },
+  ],
+  heroCta: "Find a promising location",
   heroCta2: "How we calculate",
   illustrationLabel: "Abstract drawing of a canal line, sample points and one hypothetical facility",
   illustrationNote: "Abstract drawing; the real map is in the analysis section below.",
@@ -88,7 +98,9 @@ const en = {
   tapToMove: "Tap the map inside the box to move the facility",
   withinLabel: (th: string) => `sample points within ${th}`,
   meanLabel: "Mean",
-  step1: "1. What to measure",
+  step1: "1. Explore the baseline",
+  baselineLine: (n: number, total: number, th: string, cat: Category) =>
+    `Today, ${n} of ${total} sample locations are within ${th} of a mapped ${cat === "swimming" ? "swimming facility" : "park"}.`,
   categoryGroup: "Facility category",
   categoryNote: "Categories are never mixed: a park does not count as a swimming facility.",
   threshold: "Distance threshold (straight line)",
@@ -102,10 +114,11 @@ const en = {
   bestInfo: (n: string, spacing: number) =>
     `“Best location” screens ${n} candidate sites (${spacing} m apart) and picks the one that brings the most sample points within the threshold (ties: largest drop in mean distance). It knows nothing about land availability.`,
   keyboardInfo: (step: number) => `Keyboard: use “Add at the best location”, then move it in ${step} m steps with the arrow buttons.`,
-  step2: "2. Hypothetical facility",
+  step2: "2. Test a solution",
+  step2Hint: "Let KanalAtlas find a promising spot, or place one yourself. Then drag it around.",
   pickOnMap: "Pick a spot on the map",
   cancelPick: "Cancel",
-  addBest: "Add at the best location",
+  addBest: "Find a promising location",
   corridorTitle: "What if the canal is closed?",
   corridorText: (len: string) =>
     `The ministry announced that open canals through the city centre will be decommissioned. Measure access as if this corridor's ${len} mapped canal line became a linear park. Timing and land status are not verified.`,
@@ -130,6 +143,10 @@ const en = {
       closeToExisting === null ? "." : closeToExisting ? " — close to an existing facility, so its effect is limited." : " — it fills a gap far from existing facilities."
     }`,
   save: "Save this scenario",
+  step3: "3. Compare & share",
+  step3Text: "Save a location, move the facility and save again to compare. Then download the planning brief.",
+  goReport: "Go to the PDF report",
+  showInactive: "Show records not counted (unnamed or private pools)",
   reset: "Reset scenario",
   errorPrefix: "Error: ",
   warningPrefix: "Warning: ",
@@ -164,7 +181,19 @@ const en = {
   bestNote:
     "“Best” means more points within the threshold, then a lower mean distance. It is a ranking rule, not an assessment of land, cost or feasibility.",
   // ---- results
-  step3: "3. Result",
+  resultTitle: "Result",
+  tileBefore: "Before",
+  tileAfter: "After",
+  tileChange: "Change",
+  tileWithin: (th: string) => `within ${th}`,
+  changeSentence: (gain: number, th: string, cat: Category) =>
+    gain > 0
+      ? `${gain} more sample location${gain === 1 ? " is" : "s are"} now within ${th} of a ${cat === "swimming" ? "swimming facility" : "park"}.`
+      : gain === 0
+        ? `No additional sample locations come within ${th}; try another spot.`
+        : `${-gain} fewer sample locations within ${th}.`,
+  addToSee: "Add a hypothetical facility to see the before-and-after comparison.",
+  detailsStats: "Detailed statistics and explanation",
   withinCard: (th: string) => `sample map points within ${th}`,
   srBeforeAfter: (b: number, a: number) => `Baseline ${b}, scenario ${a}`,
   barBaseline: "Baseline",
@@ -177,7 +206,7 @@ const en = {
   beltRow: "Canal belt* within threshold",
   beltNote: (m: number) => `*Sample points ${m} m or closer to a mapped canal.`,
   resultsFoot: (n: number) =>
-    `${n} mapped facilities in the analysis. Straight-line distance is not walking distance; sample points do not represent population; this tool does not predict drowning risk.`,
+    `Sample locations are points on a 500 m grid, not people. Distances are straight-line estimates to ${n} mapped facilities.`,
   // ---- legend
   legendLabel: "Map legend",
   legend: {
@@ -337,7 +366,17 @@ const tr: Dict = {
   heroTitle: ["Mahalleni keşfet.", "İhtiyaçları gör.", "Geleceği birlikte düşün."],
   heroText:
     "Adana'da açık sulama kanalları mahallelerin içinden geçiyor ve yazlar çok sıcak. KanalAtlas, bir kanal koridorunda haritalanmış yüzme tesislerine ve parklara ne kadar uzak olunduğunu ölçer, yeni bir tesisin en çok nerede fayda sağlayacağını hesaplar ve sonucu kaynaklarıyla birlikte bir planlama raporuna dönüştürür.",
-  heroCta: "Haritayı ve senaryoyu aç",
+  heroQuestion: "Adana'da yeni bir yüzme havuzu en çok nerede fark yaratır?",
+  heroAnswer: [
+    "Adana'da açık sulama kanalları mahallelerin içinden geçiyor ve belediye meclisi, ücretsiz yüzme eğitiminin gerekçeleri arasında bu kanallardaki boğulmaları sayıyor.",
+    "KanalAtlas, bir kanal koridorunun her bölümünün haritalanmış havuz ve parklara ne kadar uzak olduğunu ölçer; yeni bir tesis ekleyip taşıdığınızda farkı anında gösterir.",
+  ],
+  steps: [
+    { title: "İncele", text: "Gerçek kanal koridorunu, haritalanmış havuz ve parkları ve bugünkü durumu görün." },
+    { title: "Bir çözüm dene", text: "Varsayımsal bir havuz veya park ekleyin, sürükleyin ve sonuçların yeniden hesaplanışını izleyin." },
+    { title: "Karşılaştır ve paylaş", text: "Konumları yan yana karşılaştırın ve kanıta dayalı PDF raporu indirin." },
+  ],
+  heroCta: "Umut vadeden bir konum bul",
   heroCta2: "Nasıl hesaplıyoruz?",
   illustrationLabel: "Kanal hattı, örnek noktalar ve varsayımsal bir tesisi gösteren soyut çizim",
   illustrationNote: "Soyut çizim; gerçek harita aşağıdaki analiz bölümündedir.",
@@ -381,7 +420,9 @@ const tr: Dict = {
   tapToMove: "Tesisin yeni yerini seçmek için çerçeve içinde haritaya dokunun",
   withinLabel: (th) => `${th} içindeki örnek nokta`,
   meanLabel: "Ortalama",
-  step1: "1. Ne ölçülsün?",
+  step1: "1. Mevcut durumu incele",
+  baselineLine: (n, total, th, cat) =>
+    `Bugün ${total} örnek konumdan ${n} tanesi, haritalanmış bir ${cat === "swimming" ? "yüzme tesisine" : "parka"} ${th} veya daha yakın.`,
   categoryGroup: "Tesis kategorisi",
   categoryNote: "Kategoriler birbirinin yerine sayılmaz: park, yüzme tesisi eksikliğini kapatmaz.",
   threshold: "Mesafe eşiği (kuş uçuşu)",
@@ -395,10 +436,11 @@ const tr: Dict = {
   bestInfo: (n, spacing) =>
     `“En çok fayda”: ${n} aday konum (${spacing} m aralık) taranır; eşik içine en çok örnek nokta katan konum seçilir (eşitlikte ortalama mesafeyi en çok düşüren). Arazi uygunluğunu bilmez.`,
   keyboardInfo: (step) => `Klavye ile: “En çok fayda sağlayan konuma ekle” düğmesini kullanın, ardından ok düğmeleriyle ${step} m adımlarla taşıyın.`,
-  step2: "2. Varsayımsal tesis",
+  step2: "2. Bir çözüm dene",
+  step2Hint: "KanalAtlas'ın umut vadeden bir yer bulmasına izin verin veya kendiniz yerleştirin. Sonra sürükleyin.",
   pickOnMap: "Haritada yer seç",
   cancelPick: "Seçimi iptal et",
-  addBest: "En çok fayda sağlayan konuma ekle",
+  addBest: "Umut vadeden bir konum bul",
   corridorTitle: "Kanal kapatılırsa ne olur?",
   corridorText: (len) =>
     `Bakanlık, şehir merkezinden geçen açık kanalların devre dışı bırakılacağını duyurdu. Bu koridordaki ${len}'lik haritalanmış kanal hattının doğrusal bir parka dönüştüğünü varsayarak erişimi ölçün. Takvim ve arazi durumu doğrulanmamıştır.`,
@@ -423,6 +465,10 @@ const tr: Dict = {
       closeToExisting === null ? "." : closeToExisting ? " — mevcut bir tesise yakın olduğu için etkisi sınırlı kalır." : " — mevcut tesislerden uzak bir boşluğu dolduruyor."
     }`,
   save: "Bu senaryoyu kaydet",
+  step3: "3. Karşılaştır ve paylaş",
+  step3Text: "Bir konumu kaydedin, tesisi taşıyıp tekrar kaydederek karşılaştırın. Sonra planlama raporunu indirin.",
+  goReport: "PDF rapora git",
+  showInactive: "Sayılmayan kayıtları göster (isimsiz veya özel havuzlar)",
   reset: "Senaryoyu sıfırla",
   errorPrefix: "Hata: ",
   warningPrefix: "Uyarı: ",
@@ -456,7 +502,19 @@ const tr: Dict = {
   delLabel: (l) => `Senaryo ${l} sil`,
   bestNote:
     "“En iyi”, önce eşik içine giren nokta sayısına, eşitlikte daha düşük ortalama mesafeye göre belirlenir. Bu bir sıralama ölçütüdür; arazi, maliyet veya uygulanabilirlik değerlendirmesi değildir.",
-  step3: "3. Sonuç",
+  resultTitle: "Sonuç",
+  tileBefore: "Önce",
+  tileAfter: "Sonra",
+  tileChange: "Fark",
+  tileWithin: (th) => `${th} içinde`,
+  changeSentence: (gain, th, cat) =>
+    gain > 0
+      ? `${gain} örnek konum daha artık bir ${cat === "swimming" ? "yüzme tesisine" : "parka"} ${th} veya daha yakın.`
+      : gain === 0
+        ? `${th} içine yeni örnek konum girmedi; başka bir yer deneyin.`
+        : `${th} içinde ${-gain} örnek konum daha az.`,
+  addToSee: "Önce/sonra karşılaştırmasını görmek için varsayımsal bir tesis ekleyin.",
+  detailsStats: "Ayrıntılı istatistikler ve açıklama",
   withinCard: (th) => `${th} içinde kalan örnek harita noktası`,
   srBeforeAfter: (b, a) => `Başlangıçta ${b}, senaryoda ${a}`,
   barBaseline: "Başlangıç",
@@ -469,7 +527,7 @@ const tr: Dict = {
   beltRow: "Kanal kuşağı* eşik içi",
   beltNote: (m) => `*Haritalanmış kanala ${m} m veya daha yakın örnek noktalar.`,
   resultsFoot: (n) =>
-    `Analizde ${n} haritalanmış tesis var. Kuş uçuşu mesafe yürüme mesafesi değildir; örnek noktalar nüfusu temsil etmez; bu araç boğulma riski tahmin etmez.`,
+    `Örnek konumlar 500 m ızgaradaki noktalardır, kişiler değil. Mesafeler ${n} haritalanmış tesise kuş uçuşu tahminlerdir.`,
   legendLabel: "Harita açıklaması",
   legend: {
     canal: "Haritalanmış açık kanal (kesikli: menfez)",

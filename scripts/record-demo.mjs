@@ -1,12 +1,15 @@
 /**
  * Records a narrated, captioned walkthrough of the REAL running app
- * (production build, English UI): Chrome streams screencast frames while
- * Playwright drives the app; each narration line is synthesised with the
- * macOS `say` command, shown as a subtitle, and placed in the audio track at
- * the moment it is spoken. scripts/encode-mp4.mjs then encodes H.264 + AAC.
+ * (production build, English UI) in two passes:
+ *   1. a silent rehearsal performs every interaction and collects the
+ *      narration text, with numbers read from the screen;
+ *   2. the lines are synthesised with Kokoro (tools/tts/narrate.mjs, voice
+ *      am_michael, Turkish place names pronounced correctly), then the same
+ *      walkthrough is recorded while each clip plays and is shown as a subtitle.
+ *      If any on-screen number differs from the rehearsal, recording aborts.
+ * Chrome streams screencast frames; scripts/encode-mp4.mjs encodes H.264 + AAC.
  *
- *   npm run build && npm run demo:record            # voice: "Ava (Premium)" if installed
- *   DEMO_VOICE="Zoe (Premium)" npm run demo:record
+ *   (cd tools/tts && npm install) && npm run build && npm run demo:record
  *
  * Output: submission/video/kanalatlas-demo.mp4 (1280×720, 30 fps, AAC audio).
  * Every interaction is performed on the live app. Numbers in the narration are
@@ -28,25 +31,39 @@ fs.rmSync(tmpDir, { recursive: true, force: true });
 fs.mkdirSync(clipsDir, { recursive: true });
 
 // ---------------------------------------------------------------- voice
-const installed = execFileSync("say", ["-v", "?"])
-  .toString()
-  .split("\n")
-  .map((l) => l.replace(/\s{2,}\S+\s+#.*$/, "").trim());
-const wanted = [process.env.DEMO_VOICE, "Ava (Premium)", "Zoe (Premium)", "Evan (Enhanced)", "Ava (Enhanced)", "Samantha"].filter(Boolean);
-const VOICE = wanted.find((v) => installed.includes(v));
-if (!VOICE) throw new Error("No usable English voice found");
-console.log(`voice: ${VOICE}`);
-const RATE = process.env.DEMO_RATE ?? "172";
+// Narration: Kokoro (open-source neural TTS) via tools/tts/narrate.mjs, voice
+// am_michael, with hand-set Turkish pronunciations. Install once:
+//   cd tools/tts && npm install
+const TTS_DIR = path.join(root, "tools/tts");
+const VOICE = process.env.DEMO_VOICE ?? "am_michael";
+const SPEED = process.env.DEMO_SPEED ?? "0.95";
 
-let clipN = 0;
-/** Synthesise one line to a 48 kHz mono WAV; returns where its samples are. */
-function synth(text) {
-  const file = path.join(clipsDir, `${String(clipN++).padStart(3, "0")}.wav`);
-  execFileSync("say", ["-v", VOICE, "-r", RATE, "--file-format=WAVE", "--data-format=LEI16@48000", "-o", file, text]);
-  const buf = fs.readFileSync(file);
-  const dataIdx = buf.indexOf("data");
-  const bytes = buf.readUInt32LE(dataIdx + 4);
-  return { file, seconds: bytes / 2 / 48000, dataOffset: dataIdx + 8, bytes };
+/** Read a WAV (16-bit PCM or 32-bit float, mono) and return Int16 samples at 48 kHz. */
+function readWavAs48k(file) {
+  const b = fs.readFileSync(file);
+  let p = 12;
+  let fmt = null;
+  let data = null;
+  while (p + 8 <= b.length) {
+    const id = b.toString("ascii", p, p + 4);
+    const size = b.readUInt32LE(p + 4);
+    if (id === "fmt ") fmt = { format: b.readUInt16LE(p + 8), rate: b.readUInt32LE(p + 12), bits: b.readUInt16LE(p + 22) };
+    if (id === "data") data = b.subarray(p + 8, p + 8 + size);
+    p += 8 + size + (size % 2);
+  }
+  if (!fmt || !data) throw new Error(`bad wav ${file}`);
+  const n = data.length / (fmt.bits / 8);
+  const src = new Float32Array(n);
+  for (let i = 0; i < n; i++) src[i] = fmt.bits === 32 && fmt.format === 3 ? data.readFloatLE(i * 4) : data.readInt16LE(i * 2) / 32768;
+  const ratio = 48000 / fmt.rate;
+  const out = new Int16Array(Math.floor(n * ratio));
+  for (let i = 0; i < out.length; i++) {
+    const x = i / ratio;
+    const i0 = Math.floor(x);
+    const v = (src[i0] ?? 0) + ((src[i0 + 1] ?? src[i0] ?? 0) - (src[i0] ?? 0)) * (x - i0);
+    out[i] = Math.max(-32768, Math.min(32767, Math.round(v * 32767 * 0.95)));
+  }
+  return out;
 }
 
 // ---------------------------------------------------------------- servers
@@ -128,24 +145,22 @@ const OVERLAY_JS = `
 // ---------------------------------------------------------------- browser + screencast
 await waitFor(`http://localhost:${PORT}/`);
 const browser = await chromium.launch();
-const context = await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5, acceptDownloads: true });
-const page = await context.newPage();
-page.on("pageerror", (e) => console.log("PAGEERROR", e.message));
-await page.addInitScript({ content: `window.addEventListener("DOMContentLoaded", () => { ${OVERLAY_JS} });` });
+let context;
+let page;
+async function freshPage() {
+  if (context) await context.close();
+  context = await browser.newContext({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: 1.5, acceptDownloads: true });
+  page = await context.newPage();
+  page.on("pageerror", (e) => console.log("PAGEERROR", e.message));
+  await page.addInitScript({ content: `window.addEventListener("DOMContentLoaded", () => { ${OVERLAY_JS} });` });
+}
 
 const framesDir = path.join(tmpDir, "frames");
 fs.mkdirSync(framesDir, { recursive: true });
 const frames = [];
-const cdp = await context.newCDPSession(page);
-cdp.on("Page.screencastFrame", (f) => {
-  const file = `${String(frames.length).padStart(6, "0")}.jpg`;
-  fs.writeFileSync(path.join(framesDir, file), Buffer.from(f.data, "base64"));
-  frames.push({ file, ts: f.metadata.timestamp });
-  cdp.send("Page.screencastFrameAck", { sessionId: f.sessionId }).catch(() => {});
-});
 
 const wait = (s) => page.waitForTimeout(s * 1000);
-const cues = []; // { clip, t (epoch seconds) }
+const cues = []; // { samples, t (epoch seconds) }
 
 async function subtitle(text) {
   await page.evaluate(OVERLAY_JS);
@@ -156,15 +171,27 @@ async function subtitle(text) {
   }, text);
 }
 /**
- * Speak a line: synthesise it, show it as a subtitle, mark its start time and
- * wait until it has been spoken (plus a short pause). `during` runs while the
- * line plays (e.g. a drag); the call waits for both.
+ * Narration line. Rehearsal mode records the text (with live numbers) and only
+ * waits briefly; record mode plays the pre-synthesised clip for the same text
+ * (aborting if the text differs, i.e. a number on screen changed), shows it as
+ * a subtitle, and waits until it has been spoken. `during` runs while it plays.
  */
-async function say(text, { pause = 0.5, during } = {}) {
-  const clip = synth(text);
+let MODE = "rehearse";
+const lines = []; // texts in order (rehearsal)
+const clips = []; // { samples, seconds } in order (record)
+let lineIdx = 0;
+async function say(text, { pause = 0.6, during } = {}) {
+  const i = lineIdx++;
+  if (MODE === "rehearse") {
+    lines.push(text);
+    if (during) await during();
+    else await wait(0.3);
+    return;
+  }
+  if (lines[i] !== text) throw new Error(`narration mismatch at line ${i}:\n rehearsal: ${lines[i]}\n now:       ${text}`);
   await subtitle(text);
-  cues.push({ clip, t: Date.now() / 1000 });
-  const speaking = wait(clip.seconds + pause);
+  cues.push({ samples: clips[i].samples, t: Date.now() / 1000 });
+  const speaking = wait(clips[i].seconds + pause);
   if (during) await Promise.all([speaking, during()]);
   else await speaking;
 }
@@ -195,9 +222,7 @@ const cleanup = () => {
 process.on("uncaughtException", (e) => { console.error(e); cleanup(); process.exit(1); });
 process.on("unhandledRejection", (e) => { console.error(e); cleanup(); process.exit(1); });
 
-await cdp.send("Page.startScreencast", { format: "jpeg", quality: 90, maxWidth: 1920, maxHeight: 1080, everyNthFrame: 1 });
-const t0 = Date.now();
-
+async function demo() {
 // ---------------------------------------------------------------- 0. title
 await page.goto(`http://localhost:${VIEW_PORT}/card-start`);
 await wait(1);
@@ -216,7 +241,7 @@ await say(`So where are pools and parks today, and where would a new one help mo
 
 // ---------------------------------------------------------------- 2. map
 await scrollTo('[data-testid="map"]', 62);
-await say("This is the real map. The blue line is the canal from OpenStreetMap, the dashed box is the study area, and each circle is a sample point on a five-hundred-metre grid. These are map points, not people.");
+await say("This is the real map of a canal corridor in Seyhan. The blue line is the canal from OpenStreetMap, the dashed box is the study area, and each circle is a sample point on a five-hundred-metre grid. These are map points, not people.");
 const pos = await page.evaluate(() => {
   const m = document.querySelector(".leaflet-container").getBoundingClientRect();
   const els = [...document.querySelectorAll(".ka-marker--swim:not(.ka-marker--faded)")].map((e) => e.getBoundingClientRect());
@@ -246,13 +271,13 @@ await wait(0.5);
 
 // ---------------------------------------------------------------- 3. scenario
 await scrollTo('[data-testid="map"]', 62);
-const best = page.getByRole("button", { name: "Add at the best location" });
+const best = page.getByRole("button", { name: "Find a promising location" });
 await moveMouseTo(best);
-await say("Now let's add a hypothetical pool. This button tests one thousand, four hundred and fifty-six candidate sites, and picks the one that brings the most points within range.", { pause: 0.2 });
+await say("Now let's add a hypothetical pool. This button tests one thousand, four hundred and fifty-six candidate sites, and picks the one that brings the most points within range.", { pause: 0.3 });
 await best.click();
 await wait(0.6);
 const nA = await liveNumbers();
-await say(`The result: ${nA.before} becomes ${nA.after}. The amber lines show which points now have this pool as their nearest facility, and the dashed ring is the one-kilometre radius.`);
+await say(`The result: ${nA.before} becomes ${nA.after}. The amber lines show which points now have this pool as their nearest facility, and the dashed ring is the one-kilometre radius.`, { pause: 1.2 });
 await page.getByRole("button", { name: "Save this scenario" }).click();
 await scrollTo('[data-testid="map"]', 62);
 const coordsBefore = await page.getByTestId("hyp-coords").first().innerText();
@@ -271,7 +296,7 @@ await say("Let's save that as scenario A, and drag the pool to the west. Every m
 });
 if ((await page.getByTestId("hyp-coords").first().innerText()) === coordsBefore) throw new Error("drag did not move the marker");
 const nB = await liveNumbers();
-await say(`Here, it only reaches ${nB.after}, compared with ${nA.after} before. Same method, different place, different result.`);
+await say(`Here, it only reaches ${nB.after}, compared with ${nA.after} before. Same method, different place, different result.`, { pause: 1.0 });
 await page.mouse.wheel(0, 360);
 await wait(0.8);
 await say("The 'why this result' box explains it: how many points the pool serves, how many newly come within range, and how far it is from existing pools.");
@@ -295,7 +320,7 @@ await say("Now the long-term question. If the canal is closed, what if this line
 await corrBtn.click();
 await scrollTo('[data-testid="map"]', 62);
 const nC = await liveNumbers();
-await say(`Park access within three hundred metres goes from ${nC.before} to ${nC.after} sample points. This is a what-if: the closure and the land are not verified.`);
+await say(`Park access within three hundred metres goes from ${nC.before} to ${nC.after} sample points. This is a what-if: the closure and the land are not verified.`, { pause: 1.0 });
 await page.getByText("Swimming facility", { exact: true }).click();
 await wait(0.6);
 
@@ -354,7 +379,39 @@ await subtitle("");
 await page.goto(`http://localhost:${VIEW_PORT}/card-end`);
 await wait(0.8);
 await say("KanalAtlas. Open source, and built for Neighborhood Hacks 2026.", { pause: 2.5 });
+}
 
+// ---------------------------------------------------------------- pass 1: silent rehearsal
+await freshPage();
+MODE = "rehearse";
+await demo();
+console.log(`rehearsal done: ${lines.length} narration lines`);
+
+// ---------------------------------------------------------------- narration synthesis (Kokoro)
+const jobs = lines.map((text, i) => ({ text, out: path.join(clipsDir, `${String(i).padStart(3, "0")}.wav`) }));
+const jobsFile = path.join(tmpDir, "narration-jobs.json");
+fs.writeFileSync(jobsFile, JSON.stringify(jobs, null, 1));
+execFileSync(process.execPath, ["narrate.mjs", jobsFile], { cwd: TTS_DIR, env: { ...process.env, VOICE, SPEED }, stdio: ["ignore", "ignore", "inherit"] });
+for (const j of jobs) {
+  const samples = readWavAs48k(j.out);
+  clips.push({ samples, seconds: samples.length / 48000 });
+}
+console.log(`narration: ${clips.reduce((a, c) => a + c.seconds, 0).toFixed(1)} s of speech (${VOICE})`);
+
+// ---------------------------------------------------------------- pass 2: recording
+await freshPage();
+const cdp = await context.newCDPSession(page);
+cdp.on("Page.screencastFrame", (f) => {
+  const file = `${String(frames.length).padStart(6, "0")}.jpg`;
+  fs.writeFileSync(path.join(framesDir, file), Buffer.from(f.data, "base64"));
+  frames.push({ file, ts: f.metadata.timestamp });
+  cdp.send("Page.screencastFrameAck", { sessionId: f.sessionId }).catch(() => {});
+});
+MODE = "record";
+lineIdx = 0;
+await cdp.send("Page.startScreencast", { format: "jpeg", quality: 90, maxWidth: 1920, maxHeight: 1080, everyNthFrame: 1 });
+const t0 = Date.now();
+await demo();
 const seconds = Math.round((Date.now() - t0) / 1000);
 const stopWall = Date.now() / 1000;
 await cdp.send("Page.stopScreencast");
@@ -367,11 +424,9 @@ const t0f = frames[0].ts;
 const endTime = stopWall - t0f;
 const SR = 48000;
 const mix = new Int16Array(Math.ceil(endTime * SR) + SR);
-for (const { clip, t } of cues) {
+for (const { samples, t } of cues) {
   const start = Math.max(0, Math.round((t - t0f + 0.15) * SR));
-  const buf = fs.readFileSync(clip.file);
-  const n = clip.bytes / 2;
-  for (let i = 0; i < n && start + i < mix.length; i++) mix[start + i] = buf.readInt16LE(clip.dataOffset + i * 2);
+  for (let i = 0; i < samples.length && start + i < mix.length; i++) mix[start + i] = samples[i];
 }
 const audioPath = path.join(tmpDir, "narration.raw");
 fs.writeFileSync(audioPath, Buffer.from(mix.buffer));

@@ -1,3 +1,3 @@
-axe-core 4.14.0 · project mobile-safari · 2026-10-23T15:41:26.329Z
-initial: 0 violations, 34 rules passed
+axe-core 4.14.0 · project mobile-safari · 2026-10-23T16:29:34.651Z
+initial: 0 violations, 32 rules passed
 with scenario: 0 violations, 35 rules passed
