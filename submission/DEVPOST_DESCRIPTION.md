@@ -88,4 +88,4 @@ The idea, problem, sources, design decisions and testing are mine. The code was 
 - T.C. Tarım ve Orman Bakanlığı (Adana), 10.09.2025: https://egitim.tarimorman.gov.tr/adana/Haber/1162/Adana-Tariminda-Yeni-Donem-Basliyor-Acik-Sulama-Kanallari-Tarihe-Karisiyor-Kapali-Basincli-Sulama-Sistemine-Geciliyor
 - Map data © OpenStreetMap contributors (ODbL), extracted 22.10.2026.
 
-**Links:** Live demo: https://deniz2077.github.io/kanalatlas/ · Code: https://github.com/deniz2077/kanalatlas · Video: https://youtu.be/dLlOJlkT4So
+**Links:** Live demo: https://deniz2077.github.io/kanalatlas/ · Code: https://github.com/deniz2077/kanalatlas · Video: https://youtu.be/CL7fIi5G-mE
