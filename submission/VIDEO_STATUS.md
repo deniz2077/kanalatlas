@@ -6,8 +6,8 @@
 | Upload copy | `submission/video/kanalatlas-demo-upload.mp4`: same frames and audio, 24 fps, ≈ 7.4 MB (`node scripts/reencode-upload.mjs` re-encodes it from the last recording). |
 | Narration | English voice-over by the open-source Kokoro text-to-speech model (voice “am_michael”), run locally, with hand-set pronunciation for KanalAtlas, Adana, Seyhan and neighbourhood names. Subtitles show the same sentences. The title and end cards say the narration is a computer-generated voice. |
 | Number check | The recorder runs the walkthrough twice: a silent rehearsal collects every sentence with the live numbers, then the recording pass aborts if any sentence differs (“narration mismatch”). It also aborts if a drag does not move the marker. |
-| Uploaded to YouTube | **Not yet** (waiting for the owner's OK). The older silent Turkish version is still at https://youtu.be/dLlOJlkT4So and is outdated. |
-| URL in Devpost text | Still the old link until the new upload exists. |
+| Uploaded to YouTube | **Yes, Unlisted (23 Oct 2026):** https://youtu.be/CL7fIi5G-mE, the upload copy above, titled “KanalAtlas — Neighborhood Hacks 2026 demo (Adana canal accessibility map)”. Link checked through YouTube's public oEmbed endpoint. The older silent Turkish version (https://youtu.be/dLlOJlkT4So) is outdated; do not submit it. |
+| URL in Devpost text | Yes (`submission/DEVPOST_DESCRIPTION.md`) |
 
 ## Contents (all real interactions with the running app)
 

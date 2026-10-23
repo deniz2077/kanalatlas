@@ -53,7 +53,7 @@ npm run e2e          # browser tests (builds first)
 | Sample PDF | `docs/sample-report.pdf` |
 | Repo | https://github.com/deniz2077/kanalatlas |
 | Live demo | https://deniz2077.github.io/kanalatlas/ |
-| Video | see `submission/VIDEO_STATUS.md` |
+| Video | https://youtu.be/CL7fIi5G-mE (Unlisted) |
 
 ## D. Remaining risks
 
