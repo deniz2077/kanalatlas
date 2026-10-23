@@ -19,9 +19,9 @@ test("no WCAG A/AA violations (initial and with scenario)", async ({ page }, tes
       .exclude(".leaflet-tile-pane")
       .analyze();
   const initial = await scan();
-  await page.getByRole("button", { name: "En çok fayda sağlayan konuma ekle" }).click();
-  await page.getByRole("button", { name: "Bu senaryoyu kaydet" }).click();
-  await page.getByText(/Harita yerine tablo/).click();
+  await page.getByRole("button", { name: "Add at the best location" }).click();
+  await page.getByRole("button", { name: "Save this scenario" }).click();
+  await page.getByText(/Table instead of the map/).click();
   const withScenario = await scan();
   const summarize = (r: typeof initial) =>
     r.violations.map((v) => `${v.id} (${v.impact}): ${v.help} — ${v.nodes.length} node(s)\n    ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join("\n    ")}`);
@@ -43,7 +43,7 @@ test("keyboard only: add, move, save and export without a mouse", async ({ page 
   await page.goto("./");
   // Skip link is the first tab stop.
   await page.keyboard.press("Tab");
-  await expect(page.getByRole("link", { name: "Doğrudan haritaya geç" })).toBeFocused();
+  await expect(page.getByRole("link", { name: "Skip to the map" })).toBeFocused();
   const press = async (name: string | RegExp) => {
     const b = page.getByRole("button", { name }).first();
     await b.focus();
@@ -51,22 +51,22 @@ test("keyboard only: add, move, save and export without a mouse", async ({ page 
     await page.keyboard.press("Enter");
   };
   const headline = page.getByTestId("within-headline");
-  await press("En çok fayda sağlayan konuma ekle");
+  await press("Add at the best location");
   await expect(headline).toContainText("→");
   const coords = page.getByTestId("hyp-coords").first();
   const c0 = await coords.innerText();
-  await press("Batıya 100 metre taşı");
-  await press("Batıya 100 metre taşı");
+  await press("Move 100 metres west");
+  await press("Move 100 metres west");
   await expect(coords).not.toHaveText(c0);
-  await press("Bu senaryoyu kaydet");
+  await press("Save this scenario");
   await expect(page.getByTestId("comparison")).toBeVisible();
   // Category radio with keyboard: focus and press ArrowRight to switch to parks.
-  await page.getByRole("radio", { name: "Yüzme tesisi" }).focus();
+  await page.getByRole("radio", { name: "Swimming facility" }).focus();
   await page.keyboard.press("ArrowRight");
-  await expect(page.getByRole("radio", { name: "Park / yeşil alan" })).toBeChecked();
-  await page.getByRole("radio", { name: "Park / yeşil alan" }).focus();
+  await expect(page.getByRole("radio", { name: "Park / green space" })).toBeChecked();
+  await page.getByRole("radio", { name: "Park / green space" }).focus();
   await page.keyboard.press("ArrowLeft");
-  await expect(page.getByRole("radio", { name: "Yüzme tesisi" })).toBeChecked();
-  const [download] = await Promise.all([page.waitForEvent("download"), press("PDF raporu oluştur ve indir")]);
-  expect(download.suggestedFilename()).toMatch(/^kanalatlas-rapor-swimming-.*\.pdf$/);
+  await expect(page.getByRole("radio", { name: "Swimming facility" })).toBeChecked();
+  const [download] = await Promise.all([page.waitForEvent("download"), press("Create and download the PDF report")]);
+  expect(download.suggestedFilename()).toMatch(/^kanalatlas-report-swimming-.*\.pdf$/);
 });

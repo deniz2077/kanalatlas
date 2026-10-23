@@ -12,16 +12,16 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KanalAtlas — Adana mahalle erişilebilirlik ve senaryo aracı",
+  title: "KanalAtlas — neighbourhood accessibility & scenario map for Adana",
   description:
-    "Adana Seyhan'daki açık sulama kanalı koridorunda haritalanmış yüzme tesislerine ve parklara düz çizgi erişimini ölçen, varsayımsal tesis senaryolarını karşılaştıran ve planlama raporu üreten açık kaynak prototip.",
+    "Open-source prototype that measures straight-line access to mapped swimming facilities and parks along an open irrigation canal corridor in Seyhan, Adana, compares hypothetical facility scenarios and produces a planning brief. English and Turkish.",
 };
 
 export const viewport: Viewport = { themeColor: "#0f2340" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr">
+    <html lang="en">
       <body className={`${inter.variable} ${plexMono.variable} antialiased`}>{children}</body>
     </html>
   );

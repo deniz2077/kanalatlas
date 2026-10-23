@@ -11,6 +11,7 @@ import {
   type Priorities,
   type PriorityErrors,
 } from "@/lib/priorities";
+import { useLang } from "./LangContext";
 
 interface Props {
   value: Priorities;
@@ -20,6 +21,8 @@ interface Props {
 
 /** Local-only personal priorities. Nothing leaves the browser. */
 export default function PrioritiesForm({ value, onChange, neighbourhoods }: Props) {
+  const { lang, t } = useLang();
+  const P = t.prio;
   const [draft, setDraft] = useState<Priorities>(value);
   const [errors, setErrors] = useState<PriorityErrors>({});
   const [status, setStatus] = useState<string>("");
@@ -32,7 +35,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
 
   const save = (e: React.FormEvent) => {
     e.preventDefault();
-    const errs = validatePriorities(draft);
+    const errs = validatePriorities(draft, lang);
     setErrors(errs);
     if (Object.keys(errs).length) {
       setStatus("");
@@ -42,9 +45,9 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
     onChange(p);
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
-      setStatus("Kaydedildi. Bu tercihler yalnızca bu tarayıcıda saklanır ve PDF raporuna eklenir.");
+      setStatus(P.saved);
     } catch {
-      setStatus("Kaydedildi (bu oturum için). Tarayıcı depolaması kullanılamadığından sayfa yenilenince silinecek.");
+      setStatus(P.savedSession);
     }
   };
 
@@ -57,38 +60,35 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
     } catch {
       /* ignore */
     }
-    setStatus("Tercihleriniz bu tarayıcıdan silindi.");
+    setStatus(P.cleared);
   };
 
   const download = () => {
-    const blob = new Blob([JSON.stringify({ tur: "KanalAtlas kişisel öncelikler (anket sonucu değildir)", ...value }, null, 2)], {
-      type: "application/json",
-    });
+    const blob = new Blob([JSON.stringify({ type: P.jsonType, ...value }, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "kanalatlas-onceliklerim.json";
+    a.download = "kanalatlas-priorities.json";
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
+  const optLabel = (o: { label: string; en: string }) => (lang === "en" ? o.en : o.label);
+
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
       <div>
-        <p className="text-sm font-semibold uppercase tracking-wide text-data">Kişisel girdi</p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-data">{P.kicker}</p>
         <h2 id="oncelik-baslik" className="mt-1 text-2xl font-bold sm:text-3xl">
-          Mahallen İçin Ne Önemli?
+          {P.title}
         </h2>
-        <p className="mt-3 text-ink-soft">
-          Kendi önceliklerinizi seçin; bunlar raporunuza <strong>“Kullanıcının seçtiği öncelikler”</strong> başlığıyla eklenir.
-        </p>
+        <p className="mt-3 text-ink-soft">{P.intro}</p>
         <div className="mt-4 rounded-xl border border-data/30 bg-data-soft p-4 text-sm text-ink">
-          <p className="font-semibold">Bu bir anket veya oylama değildir.</p>
+          <p className="font-semibold">{P.notSurvey}</p>
           <ul className="mt-2 list-disc space-y-1 pl-5">
-            <li>Yanıtlarınız hiçbir sunucuya gönderilmez; yalnızca bu tarayıcıda (localStorage) saklanır.</li>
-            <li>Başkalarının yanıtlarını göremezsiniz; toplam katılım sayısı yoktur.</li>
-            <li>Ad, adres, telefon, yaş gibi kişisel bilgi istemiyoruz. Lütfen nota da yazmayın.</li>
-            <li>İstediğiniz zaman silebilir veya JSON dosyası olarak indirebilirsiniz.</li>
+            {P.notSurveyItems.map((i) => (
+              <li key={i}>{i}</li>
+            ))}
           </ul>
         </div>
       </div>
@@ -96,7 +96,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
       <form onSubmit={save} noValidate className="space-y-5 rounded-xl border border-line bg-card p-5" aria-describedby="oncelik-durum">
         <div>
           <label htmlFor="mahalle" className="text-sm font-medium">
-            Hangi mahalleyi düşünüyorsunuz? <span className="font-normal text-muted">(isteğe bağlı)</span>
+            {P.nbLabel} <span className="font-normal text-muted">{P.optional}</span>
           </label>
           <select
             id="mahalle"
@@ -104,19 +104,19 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
             onChange={(e) => setDraft({ ...draft, neighbourhood: e.target.value })}
             className="mt-1 block min-h-11 w-full rounded-lg border border-line bg-paper px-3 text-sm"
           >
-            <option value="">Belirtmek istemiyorum</option>
+            <option value="">{P.nbNone}</option>
             {neighbourhoods.map((n) => (
               <option key={n} value={n}>
                 {n}
               </option>
             ))}
-            <option value="Çalışma alanı dışında">Çalışma alanı dışında bir yer</option>
+            <option value="Çalışma alanı dışında">{P.nbOutside}</option>
           </select>
         </div>
 
         <fieldset aria-describedby={errors.priority ? "err-priority" : undefined}>
           <legend className="text-sm font-medium">
-            Hangi iyileştirmeye öncelik verirdiniz? <span className="text-alert">*</span>
+            {P.priorityLegend} <span className="text-alert">*</span>
           </legend>
           <div className="mt-2 grid gap-2">
             {PRIORITY_OPTIONS.map((o) => (
@@ -129,7 +129,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
                   onChange={() => setDraft({ ...draft, priority: o.value })}
                   className="h-4 w-4"
                 />
-                {o.label}
+                {optLabel(o)}
               </label>
             ))}
           </div>
@@ -142,7 +142,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
 
         <fieldset>
           <legend className="text-sm font-medium">
-            Mevcut olanakları kullanmayı ne zorlaştırıyor? <span className="font-normal text-muted">(birden fazla seçilebilir)</span>
+            {P.barriersLegend} <span className="font-normal text-muted">{P.multi}</span>
           </legend>
           <div className="mt-2 grid gap-2 sm:grid-cols-2">
             {BARRIER_OPTIONS.map((o) => (
@@ -158,7 +158,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
                   }
                   className="h-4 w-4"
                 />
-                {o.label}
+                {optLabel(o)}
               </label>
             ))}
           </div>
@@ -166,7 +166,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
 
         <div>
           <label htmlFor="not" className="text-sm font-medium">
-            Planlamacıların dikkate almasını istediğiniz başka bir şey var mı? <span className="font-normal text-muted">(isteğe bağlı)</span>
+            {P.noteLabel} <span className="font-normal text-muted">{P.optional}</span>
           </label>
           <textarea
             id="not"
@@ -179,7 +179,7 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
             className="mt-1 block w-full rounded-lg border border-line bg-paper px-3 py-2 text-sm"
           />
           <p id="not-yardim" className={`mt-1 text-xs ${draft.note.length > NOTE_MAX ? "text-alert" : "text-muted"}`}>
-            {draft.note.length}/{NOTE_MAX} karakter. Kişisel bilgi yazmayın.
+            {P.noteHelp(draft.note.length, NOTE_MAX)}
           </p>
           {errors.note && (
             <p role="alert" className="mt-1 text-sm text-alert">
@@ -190,13 +190,13 @@ export default function PrioritiesForm({ value, onChange, neighbourhoods }: Prop
 
         <div className="flex flex-wrap gap-2">
           <button type="submit" className="min-h-11 rounded-lg bg-ink px-5 text-sm font-semibold text-white hover:bg-ink-soft">
-            Önceliklerimi kaydet
+            {P.save}
           </button>
           <button type="button" onClick={download} disabled={!value.priority} className="min-h-11 rounded-lg border border-line bg-white px-4 text-sm font-medium hover:border-ink-soft disabled:opacity-50">
-            JSON olarak indir
+            {P.download}
           </button>
           <button type="button" onClick={clear} className="min-h-11 rounded-lg px-4 text-sm font-medium text-alert underline">
-            Sil
+            {P.clear}
           </button>
         </div>
         <p id="oncelik-durum" role="status" className="text-sm text-data" data-testid="priorities-status">

@@ -7,7 +7,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { canalCorridor, dataset, evaluationPoints } from "../data";
 import { explainHypotheticals, formatMeters } from "../insights";
-import { buildReportDoc, buildScenarioSvg, type ReportInput } from "../report";
+import { buildReportDoc, buildScenarioSvg, LIMITATIONS_BY, METHOD_BY, QUESTIONS_BY, type ReportInput } from "../report";
 import { evaluateScenario } from "../scenario";
 import type { HypotheticalFacility } from "../types";
 import { EMPTY_PRIORITIES } from "../priorities";
@@ -137,6 +137,30 @@ describe("PDF report", () => {
     expect(text).toContain("doğrulanmamıştır");
     expect(text).toContain(`${result.after.withinCount} / 72`);
     expect(buildScenarioSvg(input)).toContain('stroke="#b45309" stroke-width="5"');
+  }, 30_000);
+
+  it("English report: English title, labels and no Turkish UI phrases", async () => {
+    // In English mode the app labels hypotheticals in English.
+    const hypEn = A.hypotheticals.map((h) => ({ ...h, label: "Hypothetical swimming facility 1" }));
+    const explEn = A.explanations.map((e) => ({ ...e, label: "Hypothetical swimming facility 1" }));
+    const input = { ...A, hypotheticals: hypEn, explanations: explEn, lang: "en" as const };
+    const text = await pdfText(input);
+    expect(text).toContain("Neighbourhood Accessibility and Scenario Assessment Report");
+    expect(text).toContain(`${A.result.after.withinCount} / ${A.result.after.pointCount}`);
+    expect(text).toContain("HYPOTHETICAL");
+    expect(text).toContain("Seyhan Central Canal Corridor");
+    expect(text).toContain("The user did not enter priorities.");
+    expect(text).not.toContain("Varsayımsal");
+    expect(text).not.toContain("Başlangıç");
+  }, 30_000);
+
+  it("rendering does not mutate shared text lists (pdfmake mutates its input arrays)", async () => {
+    await pdfText(A);
+    await pdfText({ ...A, lang: "en" });
+    for (const list of [METHOD_BY.tr, METHOD_BY.en, LIMITATIONS_BY.tr, LIMITATIONS_BY.en, QUESTIONS_BY.tr, QUESTIONS_BY.en]) {
+      expect(list.every((x) => typeof x === "string")).toBe(true);
+    }
+    expect(A.result.notes.every((x) => typeof x === "string")).toBe(true);
   }, 30_000);
 
   it("schematic SVG is drawn from coordinates and includes the hypothetical", () => {

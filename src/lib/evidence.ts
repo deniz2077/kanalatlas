@@ -14,6 +14,7 @@ export interface EvidenceItem {
   date: string;
   url: string;
   scope: string;
+  scopeEn: string;
 }
 
 export const EVIDENCE: EvidenceItem[] = [
@@ -28,6 +29,7 @@ export const EVIDENCE: EvidenceItem[] = [
     date: "12.06.2026",
     url: "https://www.adana.bel.tr/panel/uploads/mecliskararlari_v/files/2026-haziran-ayi-pdf.pdf",
     scope: "Belediye geneli; Temmuz–Ağustos eğitim dönemi. Belgede boğulma sayısı verilmiyor.",
+    scopeEn: "City-wide; July–August lesson period. The document gives no drowning figures.",
   },
   {
     id: "abb-haber-2025-yuzme",
@@ -40,6 +42,7 @@ export const EVIDENCE: EvidenceItem[] = [
     date: "21.07.2025",
     url: "https://www.adana.bel.tr/tr/haber/27-bin-684-cocuga-ucretsiz-spor-egitimi-veriliyor",
     scope: "2025 Temmuz–Ağustos programı. Havuzların adresleri bu sayfada listelenmiyor; 2026 durumu ayrıca doğrulanmalı.",
+    scopeEn: "July–August 2025 programme. Pool addresses are not listed on the page; 2026 availability must be checked separately.",
   },
   {
     id: "tarim-2025-basincli",
@@ -52,6 +55,7 @@ export const EVIDENCE: EvidenceItem[] = [
     date: "10.09.2025",
     url: "https://egitim.tarimorman.gov.tr/adana/Haber/1162/Adana-Tariminda-Yeni-Donem-Basliyor-Acik-Sulama-Kanallari-Tarihe-Karisiyor-Kapali-Basincli-Sulama-Sistemine-Geciliyor",
     scope: "Takvim, aşamalar ve hangi kanal kesitlerinin ne zaman kapanacağı belirtilmiyor. Bu çalışma alanındaki kanalın kapanacağı doğrulanmadı.",
+    scopeEn: "No timeline, phases or list of canal sections. Closure of the canal in this study area is not verified.",
   },
   {
     id: "abb-meclis-2026-181",
@@ -64,6 +68,7 @@ export const EVIDENCE: EvidenceItem[] = [
     date: "12.06.2026",
     url: "https://www.adana.bel.tr/panel/uploads/mecliskararlari_v/files/2026-haziran-ayi-pdf.pdf",
     scope: "Havuzun tam konumu ve hangi OSM kaydına karşılık geldiği doğrulanmadı; kiralama sonrası kamuya açıklık koşulları bilinmiyor.",
+    scopeEn: "The pool's exact location and matching OSM record are not verified; public-access terms after the lease are unknown.",
   },
   {
     id: "yerel-basin-2026-denetim",
@@ -76,6 +81,7 @@ export const EVIDENCE: EvidenceItem[] = [
     date: "25.07.2026",
     url: "https://www.gazetebirlik.com/yerel-haberler/adanada-sulama-kanallarinda-denetim-7-kisiye-25-bin-tl-ceza-kesildi/1049295",
     scope: "Tek bir haber; ölüm sayısı resmi kaynakla doğrulanmadı ve uygulamada kullanılmıyor.",
+    scopeEn: "A single news item; the death figure is not confirmed by an official source and is not used in the app.",
   },
 ];
 

@@ -107,21 +107,32 @@ export function validateHypothetical(
   p: unknown,
   studyBBox: BBox,
   existing: Facility[] = [],
+  lang: "en" | "tr" = "tr",
 ): ValidationResult {
+  const en = lang === "en";
   if (!isValidLatLon(p)) {
-    return { ok: false, error: "Geçersiz koordinat: enlem −90…90, boylam −180…180 arasında bir sayı olmalı." };
+    return {
+      ok: false,
+      error: en
+        ? "Invalid coordinate: latitude must be −90…90 and longitude −180…180."
+        : "Geçersiz koordinat: enlem −90…90, boylam −180…180 arasında bir sayı olmalı.",
+    };
   }
   if (!inBBox(p, studyBBox)) {
     return {
       ok: false,
-      error: "Bu konum çalışma alanının dışında. Varsayımsal tesis yalnızca kesikli çizgiyle gösterilen alanın içine yerleştirilebilir.",
+      error: en
+        ? "This location is outside the study area. Hypothetical facilities can only be placed inside the dashed box."
+        : "Bu konum çalışma alanının dışında. Varsayımsal tesis yalnızca kesikli çizgiyle gösterilen alanın içine yerleştirilebilir.",
     };
   }
   const warnings: string[] = [];
   const close = existing.find((f) => haversineMeters(p, f) <= NEAR_EXISTING_WARN_M);
   if (close) {
     warnings.push(
-      `Bu konum mevcut bir haritalanmış tesisin (${close.name ?? "isimsiz"}) ${NEAR_EXISTING_WARN_M} m yakınında; sonuç neredeyse değişmeyebilir.`,
+      en
+        ? `This location is within ${NEAR_EXISTING_WARN_M} m of an existing mapped facility (${close.name ?? "unnamed"}); the result may barely change.`
+        : `Bu konum mevcut bir haritalanmış tesisin (${close.name ?? "isimsiz"}) ${NEAR_EXISTING_WARN_M} m yakınında; sonuç neredeyse değişmeyebilir.`,
     );
   }
   return { ok: true, warnings };
@@ -252,6 +263,8 @@ export interface ScenarioInput {
   scope: DataScope;
   hypotheticals: HypotheticalFacility[];
   thresholdM: number;
+  /** Language of human-readable notes (numbers are unaffected). */
+  lang?: "en" | "tr";
 }
 
 export function median(values: number[]): number | null {
@@ -308,11 +321,17 @@ export function evaluateScenario(input: ScenarioInput): ScenarioResult {
   const notes: string[] = [];
   if (existing.length === 0) {
     notes.push(
-      "Bu kategori ve veri kapsamında haritalanmış tesis yok; başlangıç mesafesi tanımsızdır ve yüzde değişim hesaplanmaz.",
+      input.lang === "en"
+        ? "No mapped facility exists in this category and data scope; the baseline distance is undefined and no percentage change is computed."
+        : "Bu kategori ve veri kapsamında haritalanmış tesis yok; başlangıç mesafesi tanımsızdır ve yüzde değişim hesaplanmaz.",
     );
   }
   if (hyps.length > 0 && improvements.length === 0 && results.every((r) => r.before)) {
-    notes.push("Varsayımsal tesis(ler) hiçbir örnek noktada en yakın tesisi değiştirmedi: sonuç başlangıçla aynı.");
+    notes.push(
+      input.lang === "en"
+        ? "The hypothetical facility(ies) did not change the nearest facility for any sample point: the result equals the baseline."
+        : "Varsayımsal tesis(ler) hiçbir örnek noktada en yakın tesisi değiştirmedi: sonuç başlangıçla aynı.",
+    );
   }
 
   return {

@@ -34,7 +34,7 @@ test("complete journey: map → scenario → move → compare → priorities →
   });
 
   // 1. Homepage
-  await page.goto("./");
+  await page.goto("./?lang=tr");
   await expect(page).toHaveTitle(/KanalAtlas/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Mahalleni keşfet");
   await page.screenshot({ path: `${shotDir}/${p}-01-landing.png` });
@@ -153,8 +153,9 @@ test("complete journey: map → scenario → move → compare → priorities →
 });
 
 test("category switch and data scope change the numbers (not hard-coded)", async ({ page }) => {
-  await page.goto("./");
+  await page.goto("./?lang=tr");
   const core = (await headline(page).innerText()).trim();
+  await page.getByText("Gelişmiş ayarlar").click();
   await page.getByLabel("Veri kapsamı").selectOption("all");
   await expect(headline(page)).not.toHaveText(core);
   await page.getByText("Park / yeşil alan", { exact: true }).click();
@@ -165,7 +166,7 @@ test("category switch and data scope change the numbers (not hard-coded)", async
 });
 
 test("canal corridor → linear park scenario (parks)", async ({ page }) => {
-  await page.goto("./");
+  await page.goto("./?lang=tr");
   await page.getByText("Park / yeşil alan", { exact: true }).click();
   const before = (await headline(page).innerText()).trim();
   await page.getByRole("button", { name: "Kanal hattını doğrusal parka dönüştür" }).click();
@@ -194,7 +195,7 @@ test("touch drag moves the hypothetical facility (native TouchEvents)", async ({
   // Playwright cannot perform a touch drag, so real TouchEvents are dispatched on the
   // marker element; WebKit on macOS cannot construct Touch objects, so Chromium only.
   test.skip(testInfo.project.name !== "mobile", "needs a touch-enabled Chromium profile");
-  await page.goto("./");
+  await page.goto("./?lang=tr");
   const add = page.getByRole("button", { name: "En çok fayda sağlayan konuma ekle" });
   await add.focus();
   await page.keyboard.press("Enter");
@@ -222,4 +223,37 @@ test("touch drag moves the hypothetical facility (native TouchEvents)", async ({
   });
   await expect(coords(page)).not.toHaveText(c0);
   await expect(headline(page)).not.toHaveText(before);
+});
+
+test("English (default): journey, language toggle and English PDF", async ({ page }) => {
+  await page.goto("./");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Explore your neighbourhood.");
+  await expect(page.locator("html")).toHaveAttribute("lang", "en");
+  await expect(headline(page)).toHaveText(/13\s*\/\s*72/);
+  await page.getByRole("button", { name: "Add at the best location" }).click();
+  await expect(page.getByTestId("hyp-explanation")).toContainText("It becomes the nearest facility for");
+  await expect(page.getByTestId("interpretation")).toContainText("In the hypothetical scenario this becomes");
+  const [download] = await Promise.all([
+    page.waitForEvent("download"),
+    page.getByRole("button", { name: "Create and download the PDF report" }).click(),
+  ]);
+  expect(download.suggestedFilename()).toMatch(/^kanalatlas-report-swimming-/);
+  const file = test.info().outputPath("report-en.pdf");
+  await download.saveAs(file);
+  const text = await pdfText(file);
+  expect(text).toContain("Neighbourhood Accessibility and Scenario Assessment Report");
+  expect(text).toContain("HYPOTHETICAL");
+  expect(text).toContain("straight line");
+  expect(text).not.toContain("Varsayımsal");
+  // Toggle to Turkish and back; the scenario state is kept.
+  await page.getByTestId("lang-toggle").click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Mahalleni keşfet.");
+  await expect(page.locator("html")).toHaveAttribute("lang", "tr");
+  await expect(page.getByTestId("hypothetical")).toHaveCount(1);
+  await page.getByTestId("lang-toggle").click();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Explore your neighbourhood.");
+  if (test.info().project.name === "desktop") {
+    await page.locator('[data-testid="map"]').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: `${shotDir}/desktop-07-english.png` });
+  }
 });

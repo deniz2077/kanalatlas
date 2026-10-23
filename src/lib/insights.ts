@@ -1,8 +1,10 @@
 /**
- * Turns ScenarioResult numbers into plain-Turkish explanations.
- * Kept separate from the UI so the same sentences appear on screen and in the PDF.
+ * Turns ScenarioResult numbers into plain-language explanations (Turkish by
+ * default, English on request). Kept separate from the UI so the same
+ * sentences appear on screen and in the PDF.
  */
 import { haversineMeters } from "./geo";
+import { fmtDelta, fmtMeters, type Lang } from "./i18n";
 import { activeFacilities, distanceToHypothetical, type ScenarioResult } from "./scenario";
 import type { Category, DataScope, EvaluationPoint, Facility, HypotheticalFacility, NeighbourhoodLabel } from "./types";
 
@@ -34,19 +36,12 @@ export const THRESHOLD_OPTIONS: Record<Category, number[]> = {
 
 export const DEFAULT_THRESHOLD: Record<Category, number> = { swimming: 1000, park: 300 };
 
-const nf0 = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
-const nf2 = new Intl.NumberFormat("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-export function formatMeters(m: number | null | undefined): string {
-  if (m === null || m === undefined || !Number.isFinite(m)) return "tanımsız";
-  if (Math.abs(m) >= 1000) return `${nf2.format(m / 1000)} km`;
-  return `${nf0.format(Math.round(m))} m`;
+export function formatMeters(m: number | null | undefined, lang: Lang = "tr"): string {
+  return fmtMeters(m, lang);
 }
 
-export function formatDelta(m: number | null | undefined): string {
-  if (m === null || m === undefined || !Number.isFinite(m)) return "—";
-  if (Math.round(m) === 0) return "değişmedi";
-  return `${m < 0 ? "−" : "+"}${formatMeters(Math.abs(m))}`;
+export function formatDelta(m: number | null | undefined, lang: Lang = "tr"): string {
+  return fmtDelta(m, lang);
 }
 
 export interface HypotheticalExplanation {
@@ -102,7 +97,8 @@ export function explainHypotheticals(
 }
 
 /** One-paragraph interpretation of the current result (no causal or safety claims). */
-export function interpretResult(r: ScenarioResult): string {
+export function interpretResult(r: ScenarioResult, lang: Lang = "tr"): string {
+  if (lang === "en") return interpretResultEn(r);
   const n = r.before.pointCount;
   const th = formatMeters(r.thresholdM);
   const cat = CATEGORY_PLURAL[r.category];
@@ -130,5 +126,32 @@ export function interpretResult(r: ScenarioResult): string {
     }
   }
   parts.push("Bu değerler yürüme süresi değil, düz çizgi (kuş uçuşu) mesafedir ve nüfusu temsil etmez.");
+  return parts.join(" ");
+}
+
+function interpretResultEn(r: ScenarioResult): string {
+  const n = r.before.pointCount;
+  const th = fmtMeters(r.thresholdM, "en");
+  const what = r.category === "swimming" ? "swimming facility" : "park";
+  const parts: string[] = [];
+  if (r.baselineFacilityCount === 0) {
+    parts.push(`No mapped ${what === "park" ? "parks" : "swimming facilities"} exist in the selected data scope, so the baseline distance is undefined; none of the ${n} sample points counts as within ${th}.`);
+  } else {
+    parts.push(`At baseline, ${r.before.withinCount} of ${n} sample map points are within ${th} (straight line) of the nearest mapped ${what}.`);
+  }
+  if (r.hypotheticalCount === 0) {
+    parts.push("No hypothetical facility has been added yet.");
+  } else if (r.change.pointsImproved === 0 && r.change.newlyDefined === 0) {
+    parts.push("The hypothetical facility does not shorten the nearest distance for any sample point; it may be too close to existing facilities.");
+  } else {
+    parts.push(
+      `In the hypothetical scenario this becomes ${r.after.withinCount} (${r.change.withinGained >= 0 ? "+" : ""}${r.change.withinGained}). The nearest-facility distance gets shorter for ${r.change.pointsImproved} points` +
+        (r.change.largestImprovementM ? `; the largest reduction is ${fmtMeters(r.change.largestImprovementM, "en")}.` : "."),
+    );
+    if (r.change.meanDeltaM !== null) {
+      parts.push(`Mean distance: ${fmtMeters(r.before.meanM, "en")} at baseline, ${fmtMeters(r.after.meanM, "en")} in the scenario.`);
+    }
+  }
+  parts.push("These are straight-line distances, not walking times, and they do not represent population.");
   return parts.join(" ");
 }

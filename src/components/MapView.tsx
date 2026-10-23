@@ -21,11 +21,13 @@ import {
 } from "react-leaflet";
 import { osmUrl } from "@/lib/data";
 import { nearestPointOnPolylines } from "@/lib/geo";
-import { formatMeters } from "@/lib/insights";
+import { fmtMeters, type Dict, type Lang } from "@/lib/i18n";
 import type { PointResult, SiteSuggestion } from "@/lib/scenario";
 import type { Canal, Category, EvaluationPoint, Facility, HypotheticalFacility, StudyArea } from "@/lib/types";
 
 export interface MapViewProps {
+  t: Dict;
+  lang: Lang;
   studyArea: StudyArea;
   canals: Canal[];
   category: Category;
@@ -53,12 +55,6 @@ const icon = (cls: string, text: string, size = 22) =>
     iconAnchor: [size / 2, size / 2],
   });
 
-const STATUS_TR: Record<string, string> = {
-  MAPPED: "HARİTALANMIŞ — çalışma durumu doğrulanmadı",
-  REQUIRES_CONFIRMATION: "DOĞRULAMA GEREKİYOR",
-  VERIFIED: "DOĞRULANMIŞ",
-  HYPOTHETICAL: "VARSAYIMSAL",
-};
 
 /**
  * Keep the study area framed when the container size changes (e.g. the map
@@ -102,7 +98,9 @@ function ClickHandler({ onClick }: { onClick: (lat: number, lon: number) => void
 }
 
 export default function MapView(props: MapViewProps) {
-  const { studyArea, category, facilities, activeIds, points, results, hypotheticals, thresholdM } = props;
+  const { t, lang, studyArea, category, facilities, activeIds, points, results, hypotheticals, thresholdM } = props;
+  const M = t.map;
+  const formatMeters = (m: number | null | undefined) => fmtMeters(m, lang);
   const b = studyArea.bbox;
   const center: [number, number] = [(b.south + b.north) / 2, (b.west + b.east) / 2];
 
@@ -144,18 +142,17 @@ export default function MapView(props: MapViewProps) {
             <Marker key={f.id} position={[f.lat, f.lon]} icon={ic} zIndexOffset={active ? 200 : 0} keyboard={active}>
               <Popup>
                 <div className="space-y-1 text-[13px] leading-snug">
-                  <p className="font-semibold">{f.name ?? "İsimsiz kayıt"}</p>
+                  <p className="font-semibold">{f.name ?? M.unnamed}</p>
                   <p>
-                    <strong>Durum:</strong> {STATUS_TR[f.status]}
+                    <strong>{M.status}</strong> {t.status[f.status]} — {t.statusHelp[f.status]}
                   </p>
                   <p>
-                    <strong>Analizde:</strong>{" "}
-                    {f.tier === "excluded" ? "Hayır (hariç)" : active ? "Evet" : "Hayır (bu veri kapsamında değil)"}
+                    <strong>{M.inAnalysis}</strong> {f.tier === "excluded" ? M.inExcluded : active ? M.inYes : M.inScope}
                   </p>
-                  <p className="text-[12px] text-slate-600">{f.tierReason}</p>
-                  {f.areaM2 ? <p className="text-[12px]">Yaklaşık alan: {Math.round(f.areaM2).toLocaleString("tr-TR")} m²</p> : null}
+                  <p className="text-[12px] text-slate-600">{t.tierReason(f)}</p>
+                  {f.areaM2 ? <p className="text-[12px]">{M.area(Math.round(f.areaM2).toLocaleString(lang === "tr" ? "tr-TR" : "en-GB"))}</p> : null}
                   <p className="text-[12px]">
-                    Kaynak:{" "}
+                    {M.source}{" "}
                     {f.sources.map((s, i) => (
                       <span key={s.osmId}>
                         {i > 0 && ", "}
@@ -170,7 +167,7 @@ export default function MapView(props: MapViewProps) {
             </Marker>
           );
         }),
-    [facilities, category, activeIds, icons],
+    [facilities, category, activeIds, icons, t, M, lang],
   );
 
   return (
@@ -183,10 +180,11 @@ export default function MapView(props: MapViewProps) {
       scrollWheelZoom={false}
       className="h-full w-full"
       style={{ cursor: props.placing ? "crosshair" : undefined }}
-      aria-label="Seyhan merkez kanal koridoru etkileşimli haritası"
+      aria-label={M.aria}
     >
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> katkıcıları'
+        key={lang}
+        attribution={`&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ${lang === "tr" ? "katkıcıları" : "contributors"}`}
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         maxZoom={19}
       />
@@ -208,8 +206,8 @@ export default function MapView(props: MapViewProps) {
           pathOptions={{ color: "#1d6fa5", weight: c.covered ? 3 : 5, opacity: 0.85, dashArray: c.covered ? "4 6" : undefined }}
         >
           <Tooltip sticky>
-            {c.name ?? "Sulama kanalı"} · OSM way {c.source.osmId}
-            {c.covered ? " (menfez/tünel olarak haritalanmış)" : " (açık kanal olarak haritalanmış)"}
+            {c.name ?? M.canal} · OSM way {c.source.osmId}
+            {c.covered ? M.covered : M.open}
           </Tooltip>
         </Polyline>
       ))}
@@ -254,7 +252,7 @@ export default function MapView(props: MapViewProps) {
               positions={line.map((q) => [q.lat, q.lon] as [number, number])}
               pathOptions={{ color: "#b45309", weight: 9, opacity: 0.55, dashArray: "2 10", lineCap: "round" }}
             >
-              <Tooltip sticky>{h.label} — VARSAYIMSAL</Tooltip>
+              <Tooltip sticky>{M.corridorTooltip(h.label)}</Tooltip>
             </Polyline>
           )),
         )}
@@ -286,13 +284,13 @@ export default function MapView(props: MapViewProps) {
           >
             <Tooltip>
               <span className="tabular">
-                <strong>Nokta {p.id}</strong>
-                {p.nearLabel ? ` · ${p.nearLabel} yakını` : ""}
+                <strong>{M.point(p.id)}</strong>
+                {p.nearLabel ? M.nearSuffix(p.nearLabel) : ""}
                 <br />
-                Önce: {formatMeters(r?.before?.distanceM)} · Sonra: {formatMeters(r?.after?.distanceM)}
+                {M.beforeAfter(formatMeters(r?.before?.distanceM), formatMeters(r?.after?.distanceM))}
                 <br />
-                {within ? `${formatMeters(thresholdM)} içinde` : `${formatMeters(thresholdM)} dışında`}
-                {improved ? " · varsayımsal tesise en yakın" : ""}
+                {within ? M.inside(formatMeters(thresholdM)) : M.outsideTh(formatMeters(thresholdM))}
+                {improved ? M.nearestHyp : ""}
               </span>
             </Tooltip>
           </CircleMarker>
@@ -302,7 +300,7 @@ export default function MapView(props: MapViewProps) {
       {props.suggestions.map((s, i) => (
         <Marker key={`sug-${s.candidateId}`} position={[s.lat, s.lon]} icon={icons.suggest[i]} zIndexOffset={500}>
           <Tooltip>
-            Öneri {i + 1}{s.nearLabel ? ` (${s.nearLabel} yakını)` : ""}: +{s.withinGained} örnek nokta eşik içine girer
+            {M.suggestion(i + 1, s.nearLabel, s.withinGained)}
           </Tooltip>
         </Marker>
       ))}
@@ -314,7 +312,7 @@ export default function MapView(props: MapViewProps) {
           icon={icons.hypo}
           draggable
           zIndexOffset={1000}
-          title={`${h.label} — sürükleyerek taşıyın`}
+          title={M.hypTitle(h.label)}
           eventHandlers={{
             drag: (e) => {
               const ll = (e.target as L.Marker).getLatLng();
@@ -329,7 +327,7 @@ export default function MapView(props: MapViewProps) {
           }}
         >
           <Tooltip direction="top" offset={[0, -14]}>
-            {h.label} (VARSAYIMSAL) — sürükleyin
+            {M.hypTooltip(h.label)}
           </Tooltip>
         </Marker>
       ))}
