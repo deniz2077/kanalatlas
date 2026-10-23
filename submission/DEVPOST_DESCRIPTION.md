@@ -48,9 +48,9 @@ TypeScript, Next.js 15, React 19, Tailwind CSS, Leaflet and pdfmake, with OpenSt
 - **Scenario engine:** pure functions, separate from the UI. Haversine distance (R = 6,371,008.8 m); a hypothetical facility counts only if strictly closer; undefined baselines never produce fake percentages.
 - **Testing:** 79 unit tests with hand-calculated expected values (for example, a three-point line where moving the pool from 2,200 m to 1,500 m changes the results from 2/3 to 3/3 within range). The tests render real PDFs and read them back to check the numbers. Playwright tests run the full journey in Desktop Chrome, Android Chromium and Safari's WebKit engine against the production build, including downloading and parsing the PDF and a real touch-drag test.
 - **Bilingual:** English by default; one click switches the whole interface and the PDF report to Turkish for residents of Adana.
-- **Accessibility:** zero axe-core WCAG 2.1 A/AA violations in automated audits (desktop and mobile, with and without a scenario); a tested keyboard-only journey; Turkish-first; keyboard alternatives for every map action; a full text table instead of the map, labelled forms, visible focus, live-region announcements, and no meaning conveyed by colour alone.
+- **Accessibility:** zero axe-core WCAG 2.1 A/AA violations in automated audits (desktop and mobile, with and without a scenario); a tested keyboard-only journey; English and Turkish; keyboard alternatives for every map action; a full text table instead of the map, labelled forms, visible focus, live-region announcements, and no meaning conveyed by colour alone.
 
-I chose the problem, wrote the project brief and its honesty rules, found the starting sources (the municipality's swimming news, the council decision PDF and the ministry announcement), made the design decisions (study area, thresholds, what counts as a verified facility) and tested the app.
+**My role:** I chose the problem, wrote the project brief and its honesty rules, found the starting sources (the municipality's swimming news, the council decision PDF and the ministry announcement), made the design decisions (study area, thresholds, what counts as a verified facility) and tested the app.
 
 ## Challenges we ran into
 

@@ -45,11 +45,12 @@ npm run e2e          # browser tests (builds first)
 |---|---|
 | Project name | `submission/PROJECT_NAME.md` |
 | Elevator pitch | `submission/ELEVATOR_PITCH.md` |
+| **Every Devpost field, paste-ready** | `submission/DEVPOST_FORM.md` |
 | Description (problem evidence, what it does, AI disclosure, links) | `submission/DEVPOST_DESCRIPTION.md` |
 | Built with | `submission/TECH_STACK.md` |
 | Challenges | `submission/CHALLENGES.md` |
 | Next steps | `submission/FUTURE_WORK.md` |
-| Screenshots | `docs/screenshots/` (desktop-07-english.png is the English view) |
+| Gallery (English, 3:2) | `submission/gallery/` |
 | Sample PDF | `docs/sample-report.pdf` |
 | Repo | https://github.com/deniz2077/kanalatlas |
 | Live demo | https://deniz2077.github.io/kanalatlas/ |
